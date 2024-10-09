@@ -4,24 +4,55 @@ using UnityEngine;
 [RequireComponent(typeof(AIAgent))]
 public class FlockAgent : MonoBehaviour
 {
-    private AIAgent Agent;
-    private Vector3 Position = Vector3.zero;
-    private Vector3 offset = Vector3.zero;
+    private AIAgent aiAgent;
+    public AIAgent AIAgent { get { return aiAgent; } }
+    private Vector3 Position = Vector3.zero; 
 
-    public Vector3 Offset {  get { return offset; } set { offset = value; } }
+    private bool isFlocking = true;
+    public bool IsFlocking { get { return isFlocking; } set { isFlocking = value; } }
+
+    private Vector3 target = Vector3.zero;
+    public Vector3 Target {  get { return target; }}
+
+    private CoverFire coverFire;
+    public CoverFire CoverFire { get { return coverFire; } set { coverFire = value; } }
 
     private void Start()
     {
-        Agent = GetComponent<AIAgent>();
+        aiAgent = GetComponent<AIAgent>();
+        CoverFire = GetComponent<CoverFire>();
     }
 
-    public void SetTarget(Vector3 Target)
+    public void SetTarget(Vector3 _target)
     {
-        Agent.MoveTo(Target);
+        target = _target;
     }
 
+    public void StartFlocking()
+    {
+        isFlocking = true;
+    }
+
+    public void StopFlocking()
+    {
+        isFlocking = false;
+    }
+
+    public void ResetFlock()
+    {
+        StartFlocking();
+        Move();
+    }
     public void Move()
     {
-        //Movement.ChangeBehaviour(Behaviour.SEEK);
+        if (isFlocking)
+        {
+            aiAgent.MoveTo(Target);
+        }
+    }
+
+    public void MoveTo(Vector3 _target)
+    {
+        aiAgent.MoveTo(_target);
     }
 }
