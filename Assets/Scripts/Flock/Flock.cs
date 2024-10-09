@@ -1,20 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Flock : MonoBehaviour
 {
     private List<FlockAgent> flockAgents = new List<FlockAgent>();
+    public List<FlockAgent> FlockAgents { get { return flockAgents; } }
+
     [SerializeField] private FlockAgent flockAgentPrefab;
     [SerializeField] private Formation formation;
 
     [SerializeField, Range(3, 15)] private int startingCount = 3;
     [SerializeField] private Vector3 leaderPosition = Vector3.zero;
     [SerializeField] private PlayerAgent leader;
-    private Vector3 oldForwardLeader = Vector3.zero;    
+    private Vector3 oldForwardLeader = Vector3.zero;
     [SerializeField]
     private float distanceBetweenAgent = 5f;
-
 
 
     private void Start()
@@ -22,24 +22,30 @@ public class Flock : MonoBehaviour
         List<Vector3> positions = formation.CalculatePositions(leader.transform, startingCount, distanceBetweenAgent);
 
         oldForwardLeader = leader.transform.forward;
-        Debug.Log("Forward " + oldForwardLeader);
+
         for (int i = 0; i < startingCount; i++)
         {
-            Debug.Log(positions[i]);
+            Vector3 position = positions[i];
 
-            FlockAgent new_agent = Instantiate(
-                flockAgentPrefab,
-                positions[i],
-                Quaternion.Euler(Vector3.forward),
-                transform
-                );
-         
-            new_agent.Offset = positions[i] - leaderPosition;
-            new_agent.name = "Agent" + i;
-
-            flockAgents.Add(new_agent);
+            SpawnNPC(position, i);
         }
 
+    }
+
+    private void SpawnNPC(Vector3 position, int index)
+    {
+
+        FlockAgent new_agent = Instantiate(
+            flockAgentPrefab,
+            position,
+            Quaternion.Euler(Vector3.forward),
+            transform
+            );
+
+        new_agent.SetTarget(position);
+        new_agent.name = "Agent" + index;
+
+        flockAgents.Add(new_agent);
     }
 
     private Vector3 GetCenterPosition(List<Vector3> _positions)
@@ -64,34 +70,24 @@ public class Flock : MonoBehaviour
         {
             FlockAgent agent = flockAgents[i];
             agent.SetTarget(positions[i]);
+            agent.Move();
         }
-
     }
 
     public void Reformation()
     {
-        leaderPosition = leader.transform.position - new Vector3(0,0.5f,0);
-    
+        leaderPosition = leader.transform.position - new Vector3(0, 0.5f, 0);
+
         for (int i = 0; i < startingCount; i++)
         {
             FlockAgent agent = flockAgents[i];
-            agent.SetTarget(leaderPosition + agent.Offset);
-        }
-    }
-
-    public List<FlockAgent> FlockAgents { get { return flockAgents; } }
-
-    public void SetTarget(Vector3 target)
-    {
-        foreach(FlockAgent agent in flockAgents)
-        {
-            agent.SetTarget(target + agent.Offset);
+            agent.ResetFlock();
         }
     }
 
     private void Update()
     {
-        if(oldForwardLeader != leader.transform.forward)
+        if (oldForwardLeader != leader.transform.forward)
         {
             oldForwardLeader = leader.transform.forward;
             Recalculate();

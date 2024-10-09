@@ -11,9 +11,7 @@ public class VFormation : Formation
         Vector3 leader_position = _leaderTransform.position;
         Vector3 leader_forward = _leaderTransform.forward;
         Vector3 leader_right = _leaderTransform.right;
-        Quaternion rotation = Quaternion.LookRotation(leader_forward);
 
-        Debug.Log("rotation" + rotation);
         for (int i = 0; i < _agentNumber; i++)
         {
             float row = Mathf.Floor(i / 2) + 1; 

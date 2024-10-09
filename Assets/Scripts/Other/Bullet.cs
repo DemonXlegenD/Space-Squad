@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
         IDamageable damagedAgent = collision.gameObject.GetComponentInParent<IDamageable>();
         if (damagedAgent == null)
             damagedAgent = collision.gameObject.GetComponent<IDamageable>();
-        damagedAgent?.AddDamage(1);
+        damagedAgent?.AddDamage(10);
 
         Destroy(gameObject);
     }

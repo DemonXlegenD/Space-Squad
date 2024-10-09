@@ -5,18 +5,13 @@ using UnityEngine.UI;
 
 public class PlayerAgent : MonoBehaviour, IDamageable
 {
-    [SerializeField]
-    int MaxHP = 100;
     
     private Gun Gun;
-
+    private CharacterHealth CharacterHealth;
     [SerializeField]
     GameObject TargetCursorPrefab = null;
     [SerializeField]
     GameObject NPCTargetCursorPrefab = null;
-
-    [SerializeField]
-    Slider HPSlider = null;
 
     Rigidbody rb;
     GameObject TargetCursor = null;
@@ -60,16 +55,7 @@ public class PlayerAgent : MonoBehaviour, IDamageable
     }
     public void AddDamage(int amount)
     {
-        CurrentHP -= amount;
-        if (CurrentHP <= 0)
-        {
-            IsDead = true;
-            CurrentHP = 0;
-        }
-        if (HPSlider != null)
-        {
-            HPSlider.value = CurrentHP;
-        }
+        CharacterHealth.TakeDamage(amount);
     }
     public void MoveToward(Vector3 velocity)
     {
@@ -79,15 +65,9 @@ public class PlayerAgent : MonoBehaviour, IDamageable
     #region MonoBehaviour Methods
     void Start()
     {
-        CurrentHP = MaxHP;
+        CharacterHealth = GetComponent<CharacterHealth>();
         Gun = GetComponentInChildren<Gun>();
         rb = GetComponent<Rigidbody>();
-
-        if (HPSlider != null)
-        {
-            HPSlider.maxValue = MaxHP;
-            HPSlider.value = CurrentHP;
-        }
     }
     void Update()
     {

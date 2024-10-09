@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6719824424854429034}
   - component: {fileID: 6019295468392039324}
+  - component: {fileID: 5289270714105815238}
   m_Layer: 0
   m_Name: Flock
   m_TagString: Untagged
@@ -51,3 +52,16 @@ MonoBehaviour:
   leaderPosition: {x: 0, y: 0, z: 0}
   leader: {fileID: 0}
   distanceBetweenAgent: 5
+--- !u!114 &5289270714105815238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403147785224306787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17dcfc49f26500a42bc74ea08c01bff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  percentOfGroup: 50

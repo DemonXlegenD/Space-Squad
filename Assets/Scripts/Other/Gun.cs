@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -9,10 +9,10 @@ public class Gun : MonoBehaviour
     [SerializeField]
     GameObject BulletPrefab;
 
-    public List<LayerMask> layers = new List<LayerMask>();
+    public LayerMask layers;
     [SerializeField] private float range = 10f;
 
-    [SerializeField, Range(1,100)] private int maxBullets = 10;
+    [SerializeField, Range(1, 100)] private int maxBullets = 10;
     private int currentBullets = 10;
     [SerializeField] private float timerFire = 0.2f;
     private float currentTimerFire = 0f;
@@ -23,20 +23,15 @@ public class Gun : MonoBehaviour
     private bool hasShoot = false;
     public void Shoot()
     {
-        if(HasBullets() && !hasShoot){
-        Ray ray = new Ray(transform.position , transform.up);
-        RaycastHit hit;
-        LayerMask layerMask = 0;
-
-        foreach (int layer in layers)
+        if (HasBullets() && !hasShoot)
         {
-            layerMask |= 1 << layer; // Ajoute le layer au mask
-        }
-            if (!Physics.Raycast(ray, out hit, range, layerMask))
+            Ray ray = new Ray(transform.position, transform.up);
+            RaycastHit hit;
+
+            if (!Physics.Raycast(ray, out hit, range, layers))
             {
                 if (BulletPrefab)
                 {
-                    Debug.Log("Shot");
                     GameObject bullet = Instantiate<GameObject>(BulletPrefab, transform.position + transform.up * 0.5f, Quaternion.identity);
                     Rigidbody rb = bullet.GetComponent<Rigidbody>();
                     rb.AddForce(transform.up * BulletPower);
@@ -61,7 +56,8 @@ public class Gun : MonoBehaviour
 
     public void WaitAfterShoot()
     {
-        if (currentTimerFire > timerFire){ 
+        if (currentTimerFire > timerFire)
+        {
             hasShoot = false;
             currentTimerFire = 0f;
         }
@@ -74,7 +70,7 @@ public class Gun : MonoBehaviour
 
     public void Reloading()
     {
-        if(currentTimerReloading > timerReloading) Reload();
+        if (currentTimerReloading > timerReloading) Reload();
         else currentTimerReloading += Time.deltaTime;
     }
 

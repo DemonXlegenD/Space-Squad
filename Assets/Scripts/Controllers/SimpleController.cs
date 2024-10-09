@@ -9,6 +9,7 @@ public class SimpleController : MonoBehaviour
     float moveSpeed = 6f;
 
     PlayerAgent Player;
+    CoverFireGroup CoverFireGroup;
 
 	Camera viewCamera;
 	Vector3 velocity;
@@ -19,10 +20,13 @@ public class SimpleController : MonoBehaviour
     void Start ()
     {
         Player = GetComponent<PlayerAgent>();
-		viewCamera = Camera.main;
+        CoverFireGroup = FindAnyObjectByType<CoverFireGroup>();
+
+        viewCamera = Camera.main;
 
         OnMouseLeftClicked += Player.ShootToPosition;
         OnMouseRightClicked += Player.NPCShootToPosition;
+        OnMouseRightClicked += CoverFireGroup.ApplyCoverFire;
     }
     void Update ()
     {

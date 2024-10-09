@@ -18,6 +18,7 @@ namespace FSMMono
         Transform GunTransform;
         NavMeshAgent NavMeshAgentInst;
         Material MaterialInst;
+        CharacterHealth CharacterHealth;
 
         bool IsDead = false;
         int CurrentHP;
@@ -60,6 +61,7 @@ namespace FSMMono
         private void Start()
         {
             Gun = GetComponentInChildren<Gun>();
+            CharacterHealth = GetComponent<CharacterHealth>();
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -98,19 +100,10 @@ namespace FSMMono
 
         public void AddDamage(int amount)
         {
-            CurrentHP -= amount;
-            if (CurrentHP <= 0)
-            {
-                IsDead = true;
-                CurrentHP = 0;
-            }
-
-            if (HPSlider != null)
-            {
-                HPSlider.value = CurrentHP;
-            }
+            Debug.Log("Damage");
+            CharacterHealth.TakeDamage(amount);
         }
-        void ShootToPosition(Vector3 pos)
+        public void ShootToPosition(Vector3 pos)
         {
             // look at target position
             transform.LookAt(pos + (Vector3.up * transform.position.y));
