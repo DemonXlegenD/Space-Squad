@@ -9,10 +9,8 @@ namespace FSMMono
 
         [SerializeField]
         int MaxHP = 100;
-        [SerializeField]
-        float BulletPower = 1000f;
-        [SerializeField]
-        GameObject BulletPrefab;
+
+        private Gun Gun;
 
         [SerializeField]
         Slider HPSlider = null;
@@ -56,13 +54,12 @@ namespace FSMMono
                 HPSlider.value = CurrentHP;
             }
 
-            Target = Transform.FindAnyObjectByType<PlayerAgent>().transform;
-
             //NavMeshAgentInst.updatePosition = false;
         }
 
         private void Start()
         {
+            Gun = GetComponentInChildren<Gun>();
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -116,14 +113,11 @@ namespace FSMMono
         void ShootToPosition(Vector3 pos)
         {
             // look at target position
-            transform.LookAt(pos + Vector3.up * transform.position.y);
+            transform.LookAt(pos + (Vector3.up * transform.position.y));
 
-            // instantiate bullet
-            if (BulletPrefab)
+            if (Gun)
             {
-                GameObject bullet = Instantiate<GameObject>(BulletPrefab, GunTransform.position + transform.forward * 0.5f, Quaternion.identity);
-                Rigidbody rb = bullet.GetComponent<Rigidbody>();
-                rb.AddForce(transform.forward * BulletPower);
+                Gun.Shoot();
             }
         }
 
@@ -132,7 +126,7 @@ namespace FSMMono
         public void FixedUpdate()
         {
             // ugly hard coded position next to the player
-            NavMeshAgentInst.SetDestination(Target.position + Vector3.right * 5.0f);
+            //NavMeshAgentInst.SetDestination(Target.position + Vector3.right * 5.0f);
         }
         #endregion
     }
