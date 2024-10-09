@@ -7,10 +7,8 @@ public class PlayerAgent : MonoBehaviour, IDamageable
 {
     [SerializeField]
     int MaxHP = 100;
-    [SerializeField]
-    float BulletPower = 1000f;
-    [SerializeField]
-    GameObject BulletPrefab;
+    
+    private Gun Gun;
 
     [SerializeField]
     GameObject TargetCursorPrefab = null;
@@ -23,7 +21,7 @@ public class PlayerAgent : MonoBehaviour, IDamageable
     Rigidbody rb;
     GameObject TargetCursor = null;
     GameObject NPCTargetCursor = null;
-    Transform GunTransform;
+
     bool IsDead = false;
     int CurrentHP;
 
@@ -49,17 +47,16 @@ public class PlayerAgent : MonoBehaviour, IDamageable
     }
     public void ShootToPosition(Vector3 pos)
     {
-        // instantiate bullet
-        if (BulletPrefab)
+        // fire
+        if (Gun)
         {
-            GameObject bullet = Instantiate<GameObject>(BulletPrefab, GunTransform.position + transform.forward * 0.5f, Quaternion.identity);
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * BulletPower);
+            Gun.Shoot();
         }
     }
     public void NPCShootToPosition(Vector3 pos)
     {
         GetNPCTargetCursor().transform.position = pos;
+
     }
     public void AddDamage(int amount)
     {
@@ -83,7 +80,7 @@ public class PlayerAgent : MonoBehaviour, IDamageable
     void Start()
     {
         CurrentHP = MaxHP;
-        GunTransform = transform.Find("Gun");
+        Gun = GetComponentInChildren<Gun>();
         rb = GetComponent<Rigidbody>();
 
         if (HPSlider != null)
@@ -97,6 +94,14 @@ public class PlayerAgent : MonoBehaviour, IDamageable
         
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position, transform.forward * 3);
+    }
+
     #endregion
+
+
 
 }
