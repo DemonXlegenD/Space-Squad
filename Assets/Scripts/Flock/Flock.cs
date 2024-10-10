@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Flock : MonoBehaviour
@@ -32,18 +33,18 @@ public class Flock : MonoBehaviour
 
     }
 
-    private void SpawnNPC(Vector3 position, int index)
+    private void SpawnNPC(Vector3 _position, int _index)
     {
 
         FlockAgent new_agent = Instantiate(
             flockAgentPrefab,
-            position,
+            _position,
             Quaternion.Euler(Vector3.forward),
             transform
             );
 
-        new_agent.SetTarget(position);
-        new_agent.name = "Agent" + index;
+        new_agent.SetTarget(_position);
+        new_agent.name = "Agent" + _index;
 
         flockAgents.Add(new_agent);
     }
@@ -83,6 +84,25 @@ public class Flock : MonoBehaviour
             FlockAgent agent = flockAgents[i];
             agent.ResetFlock();
         }
+    }
+
+    public List<FlockAgent> GetCloserAgents(Vector3 _target, int _percent = 50)
+    {
+        Dictionary<float, FlockAgent> distanceToNPCMap = new Dictionary<float, FlockAgent>(FlockAgents.Count);
+
+        foreach (FlockAgent flock_agent in FlockAgents)
+        {
+            distanceToNPCMap.Add(flock_agent.DistanceToTarget(_target), flock_agent);
+        }
+
+        int countToRetrieve = Mathf.CeilToInt(distanceToNPCMap.Count * _percent / 100);
+
+        Debug.Log(distanceToNPCMap.Count);
+        return distanceToNPCMap
+            .OrderBy(kvp => kvp.Key)
+            .Take(countToRetrieve)
+            .Select(pair => pair.Value)
+            .ToList();
     }
 
     private void Update()

@@ -1,13 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerAgent : MonoBehaviour, IDamageable
+public class PlayerAgent : Entity
 {
-    
-    private Gun Gun;
-    private CharacterHealth CharacterHealth;
+
     [SerializeField]
     GameObject TargetCursorPrefab = null;
     [SerializeField]
@@ -16,9 +11,6 @@ public class PlayerAgent : MonoBehaviour, IDamageable
     Rigidbody rb;
     GameObject TargetCursor = null;
     GameObject NPCTargetCursor = null;
-
-    bool IsDead = false;
-    int CurrentHP;
 
     private GameObject GetTargetCursor()
     {
@@ -34,44 +26,39 @@ public class PlayerAgent : MonoBehaviour, IDamageable
         }
         return NPCTargetCursor;
     }
-    public void AimAtPosition(Vector3 pos)
+    public void AimAtPosition(Vector3 _pos)
     {
-        GetTargetCursor().transform.position = pos;
-        if (Vector3.Distance(transform.position, pos) > 2.5f)
-            transform.LookAt(pos + Vector3.up * transform.position.y);
-    }
-    public void ShootToPosition(Vector3 pos)
-    {
-        // fire
-        if (Gun)
-        {
-            Gun.Shoot();
+        GameObject targetCursor = GetTargetCursor();
+        PlayerTarget playerTarget = targetCursor.GetComponent<PlayerTarget>();
+        targetCursor.transform.position = _pos;
+
+        if (IsInRangeAndNotTooClose(_pos, 2.5f)) 
+        { 
+            playerTarget.SetCloseTarget();  
+            transform.LookAt(_pos + Vector3.up * transform.position.y);
         }
+        else playerTarget.SetFarTarget();
     }
-    public void NPCShootToPosition(Vector3 pos)
+    public void NPCShootToPosition(Vector3 _pos)
     {
-        GetNPCTargetCursor().transform.position = pos;
+        GetNPCTargetCursor().transform.position = _pos;
 
     }
-    public void AddDamage(int amount)
+
+    public void MoveToward(Vector3 _velocity)
     {
-        CharacterHealth.TakeDamage(amount);
-    }
-    public void MoveToward(Vector3 velocity)
-    {
-        rb.MovePosition(rb.position + velocity * Time.deltaTime);
+        rb.MovePosition(rb.position + _velocity * Time.deltaTime);
     }
 
     #region MonoBehaviour Methods
-    void Start()
+    protected override void Start()
     {
-        CharacterHealth = GetComponent<CharacterHealth>();
-        Gun = GetComponentInChildren<Gun>();
+        base.Start();
         rb = GetComponent<Rigidbody>();
     }
     void Update()
     {
-        
+
     }
 
     private void OnDrawGizmos()

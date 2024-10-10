@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CharacterHealth : MonoBehaviour
 {
+    
     public float maxHealth = 100f;
     public float currentHealth;
     public HealthBarController healthBarController;
@@ -18,5 +19,10 @@ public class CharacterHealth : MonoBehaviour
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         healthBarController.SetHealth(currentHealth, maxHealth);
+    }
+
+    public bool IsDead()
+    {
+        return currentHealth == 0;
     }
 }
