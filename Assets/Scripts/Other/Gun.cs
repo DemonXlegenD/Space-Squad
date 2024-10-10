@@ -10,7 +10,8 @@ public class Gun : MonoBehaviour
     GameObject BulletPrefab;
 
     public LayerMask layers;
-    [SerializeField] private float range = 10f;
+    [SerializeField, Range(5,25)] private float range = 10f;
+    public float Range { get { return range; } } 
 
     [SerializeField, Range(1, 100)] private int maxBullets = 10;
     private int currentBullets = 10;

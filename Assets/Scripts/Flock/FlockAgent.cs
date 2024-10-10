@@ -1,4 +1,5 @@
 using FSMMono;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AIAgent))]
@@ -15,12 +16,12 @@ public class FlockAgent : MonoBehaviour
     public Vector3 Target {  get { return target; }}
 
     private CoverFire coverFire;
-    public CoverFire CoverFire { get { return coverFire; } set { coverFire = value; } }
+    public CoverFire CoverFire { get { return coverFire; } }
 
     private void Start()
     {
         aiAgent = GetComponent<AIAgent>();
-        CoverFire = GetComponent<CoverFire>();
+        coverFire = GetComponent<CoverFire>();
     }
 
     public void SetTarget(Vector3 _target)
@@ -55,4 +56,10 @@ public class FlockAgent : MonoBehaviour
     {
         aiAgent.MoveTo(_target);
     }
+
+    public float DistanceToTarget(Vector3 _target)
+    {
+        return Vector3.Distance(transform.position, _target);
+    }
+
 }

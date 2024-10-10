@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6071444efcb7e964fa25fd6b9895f6a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flockAgentPrefab: {fileID: 1518844078082326384, guid: 5b9ceac1fa5068c49b7c44d5b37cf1b6,
+  flockAgentPrefab: {fileID: 1518844078082326384, guid: 3104561ee243dc249b94a5db7fefcd98,
     type: 3}
-  formation: {fileID: 11400000, guid: a517181d83c135f4aad14bcfbc6bfb0c, type: 2}
-  startingCount: 6
+  formation: {fileID: 11400000, guid: fe81213bf268bc247a9bc794c3b7a283, type: 2}
+  startingCount: 8
   leaderPosition: {x: 0, y: 0, z: 0}
   leader: {fileID: 0}
   distanceBetweenAgent: 5

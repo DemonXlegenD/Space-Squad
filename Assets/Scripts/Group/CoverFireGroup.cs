@@ -16,7 +16,7 @@ public class CoverFireGroup : MonoBehaviour
         if (Flock != null)
         {
             ResetCoverFire();
-            foreach (FlockAgent flock_agent in GetCloserAgents(_target))
+            foreach (FlockAgent flock_agent in Flock.GetCloserAgents(_target, percentOfGroup))
             {
                 flock_agent.StopFlocking();
                 flock_agent.CoverFire.ApplyCoverFire(_target);
@@ -35,25 +35,5 @@ public class CoverFireGroup : MonoBehaviour
         {
             flock_agent.CoverFire.StopCoverFiring();
         }
-    }
-
-    public List<FlockAgent> GetCloserAgents(Vector3 _target)
-    {
-        List<FlockAgent> flock_agents = Flock.FlockAgents;
-        Dictionary<float, FlockAgent> distanceToNPCMap = new Dictionary<float, FlockAgent>(flock_agents.Count);
-
-        foreach (FlockAgent flock_agent in flock_agents)
-        {
-            distanceToNPCMap.Add(flock_agent.CoverFire.DistanceToTarget(_target), flock_agent);
-        }
-
-        int countToRetrieve = Mathf.CeilToInt(distanceToNPCMap.Count * percentOfGroup / 100);
-
-        Debug.Log(distanceToNPCMap.Count);
-        return distanceToNPCMap
-            .OrderBy(kvp => kvp.Key)
-            .Take(countToRetrieve)
-            .Select(pair => pair.Value)
-            .ToList();
     }
 }
