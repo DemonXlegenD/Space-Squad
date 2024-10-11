@@ -527,6 +527,7 @@ GameObject:
   - component: {fileID: 6993498059837098159}
   - component: {fileID: 4948000242934665689}
   - component: {fileID: 8534211896735346846}
+  - component: {fileID: 6312568174189191575}
   m_Layer: 7
   m_Name: AIAllyAgent
   m_TagString: Untagged
@@ -563,8 +564,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae06b5f7096c2344b1cccfe7f9be7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 100
-  HPSlider: {fileID: 0}
   Target: {fileID: 0}
 --- !u!195 &8525931039688671734
 NavMeshAgent:
@@ -640,6 +639,18 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   healthBarController: {fileID: 2362685284990613903}
+--- !u!114 &6312568174189191575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8739580843433032925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d3c2abd0c48d345acc71bb9866eb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &215069395107237002
 PrefabInstance:
   m_ObjectHideFlags: 0

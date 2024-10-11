@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -10,8 +8,11 @@ public class Gun : MonoBehaviour
     GameObject BulletPrefab;
 
     public LayerMask layers;
-    [SerializeField, Range(5,25)] private float range = 10f;
-    public float Range { get { return range; } } 
+    [SerializeField, Range(10f, 25f)] private float maxRange = 10f;
+    public float MaxRange { get { return maxRange; } }
+
+    [SerializeField, Range(0f, 5f)] private float minRange = 2.5f;
+    public float MinRange { get { return minRange; } }
 
     [SerializeField, Range(1, 100)] private int maxBullets = 10;
     private int currentBullets = 10;
@@ -22,6 +23,8 @@ public class Gun : MonoBehaviour
     private float currentTimerReloading = 0f;
 
     private bool hasShoot = false;
+
+    private LayerMask bulletLayerMask;
     public void Shoot()
     {
         if (HasBullets() && !hasShoot)
@@ -29,11 +32,12 @@ public class Gun : MonoBehaviour
             Ray ray = new Ray(transform.position, transform.up);
             RaycastHit hit;
 
-            if (!Physics.Raycast(ray, out hit, range, layers))
+            if (!Physics.Raycast(ray, out hit, MaxRange, layers))
             {
                 if (BulletPrefab)
                 {
-                    GameObject bullet = Instantiate<GameObject>(BulletPrefab, transform.position + transform.up * 0.5f, Quaternion.identity);
+                    GameObject bullet = Instantiate<GameObject>(BulletPrefab, transform.position + (transform.up * 0.5f), Quaternion.identity);
+                    bullet.layer = bulletLayerMask;
                     Rigidbody rb = bullet.GetComponent<Rigidbody>();
                     rb.AddForce(transform.up * BulletPower);
                     currentBullets--;
@@ -41,6 +45,19 @@ public class Gun : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void Start()
+    {
+        if ((1 << gameObject.layer) == LayerMask.GetMask("Allies"))
+        {
+            bulletLayerMask = LayerMask.NameToLayer("AllyBullet");
+        }
+        else if ((1 << gameObject.layer) == LayerMask.GetMask("Enemies"))
+        {
+            bulletLayerMask = LayerMask.NameToLayer("EnemyBullet");
+        }
+
     }
 
     private void Update()

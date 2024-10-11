@@ -88,20 +88,20 @@ public class Flock : MonoBehaviour
 
     public List<FlockAgent> GetCloserAgents(Vector3 _target, int _percent = 50)
     {
-        Dictionary<float, FlockAgent> distanceToNPCMap = new Dictionary<float, FlockAgent>(FlockAgents.Count);
+        Dictionary<FlockAgent, float> distanceToNPCMap = new Dictionary<FlockAgent, float>(FlockAgents.Count);
 
         foreach (FlockAgent flock_agent in FlockAgents)
         {
-            distanceToNPCMap.Add(flock_agent.DistanceToTarget(_target), flock_agent);
+            distanceToNPCMap.Add(flock_agent, flock_agent.DistanceToTarget(_target));
         }
 
         int countToRetrieve = Mathf.CeilToInt(distanceToNPCMap.Count * _percent / 100);
 
         Debug.Log(distanceToNPCMap.Count);
         return distanceToNPCMap
-            .OrderBy(kvp => kvp.Key)
+            .OrderBy(kvp => kvp.Value)
             .Take(countToRetrieve)
-            .Select(pair => pair.Value)
+            .Select(pair => pair.Key)
             .ToList();
     }
 

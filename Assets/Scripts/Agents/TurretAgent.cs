@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class TurretAgent : MonoBehaviour, IDamageable
 {
+
+    [SerializeField] private LayerMask layers;
     [SerializeField]
     int MaxHP = 100;
-    [SerializeField]
-    float BulletPower = 1000f;
-    [SerializeField]
-    GameObject BulletPrefab;
 
     [SerializeField]
     float ShootFrequency = 1f;
 
     float NextShootDate = 0f;
 
-    Transform GunTransform;
+    Gun Gun;
 
     bool IsDead = false;
     int CurrentHP;
@@ -40,18 +38,14 @@ public class TurretAgent : MonoBehaviour, IDamageable
         transform.LookAt(pos + Vector3.up * transform.position.y);
 
         // instantiate bullet
-        if (BulletPrefab)
+        if (Gun)
         {
-            GameObject bullet = Instantiate<GameObject>(BulletPrefab, GunTransform.position + transform.forward * 0.5f, Quaternion.identity);
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * BulletPower);
+            Gun.Shoot();
         }
     }
     void Start()
     {
-        GunTransform = transform.Find("Body/Gun");
-        if (GunTransform == null)
-            Debug.Log("could not find gun transform");
+        Gun = GetComponentInChildren<Gun>();
 
         CurrentHP = MaxHP;
     }
@@ -67,9 +61,10 @@ public class TurretAgent : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Target == null && other.gameObject.layer == LayerMask.NameToLayer("Allies"))
+        if (Target == null && ((1 << other.gameObject.layer) & layers) != 0)
         {
             Target = other.gameObject;
+          
         }
     }
     private void OnTriggerExit(Collider other)

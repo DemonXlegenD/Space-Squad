@@ -18,10 +18,14 @@ public class FlockAgent : MonoBehaviour
     private CoverFire coverFire;
     public CoverFire CoverFire { get { return coverFire; } }
 
+    private AidFire aidFire;
+    public AidFire AidFire { get { return aidFire; } }
+
     private void Start()
     {
         aiAgent = GetComponent<AIAgent>();
         coverFire = GetComponent<CoverFire>();
+        aidFire = GetComponent<AidFire>();
     }
 
     public void SetTarget(Vector3 _target)

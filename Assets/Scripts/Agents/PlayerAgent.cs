@@ -5,12 +5,9 @@ public class PlayerAgent : Entity
 
     [SerializeField]
     GameObject TargetCursorPrefab = null;
-    [SerializeField]
-    GameObject NPCTargetCursorPrefab = null;
 
     Rigidbody rb;
     GameObject TargetCursor = null;
-    GameObject NPCTargetCursor = null;
 
     private GameObject GetTargetCursor()
     {
@@ -18,31 +15,18 @@ public class PlayerAgent : Entity
             TargetCursor = Instantiate(TargetCursorPrefab);
         return TargetCursor;
     }
-    private GameObject GetNPCTargetCursor()
-    {
-        if (NPCTargetCursor == null)
-        {
-            NPCTargetCursor = Instantiate(NPCTargetCursorPrefab);
-        }
-        return NPCTargetCursor;
-    }
-    public void AimAtPosition(Vector3 _pos)
+    public override void AimAtPosition(Vector3 _pos)
     {
         GameObject targetCursor = GetTargetCursor();
         PlayerTarget playerTarget = targetCursor.GetComponent<PlayerTarget>();
         targetCursor.transform.position = _pos;
 
-        if (IsInRangeAndNotTooClose(_pos, 2.5f)) 
+        if (IsInRangeAndNotTooClose(_pos)) 
         { 
             playerTarget.SetCloseTarget();  
             transform.LookAt(_pos + Vector3.up * transform.position.y);
         }
         else playerTarget.SetFarTarget();
-    }
-    public void NPCShootToPosition(Vector3 _pos)
-    {
-        GetNPCTargetCursor().transform.position = _pos;
-
     }
 
     public void MoveToward(Vector3 _velocity)

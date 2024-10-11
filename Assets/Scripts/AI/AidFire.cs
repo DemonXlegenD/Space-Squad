@@ -9,7 +9,7 @@ public class AidFire : MonoBehaviour
     private FlockAgent agent;
     private AIAgent AIAgent;
 
-    private bool isAidFiring = false;
+    private bool isAidFiring = true;
     public bool AidFiring { get {  return isAidFiring; } set { isAidFiring = value; } }
 
     void Start()
@@ -19,8 +19,13 @@ public class AidFire : MonoBehaviour
     }
 
     
-    void Update()
+    public void ApplyAidFire(Vector3 _position)
     {
-        
+        if(isAidFiring) AIAgent.ShootToPosition(_position);
+    }
+
+    public void StopAidFiring()
+    {
+        isAidFiring= false;
     }
 }
