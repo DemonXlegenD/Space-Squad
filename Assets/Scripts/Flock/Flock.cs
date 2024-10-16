@@ -17,9 +17,19 @@ public class Flock : MonoBehaviour
     [SerializeField]
     private float distanceBetweenAgent = 5f;
 
+    private ProtectGroup protectGroup;
+
+    public ProtectGroup ProtectGroup { get { return protectGroup; } }
+
+    private HealingPlayerGroup healingGroup;
+
+    public HealingPlayerGroup HealingGroup { get { return healingGroup; } }
+
 
     private void Start()
     {
+        protectGroup = GetComponent<ProtectGroup>();
+        healingGroup = GetComponent<HealingPlayerGroup>();
         List<Vector3> positions = formation.CalculatePositions(leader.transform, startingCount, distanceBetweenAgent);
 
         oldForwardLeader = leader.transform.forward;
@@ -92,7 +102,7 @@ public class Flock : MonoBehaviour
 
         foreach (FlockAgent flock_agent in FlockAgents)
         {
-            distanceToNPCMap.Add(flock_agent, flock_agent.DistanceToTarget(_target));
+           if(flock_agent.IsAvailable) distanceToNPCMap.Add(flock_agent, flock_agent.DistanceToTarget(_target));
         }
 
         int countToRetrieve = Mathf.CeilToInt(distanceToNPCMap.Count * _percent / 100);

@@ -8,6 +8,7 @@ public class PlayerAgent : Entity
 
     Rigidbody rb;
     GameObject TargetCursor = null;
+    Flock Flock = null;
 
     private GameObject GetTargetCursor()
     {
@@ -15,15 +16,25 @@ public class PlayerAgent : Entity
             TargetCursor = Instantiate(TargetCursorPrefab);
         return TargetCursor;
     }
+
+    public override void AddDamage(int _amount)
+    {
+        base.AddDamage(_amount);
+        if (CharacterHealth.IsMidHealth())
+        {
+            Flock.HealingGroup.ApplyHealingPlayer(transform.position);
+        }
+    }
+
     public override void AimAtPosition(Vector3 _pos)
     {
         GameObject targetCursor = GetTargetCursor();
         PlayerTarget playerTarget = targetCursor.GetComponent<PlayerTarget>();
         targetCursor.transform.position = _pos;
 
-        if (IsInRangeAndNotTooClose(_pos)) 
-        { 
-            playerTarget.SetCloseTarget();  
+        if (IsInRangeAndNotTooClose(_pos))
+        {
+            playerTarget.SetCloseTarget();
             transform.LookAt(_pos + Vector3.up * transform.position.y);
         }
         else playerTarget.SetFarTarget();
@@ -39,10 +50,10 @@ public class PlayerAgent : Entity
     {
         base.Start();
         rb = GetComponent<Rigidbody>();
+        Flock = FindAnyObjectByType<Flock>();
     }
     void Update()
     {
-
     }
 
     private void OnDrawGizmos()

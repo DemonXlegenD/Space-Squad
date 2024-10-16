@@ -23,6 +23,7 @@ public class CoverFire : MonoBehaviour
         agent.StartFlocking();
         targetToShoot = Vector3.zero;
         isFiringTarget = false;
+        agent.IsAvailable = true;
     }
 
     public void ApplyCoverFire(Vector3 _target)
@@ -30,6 +31,7 @@ public class CoverFire : MonoBehaviour
         agent.StopFlocking();
         TargetToShoot = _target;
         agent.MoveTo(_target);
+        agent.IsAvailable = false;
     }
 
     private void Update()

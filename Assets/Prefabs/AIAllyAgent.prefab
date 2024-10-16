@@ -528,6 +528,8 @@ GameObject:
   - component: {fileID: 4948000242934665689}
   - component: {fileID: 8534211896735346846}
   - component: {fileID: 6312568174189191575}
+  - component: {fileID: 5993549203755797064}
+  - component: {fileID: 5481798969906088972}
   m_Layer: 7
   m_Name: AIAllyAgent
   m_TagString: Untagged
@@ -623,7 +625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2775fe3d3a448234399081a36b157ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minShootDistance: 5
 --- !u!114 &8534211896735346846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,6 +652,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d3c2abd0c48d345acc71bb9866eb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5993549203755797064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8739580843433032925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302d60aa28997a34f8c601dd9bd1fb29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerStopProtecting: 10
+--- !u!114 &5481798969906088972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8739580843433032925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a041f976d13954942b662df3a0ef9ac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerHealing: 1
 --- !u!1001 &215069395107237002
 PrefabInstance:
   m_ObjectHideFlags: 0

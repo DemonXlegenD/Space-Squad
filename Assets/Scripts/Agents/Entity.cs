@@ -4,12 +4,19 @@ using static UnityEditor.PlayerSettings;
 public class Entity : MonoBehaviour, IDamageable
 {
     protected Gun Gun;
-    protected CharacterHealth CharacterHealth;
+    protected CharacterHealth characterHealth;
+
+    public CharacterHealth CharacterHealth { get { return characterHealth; } }
+
+    protected bool isNeedingHealing = false;
+
+    public bool IsNeedingHealing { get { return isNeedingHealing; } set { isNeedingHealing = value; } }
+
     public bool IsDead
     {
         get
         {
-            if (CharacterHealth != null) return CharacterHealth.IsDead();
+            if (characterHealth != null) return characterHealth.IsDead();
             return true;
         }
     }
@@ -34,7 +41,7 @@ public class Entity : MonoBehaviour, IDamageable
 
     public virtual void AddDamage(int _amount)
     {
-        CharacterHealth.TakeDamage(_amount);
+        characterHealth.TakeDamage(_amount);
     }
 
     public bool IsTooClose(Vector3 _position)
@@ -61,7 +68,7 @@ public class Entity : MonoBehaviour, IDamageable
     #region MonoBehaviour Methods
     protected virtual void Start()
     {
-        CharacterHealth = GetComponent<CharacterHealth>();
+        characterHealth = GetComponent<CharacterHealth>();
         Gun = GetComponentInChildren<Gun>();
     }
 

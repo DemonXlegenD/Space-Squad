@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class ProtectPlayer : MonoBehaviour
 {
+    [SerializeField] private float timerStopProtecting = 10f;
+    private float currentTimer = 0f;
     private FlockAgent agent;
     private AIAgent AIAgent;
+    private PlayerAgent playerAgent;
 
-    private Vector3 targetToShoot = Vector3.zero;
-    public Vector3 TargetToShoot { get { return targetToShoot; } set { targetToShoot = value; } }
+    private Vector3 offset = Vector3.zero;
+    public Vector3 Offset { get { return offset; } set { offset = value; } }
 
     private bool isProtecting = false;
     public bool IsProtecting { get { return isProtecting; } set { isProtecting = value; } }
@@ -18,24 +21,33 @@ public class ProtectPlayer : MonoBehaviour
     {
         agent = GetComponent<FlockAgent>();
         AIAgent = GetComponent<AIAgent>();
+        playerAgent= FindAnyObjectByType<PlayerAgent>();    
     }
 
-    public void StopProtecting()
+    public void StopProtectingPlayer()
     {
-        agent.StartFlocking();
-        targetToShoot = Vector3.zero;
+        agent.ResetFlock();
+        currentTimer = 0f;
+        offset = Vector3.zero;
         isProtecting = false;
+        agent.IsAvailable = true;
     }
 
-    public void ApplyProtecting(Vector3 _target)
+    public void ApplyProtecting(Vector3 _offset)
     {
         agent.StopFlocking();
-        TargetToShoot = _target;
-        agent.MoveTo(_target);
+        offset = _offset;
+        isProtecting = true;
+        agent.IsAvailable = false;
     }
 
     private void Update()
     {
-        
+        if(isProtecting){ 
+            agent.MoveTo(Offset * 3 + playerAgent.transform.position);
+            currentTimer += Time.deltaTime;
+
+            if (currentTimer > timerStopProtecting) StopProtectingPlayer();
+        }
     }
 }

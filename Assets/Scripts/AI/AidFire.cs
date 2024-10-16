@@ -26,6 +26,6 @@ public class AidFire : MonoBehaviour
 
     public void StopAidFiring()
     {
-        isAidFiring= false;
+        isAidFiring = false;
     }
 }
