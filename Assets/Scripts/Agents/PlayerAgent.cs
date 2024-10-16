@@ -34,8 +34,10 @@ public class PlayerAgent : Entity
 
         if (IsInRangeAndNotTooClose(_pos))
         {
-            playerTarget.SetCloseTarget();
-            transform.LookAt(_pos + Vector3.up * transform.position.y);
+            playerTarget.SetCloseTarget();  
+            Vector3 targetLookAt = _pos + Vector3.up * transform.position.y;
+            targetLookAt.y = transform.position.y;
+            transform.LookAt(targetLookAt);
         }
         else playerTarget.SetFarTarget();
     }
@@ -63,7 +65,4 @@ public class PlayerAgent : Entity
     }
 
     #endregion
-
-
-
 }

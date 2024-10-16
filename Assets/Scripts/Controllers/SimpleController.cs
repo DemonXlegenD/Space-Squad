@@ -15,7 +15,7 @@ public class SimpleController : MonoBehaviour
     private Action<Vector3> OnMouseLeftClicked;
     private Action<Vector3> OnMouseRightClicked;
 
-    void Start()
+    public Vector3 jump;
     {
         Player = GetComponent<PlayerAgent>();
         Flock = FindAnyObjectByType<Flock>();
@@ -30,8 +30,15 @@ public class SimpleController : MonoBehaviour
 
         // RIGHT
         OnMouseRightClicked += coverFireGroup.NPCShootToPosition;
+
+        rb = GetComponent<Rigidbody>();
+        jump = new Vector3(0.0f, 2.0f, 0.0f);
     }
-    void Update()
+
+    void OnCollisionStay()
+    {
+        isGrounded = true;
+    }
     {
         int floorLayer = 1 << LayerMask.NameToLayer("Floor");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -57,7 +64,8 @@ public class SimpleController : MonoBehaviour
             OnMouseRightClicked(targetPos);
         }
     }
-    void FixedUpdate()
+    
+	void FixedUpdate()
     {
         Player.MoveToward(velocity);
     }

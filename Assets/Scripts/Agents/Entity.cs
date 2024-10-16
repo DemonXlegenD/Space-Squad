@@ -35,7 +35,9 @@ public class Entity : MonoBehaviour, IDamageable
     {
         if (IsInRangeAndNotTooClose(_pos))
         {
-            transform.LookAt(_pos + Vector3.up * transform.position.y);
+            Vector3 targetLookAt = _pos + Vector3.up * transform.position.y;
+            targetLookAt.y = transform.position.y;
+            transform.LookAt(targetLookAt);
         }
     }
 
