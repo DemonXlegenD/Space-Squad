@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class CharacterHealth : MonoBehaviour
 {
-    
+
+    public float lowHealth = 40f;
     public float maxHealth = 100f;
     public float currentHealth;
     public HealthBarController healthBarController;
@@ -14,11 +15,35 @@ public class CharacterHealth : MonoBehaviour
     }
 
     // Fonction pour infliger des dégâts
-    public void TakeDamage(float damage)
+    public void TakeDamage(float _damage)
     {
-        currentHealth -= damage;
+        currentHealth -= _damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         healthBarController.SetHealth(currentHealth, maxHealth);
+
+        //if(IsDead()) gameObject.SetActive(false);
+    }
+
+    public void Healing(float _health)
+    {
+        currentHealth += _health;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        healthBarController.SetHealth(currentHealth, maxHealth);
+    }
+
+    public bool IsMaxHealth()
+    {
+        return currentHealth == maxHealth;
+    }
+
+    public bool IsMidHealth()
+    {
+        return currentHealth == maxHealth / 2f;
+    }
+
+    public bool IsLowHealth()
+    {
+        return currentHealth <= lowHealth;
     }
 
     public bool IsDead()

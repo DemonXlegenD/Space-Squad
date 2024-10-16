@@ -17,9 +17,19 @@ public class Flock : MonoBehaviour
     [SerializeField]
     private float distanceBetweenAgent = 5f;
 
+    private ProtectGroup protectGroup;
+
+    public ProtectGroup ProtectGroup { get { return protectGroup; } }
+
+    private HealingPlayerGroup healingGroup;
+
+    public HealingPlayerGroup HealingGroup { get { return healingGroup; } }
+
 
     private void Start()
     {
+        protectGroup = GetComponent<ProtectGroup>();
+        healingGroup = GetComponent<HealingPlayerGroup>();
         List<Vector3> positions = formation.CalculatePositions(leader.transform, startingCount, distanceBetweenAgent);
 
         oldForwardLeader = leader.transform.forward;
@@ -88,20 +98,20 @@ public class Flock : MonoBehaviour
 
     public List<FlockAgent> GetCloserAgents(Vector3 _target, int _percent = 50)
     {
-        Dictionary<float, FlockAgent> distanceToNPCMap = new Dictionary<float, FlockAgent>(FlockAgents.Count);
+        Dictionary<FlockAgent, float> distanceToNPCMap = new Dictionary<FlockAgent, float>(FlockAgents.Count);
 
         foreach (FlockAgent flock_agent in FlockAgents)
         {
-            distanceToNPCMap.Add(flock_agent.DistanceToTarget(_target), flock_agent);
+           if(flock_agent.IsAvailable) distanceToNPCMap.Add(flock_agent, flock_agent.DistanceToTarget(_target));
         }
 
         int countToRetrieve = Mathf.CeilToInt(distanceToNPCMap.Count * _percent / 100);
 
         Debug.Log(distanceToNPCMap.Count);
         return distanceToNPCMap
-            .OrderBy(kvp => kvp.Key)
+            .OrderBy(kvp => kvp.Value)
             .Take(countToRetrieve)
-            .Select(pair => pair.Value)
+            .Select(pair => pair.Key)
             .ToList();
     }
 

@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     public float Duration = 2f;
     void Start()
     {
-        Destroy(gameObject, Duration);
+        Destroy(gameObject, 10);
     }
     private void OnCollisionEnter(Collision collision)
     {

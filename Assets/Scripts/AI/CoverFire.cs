@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class CoverFire : MonoBehaviour
 {
-
-    [SerializeField] private float minShootDistance = 10f;
     private FlockAgent agent;
     private AIAgent AIAgent;
 
@@ -25,6 +23,7 @@ public class CoverFire : MonoBehaviour
         agent.StartFlocking();
         targetToShoot = Vector3.zero;
         isFiringTarget = false;
+        agent.IsAvailable = true;
     }
 
     public void ApplyCoverFire(Vector3 _target)
@@ -32,6 +31,7 @@ public class CoverFire : MonoBehaviour
         agent.StopFlocking();
         TargetToShoot = _target;
         agent.MoveTo(_target);
+        agent.IsAvailable = false;
     }
 
     private void Update()
@@ -40,16 +40,15 @@ public class CoverFire : MonoBehaviour
         {
             if (!isFiringTarget)
             {
-                if (agent.DistanceToTarget(targetToShoot) <= minShootDistance)
+                if (AIAgent.IsInRange(targetToShoot))
                 {
                     isFiringTarget = true;
+                    AIAgent.StopMove();
                 }
             }
             else
             {
-                agent.AIAgent.StopMove();
-                AIAgent.AimAtPosition(targetToShoot);
-                agent.AIAgent.ShootToPosition(targetToShoot);
+                AIAgent.ShootToPosition(targetToShoot);
             }
         }
 

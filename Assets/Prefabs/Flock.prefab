@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 6719824424854429034}
   - component: {fileID: 6019295468392039324}
   - component: {fileID: 5289270714105815238}
+  - component: {fileID: 830292644608740747}
+  - component: {fileID: 1957855778130048419}
+  - component: {fileID: 464989692545824988}
   m_Layer: 0
   m_Name: Flock
   m_TagString: Untagged
@@ -65,3 +68,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   percentOfGroup: 50
+  NPCTargetCursorPrefab: {fileID: 7737544659063618026, guid: 0511cdf56d7924642937deb7c2bf69de,
+    type: 3}
+--- !u!114 &830292644608740747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403147785224306787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afc3a9f0ebc7624da73151ea32a0450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  percentOfGroup: 50
+--- !u!114 &1957855778130048419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403147785224306787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a279c95e6f167e40a13a41289dc5305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  percentOfGroup: 25
+--- !u!114 &464989692545824988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403147785224306787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32325d99e3d2d1a4a92ce29da379ed70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  percentOfGroup: 25

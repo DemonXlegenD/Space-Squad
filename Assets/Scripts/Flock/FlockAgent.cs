@@ -18,10 +18,26 @@ public class FlockAgent : MonoBehaviour
     private CoverFire coverFire;
     public CoverFire CoverFire { get { return coverFire; } }
 
+    private AidFire aidFire;
+    public AidFire AidFire { get { return aidFire; } }
+
+    private ProtectPlayer protectPlayer;
+    public ProtectPlayer ProtectPlayer { get { return protectPlayer; } }
+
+    private HealingPlayer healingPlayer;
+    public HealingPlayer HealingPlayer { get { return healingPlayer; } }
+
+    private bool isAvailable = true;   
+
+    public bool IsAvailable { get { return isAvailable; } set { isAvailable = value; } }
+
     private void Start()
     {
         aiAgent = GetComponent<AIAgent>();
         coverFire = GetComponent<CoverFire>();
+        aidFire = GetComponent<AidFire>();
+        protectPlayer = GetComponent<ProtectPlayer>();
+        healingPlayer = GetComponent<HealingPlayer>();
     }
 
     public void SetTarget(Vector3 _target)
@@ -62,4 +78,22 @@ public class FlockAgent : MonoBehaviour
         return Vector3.Distance(transform.position, _target);
     }
 
+
+    #region Available
+
+    public bool IsProtecting()
+    {
+        return protectPlayer.IsProtecting;
+    }
+
+    public bool IsCoverFiring()
+    {
+        return coverFire.IsFiringTarget;
+    }
+
+    public bool IsHealing()
+    {
+        return healingPlayer.IsHealing;
+    }
+    #endregion
 }

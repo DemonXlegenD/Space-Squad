@@ -64,11 +64,6 @@ namespace FSMMono
             return NavMeshAgentInst.remainingDistance - NavMeshAgentInst.stoppingDistance <= 0f;
         }
 
-        public void AimAtPosition(Vector3 _pos)
-        {
-           transform.LookAt(_pos + Vector3.up * transform.position.y);
-        }
-
         #endregion
 
         #region ActionMethods

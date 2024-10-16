@@ -5,12 +5,10 @@ public class PlayerAgent : Entity
 
     [SerializeField]
     GameObject TargetCursorPrefab = null;
-    [SerializeField]
-    GameObject NPCTargetCursorPrefab = null;
 
     Rigidbody rb;
     GameObject TargetCursor = null;
-    GameObject NPCTargetCursor = null;
+    Flock Flock = null;
 
     private GameObject GetTargetCursor()
     {
@@ -18,31 +16,28 @@ public class PlayerAgent : Entity
             TargetCursor = Instantiate(TargetCursorPrefab);
         return TargetCursor;
     }
-    private GameObject GetNPCTargetCursor()
+
+    public override void AddDamage(int _amount)
     {
-        if (NPCTargetCursor == null)
+        base.AddDamage(_amount);
+        if (CharacterHealth.IsLowHealth())
         {
-            NPCTargetCursor = Instantiate(NPCTargetCursorPrefab);
+            Flock.HealingGroup.ApplyHealingPlayer(transform.position);
         }
-        return NPCTargetCursor;
     }
-    public void AimAtPosition(Vector3 _pos)
+
+    public override void AimAtPosition(Vector3 _pos)
     {
         GameObject targetCursor = GetTargetCursor();
         PlayerTarget playerTarget = targetCursor.GetComponent<PlayerTarget>();
         targetCursor.transform.position = _pos;
 
-        if (IsInRangeAndNotTooClose(_pos, 2.5f)) 
-        { 
-            playerTarget.SetCloseTarget();  
+        if (IsInRangeAndNotTooClose(_pos))
+        {
+            playerTarget.SetCloseTarget();
             transform.LookAt(_pos + Vector3.up * transform.position.y);
         }
         else playerTarget.SetFarTarget();
-    }
-    public void NPCShootToPosition(Vector3 _pos)
-    {
-        GetNPCTargetCursor().transform.position = _pos;
-
     }
 
     public void MoveToward(Vector3 _velocity)
@@ -55,10 +50,10 @@ public class PlayerAgent : Entity
     {
         base.Start();
         rb = GetComponent<Rigidbody>();
+        Flock = FindAnyObjectByType<Flock>();
     }
     void Update()
     {
-
     }
 
     private void OnDrawGizmos()

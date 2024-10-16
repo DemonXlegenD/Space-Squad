@@ -4,12 +4,19 @@ using static UnityEditor.PlayerSettings;
 public class Entity : MonoBehaviour, IDamageable
 {
     protected Gun Gun;
-    protected CharacterHealth CharacterHealth;
+    protected CharacterHealth characterHealth;
+
+    public CharacterHealth CharacterHealth { get { return characterHealth; } }
+
+    protected bool isNeedingHealing = false;
+
+    public bool IsNeedingHealing { get { return isNeedingHealing; } set { isNeedingHealing = value; } }
+
     public bool IsDead
     {
         get
         {
-            if (CharacterHealth != null) return CharacterHealth.IsDead();
+            if (characterHealth != null) return characterHealth.IsDead();
             return true;
         }
     }
@@ -19,28 +26,38 @@ public class Entity : MonoBehaviour, IDamageable
         // fire
         if (Gun)
         {
-            if (IsInRangeAndNotTooClose(_pos, 2.5f)) Gun.Shoot();
+            AimAtPosition(_pos);
+            if (IsInRangeAndNotTooClose(_pos)) Gun.Shoot();
         }
     }
-    public virtual void AddDamage(int _amount)
+
+    public virtual void AimAtPosition(Vector3 _pos)
     {
-        CharacterHealth.TakeDamage(_amount);
+        if (IsInRangeAndNotTooClose(_pos))
+        {
+            transform.LookAt(_pos + Vector3.up * transform.position.y);
+        }
     }
 
-    public bool IsTooClose(Vector3 _position, float _closeRange)
+    public virtual void AddDamage(int _amount)
     {
-        return Vector3.Distance(transform.position, _position) > _closeRange;
+        characterHealth.TakeDamage(_amount);
+    }
+
+    public bool IsTooClose(Vector3 _position)
+    {
+        return Vector3.Distance(transform.position, _position) > Gun.MinRange;
     }
 
     public bool IsInRange(Vector3 _position)
     {
-        return Vector3.Distance(transform.position, _position) < Gun.Range;
+        return Vector3.Distance(transform.position, _position) < Gun.MaxRange;
     }
 
-    public bool IsInRangeAndNotTooClose(Vector3 _position,float _closeRange)
+    public bool IsInRangeAndNotTooClose(Vector3 _position)
     {
         float distance = Vector3.Distance(transform.position, _position);
-        return distance < Gun.Range && distance > _closeRange;
+        return distance < Gun.MaxRange && distance > Gun.MinRange;
     }
     public float DistanceToTarget(Vector3 _target)
     {
@@ -51,7 +68,7 @@ public class Entity : MonoBehaviour, IDamageable
     #region MonoBehaviour Methods
     protected virtual void Start()
     {
-        CharacterHealth = GetComponent<CharacterHealth>();
+        characterHealth = GetComponent<CharacterHealth>();
         Gun = GetComponentInChildren<Gun>();
     }
 

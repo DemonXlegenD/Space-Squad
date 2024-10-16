@@ -1,7 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Events;
-using System.Collections;
 
 public class SimpleController : MonoBehaviour
 {
@@ -9,26 +7,31 @@ public class SimpleController : MonoBehaviour
     float moveSpeed = 6f;
 
     PlayerAgent Player;
-    CoverFireGroup CoverFireGroup;
+    Flock Flock;
 
-	Camera viewCamera;
-	Vector3 velocity;
+    Camera viewCamera;
+    Vector3 velocity;
 
     private Action<Vector3> OnMouseLeftClicked;
     private Action<Vector3> OnMouseRightClicked;
 
-    void Start ()
+    void Start()
     {
         Player = GetComponent<PlayerAgent>();
-        CoverFireGroup = FindAnyObjectByType<CoverFireGroup>();
+        Flock = FindAnyObjectByType<Flock>();
+        CoverFireGroup coverFireGroup = Flock.gameObject.GetComponent<CoverFireGroup>();
+        AidFireGroup aidFireGroup = Flock.gameObject.GetComponent<AidFireGroup>();
 
         viewCamera = Camera.main;
 
+        // LEFT
         OnMouseLeftClicked += Player.ShootToPosition;
-        OnMouseRightClicked += Player.NPCShootToPosition;
-        OnMouseRightClicked += CoverFireGroup.ApplyCoverFire;
+        OnMouseLeftClicked += aidFireGroup.ApplyAidFire;
+
+        // RIGHT
+        OnMouseRightClicked += coverFireGroup.NPCShootToPosition;
     }
-    void Update ()
+    void Update()
     {
         int floorLayer = 1 << LayerMask.NameToLayer("Floor");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -43,7 +46,7 @@ public class SimpleController : MonoBehaviour
             Player.AimAtPosition(targetPos);
         }
 
-        velocity = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxisRaw ("Vertical")).normalized * moveSpeed;
+        velocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized * moveSpeed;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -54,8 +57,8 @@ public class SimpleController : MonoBehaviour
             OnMouseRightClicked(targetPos);
         }
     }
-	void FixedUpdate()
+    void FixedUpdate()
     {
         Player.MoveToward(velocity);
-	}
+    }
 }
