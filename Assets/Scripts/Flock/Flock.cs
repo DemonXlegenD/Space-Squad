@@ -52,9 +52,10 @@ public class Flock : MonoBehaviour
             Quaternion.Euler(Vector3.forward),
             transform
             );
-
+        new_agent.playerAgent = leader;
         new_agent.SetTarget(_position);
         new_agent.name = "Agent" + _index;
+        new_agent.Offset = _position - leader.transform.position;
 
         flockAgents.Add(new_agent);
     }
@@ -117,10 +118,10 @@ public class Flock : MonoBehaviour
 
     private void Update()
     {
-        if (oldForwardLeader != leader.transform.forward)
+        /*if (oldForwardLeader != leader.transform.forward)
         {
             oldForwardLeader = leader.transform.forward;
             Recalculate();
-        }
+        }*/
     }
 }

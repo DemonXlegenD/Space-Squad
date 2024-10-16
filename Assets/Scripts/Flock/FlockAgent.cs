@@ -5,9 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(AIAgent))]
 public class FlockAgent : MonoBehaviour
 {
+
+    public PlayerAgent playerAgent;
     private AIAgent aiAgent;
     public AIAgent AIAgent { get { return aiAgent; } }
     private Vector3 Position = Vector3.zero; 
+
+    private Vector3 offset = Vector3.zero;
+
+    public Vector3 Offset { get { return offset; } set{ offset = value; } }
 
     private bool isFlocking = true;
     public bool IsFlocking { get { return isFlocking; } set { isFlocking = value; } }
@@ -40,6 +46,16 @@ public class FlockAgent : MonoBehaviour
         healingPlayer = GetComponent<HealingPlayer>();
     }
 
+    private void Update()
+    {
+    }
+
+    public void RecalculatePosition()
+    {
+        Vector3 rotatedOffset = playerAgent.transform.rotation * offset;
+        SetTarget(playerAgent.transform.position + rotatedOffset);
+    }
+
     public void SetTarget(Vector3 _target)
     {
         target = _target;
@@ -58,7 +74,7 @@ public class FlockAgent : MonoBehaviour
     public void ResetFlock()
     {
         StartFlocking();
-        Move();
+        RecalculatePosition();
     }
     public void Move()
     {
