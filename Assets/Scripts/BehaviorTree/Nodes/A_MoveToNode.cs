@@ -24,7 +24,7 @@ public class A_MoveToNode : ActionNode
         switch (CurrentMoveToLocation)
         {
             case MoveToLocation.PLAYER:
-                npc.GetComponent<FlockAgent>().MoveTo(((GameObject)Tree.Data.GetData(DataKey.PLAYER)).transform.position + npc.GetComponent<FlockAgent>().Offset);
+                npc.GetComponent<FlockAgent>().MoveTo((Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<FlockAgent>().Offset);
                 return State.Running;
             default:
                 break;
