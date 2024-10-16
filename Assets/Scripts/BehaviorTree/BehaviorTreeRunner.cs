@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class BehaviorTreeRunner : MonoBehaviour
 {
+    [SerializeField] public BlackBoard Data;
     public Node rootNode;
     private bool hasRootNode = false;
     public Node.State treeState = Node.State.Running;
-    public Transform npc;
     private void Start()
     {
-        npc = transform.parent.transform;
         Node root = null;
         foreach (Transform child in transform) 
         {

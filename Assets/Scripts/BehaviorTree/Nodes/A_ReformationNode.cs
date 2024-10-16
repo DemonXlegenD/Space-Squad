@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class A_ReformationNode : ActionNode
 {
-    [SerializeField] Flock flock;
     public bool shouldReset = false;
 
     #region Overrides of Node
@@ -19,11 +18,12 @@ public class A_ReformationNode : ActionNode
     {
         if (shouldReset) 
         {
+            Debug.Log("Node - OUI");
             npc.GetComponent<FlockAgent>().ResetFlock();
+
             return State.Success;
         }
-
-        return State.Running;
+        return State.Failure;
     }
 
     #endregion

@@ -163,7 +163,6 @@ MonoBehaviour:
   state: 0
   started: 0
   npc: {fileID: 0}
-  flock: {fileID: 0}
   shouldReset: 0
 --- !u!1 &2913905288634380514
 GameObject:
@@ -616,6 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae06b5f7096c2344b1cccfe7f9be7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
   Target: {fileID: 0}
 --- !u!195 &8525931039688671734
 NavMeshAgent:
@@ -651,6 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e379dc7a005321940857616e8a74d549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAgent: {fileID: 0}
 --- !u!114 &6993498059837098159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,6 +838,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 532126776145519707}
     m_Modifications:
+    - target: {fileID: 754589607785332797, guid: 4e893d5b7ab724545912e2e912d647d4,
+        type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: cd404d97ce0e12446b9c20e6e843e57d,
+        type: 2}
     - target: {fileID: 2361813770556098602, guid: 4e893d5b7ab724545912e2e912d647d4,
         type: 3}
       propertyPath: m_Name

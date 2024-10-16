@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class ActionNode : Node 
 {
     public Transform npc;
+    public BehaviorTreeRunner Tree;
 
     public static Transform FindParentWithTag(Transform self_transform, string tag)
     {

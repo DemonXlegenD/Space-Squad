@@ -9,6 +9,7 @@ public class PlayerAgent : Entity
     Rigidbody rb;
     GameObject TargetCursor = null;
     Flock Flock = null;
+    
 
     private GameObject GetTargetCursor()
     {
@@ -53,6 +54,8 @@ public class PlayerAgent : Entity
         base.Start();
         rb = GetComponent<Rigidbody>();
         Flock = FindAnyObjectByType<Flock>();
+
+        Data.AddData(DataKey.PLAYER, this);
     }
     void Update()
     {
