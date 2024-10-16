@@ -20,7 +20,7 @@ public class PlayerAgent : Entity
     public override void AddDamage(int _amount)
     {
         base.AddDamage(_amount);
-        if (CharacterHealth.IsMidHealth())
+        if (CharacterHealth.IsLowHealth())
         {
             Flock.HealingGroup.ApplyHealingPlayer(transform.position);
         }

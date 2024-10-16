@@ -10,7 +10,7 @@ public class CoverFireGroup : MonoBehaviour
     GameObject NPCTargetCursorPrefab = null;
     GameObject NPCTargetCursor = null;
 
-
+    List<FlockAgent> CoveringAgents = new List<FlockAgent>();
 
     void Start()
     {
@@ -30,11 +30,13 @@ public class CoverFireGroup : MonoBehaviour
     public void NPCShootToPosition(Vector3 _pos)
     {
         Debug.Log("call");
-        if (NPCTargetCursor == null){ 
+        if (NPCTargetCursor == null)
+        {
             GetNPCTargetCursor().transform.position = _pos;
             ApplyCoverFire(_pos);
         }
-        else{
+        else
+        {
             Destroy(NPCTargetCursor);
             ResetCoverFire();
         }
@@ -44,8 +46,8 @@ public class CoverFireGroup : MonoBehaviour
     {
         if (Flock != null)
         {
-            ResetCoverFire();
-            foreach (FlockAgent flock_agent in Flock.GetCloserAgents(_target, percentOfGroup))
+            CoveringAgents = Flock.GetCloserAgents(_target, percentOfGroup);
+            foreach (FlockAgent flock_agent in CoveringAgents)
             {
                 flock_agent.StopFlocking();
                 flock_agent.CoverFire.ApplyCoverFire(_target);
@@ -59,10 +61,20 @@ public class CoverFireGroup : MonoBehaviour
 
     public void ResetCoverFire()
     {
-        List<FlockAgent> flock_agents = Flock.FlockAgents;
-        foreach (FlockAgent flock_agent in flock_agents)
+        foreach (FlockAgent flock_agent in CoveringAgents)
         {
             flock_agent.CoverFire.StopCoverFiring();
         }
+        CoveringAgents.Clear();
+    }
+
+    public List<FlockAgent> GetCoveringAgents()
+    {
+        return CoveringAgents;
+    }
+
+    public bool IsEmptyCovering()
+    {
+        return CoveringAgents.Count == 0;
     }
 }

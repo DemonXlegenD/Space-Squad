@@ -637,6 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9ac49dc54bedc49a6a96a9a2a7c88a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lowHealth: 40
   maxHealth: 100
   currentHealth: 100
   healthBarController: {fileID: 2362685284990613903}
@@ -678,6 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerHealing: 1
+  healingDistance: 3
 --- !u!1001 &215069395107237002
 PrefabInstance:
   m_ObjectHideFlags: 0

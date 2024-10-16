@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class CharacterHealth : MonoBehaviour
 {
-    
+
+    public float lowHealth = 40f;
     public float maxHealth = 100f;
     public float currentHealth;
     public HealthBarController healthBarController;
@@ -38,6 +39,11 @@ public class CharacterHealth : MonoBehaviour
     public bool IsMidHealth()
     {
         return currentHealth == maxHealth / 2f;
+    }
+
+    public bool IsLowHealth()
+    {
+        return currentHealth <= lowHealth;
     }
 
     public bool IsDead()

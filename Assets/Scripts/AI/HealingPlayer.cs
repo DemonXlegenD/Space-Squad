@@ -4,6 +4,7 @@ using UnityEngine;
 public class HealingPlayer : MonoBehaviour
 {
     [SerializeField] private float timerHealing = 1f;
+    [SerializeField] private float healingDistance = 2f;
     private float currentTimer = 0f;
     private FlockAgent agent;
     private AIAgent AIAgent;
@@ -42,13 +43,15 @@ public class HealingPlayer : MonoBehaviour
     {
         if (isHealing)
         {
-            if (Vector3.Distance(playerAgent.transform.position, transform.position) <= 2f)
+            if (Vector3.Distance(playerAgent.transform.position, agent.transform.position) > healingDistance)
             {
                 agent.MoveTo(playerAgent.transform.position);
                 currentTimer = 0f;
+                Debug.Log("Not Good Distance");
             }
             else
             {
+                AIAgent.StopMove();
                 currentTimer += Time.deltaTime;
                 if (currentTimer > timerHealing) { 
                     playerAgent.CharacterHealth.Healing(10f);

@@ -78,4 +78,22 @@ public class FlockAgent : MonoBehaviour
         return Vector3.Distance(transform.position, _target);
     }
 
+
+    #region Available
+
+    public bool IsProtecting()
+    {
+        return protectPlayer.IsProtecting;
+    }
+
+    public bool IsCoverFiring()
+    {
+        return coverFire.IsFiringTarget;
+    }
+
+    public bool IsHealing()
+    {
+        return healingPlayer.IsHealing;
+    }
+    #endregion
 }

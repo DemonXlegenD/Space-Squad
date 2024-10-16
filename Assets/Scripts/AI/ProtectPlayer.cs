@@ -41,6 +41,11 @@ public class ProtectPlayer : MonoBehaviour
         agent.IsAvailable = false;
     }
 
+    public void ChangeOffset(Vector3 _offset)
+    {
+        offset = _offset;
+    }
+
     private void Update()
     {
         if(isProtecting){ 

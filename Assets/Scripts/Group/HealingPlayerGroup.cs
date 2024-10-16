@@ -6,6 +6,10 @@ public class HealingPlayerGroup : MonoBehaviour
 {
     [SerializeField, Range(0, 100)] private int percentOfGroup = 50;
     private Flock Flock;
+
+
+    private List<FlockAgent> HealingAgents = new List<FlockAgent>();
+
     void Start()
     {
         Flock = GetComponent<Flock>();
@@ -15,11 +19,19 @@ public class HealingPlayerGroup : MonoBehaviour
     {
         if (Flock != null)
         {
-
-            foreach (FlockAgent flock_agent in Flock.GetCloserAgents(_target, percentOfGroup))
+            if (IsEmptyHealing())
             {
-                flock_agent.HealingPlayer.ApplyHealingPlayer();
+                HealingAgents = Flock.GetCloserAgents(_target, percentOfGroup);
+                foreach (FlockAgent flock_agent in HealingAgents)
+                {
+                    flock_agent.HealingPlayer.ApplyHealingPlayer();
+                }
             }
+            else
+            {
+                Debug.Log("Soigne deja le joueur");
+            }
+           
         }
         else
         {
@@ -29,10 +41,20 @@ public class HealingPlayerGroup : MonoBehaviour
 
     public void ResetHealingPlayer()
     {
-        List<FlockAgent> flock_agents = Flock.FlockAgents;
-        foreach (FlockAgent flock_agent in flock_agents)
+        foreach (FlockAgent flock_agent in HealingAgents)
         {
             flock_agent.HealingPlayer.StopHealingPlayer();
         }
+        HealingAgents.Clear();
+    }
+
+    public List<FlockAgent> GetHealingAgents()
+    {
+        return HealingAgents;
+    }
+
+    public bool IsEmptyHealing()
+    {
+        return HealingAgents.Count == 0;
     }
 }

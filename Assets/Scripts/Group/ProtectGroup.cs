@@ -5,6 +5,7 @@ public class ProtectGroup : MonoBehaviour
 {
     [SerializeField, Range(0, 100)] private int percentOfGroup = 25;
     private Flock Flock;
+    private List<FlockAgent> ProtectingAgents = new List<FlockAgent>();
     void Start()
     {
         Flock = GetComponent<Flock>();
@@ -14,10 +15,23 @@ public class ProtectGroup : MonoBehaviour
     {
         if (Flock != null)
         {
-            foreach (FlockAgent flock_agent in Flock.GetCloserAgents(_target, percentOfGroup))
+            if (IsEmptyProtecting())
             {
-                flock_agent.ProtectPlayer.ApplyProtecting(_offset);
+                ProtectingAgents = Flock.GetCloserAgents(_target, percentOfGroup);
+                foreach (FlockAgent flock_agent in ProtectingAgents)
+                {
+                    flock_agent.ProtectPlayer.ApplyProtecting(_offset);
+                }
             }
+            else
+            {
+                foreach (FlockAgent flock_agent in ProtectingAgents)
+                {
+                    flock_agent.ProtectPlayer.ChangeOffset(_offset);
+                }
+                Debug.Log("Protege déjà");
+            }
+
         }
         else
         {
@@ -27,10 +41,20 @@ public class ProtectGroup : MonoBehaviour
 
     public void ResetProtectPlayer()
     {
-        List<FlockAgent> flock_agents = Flock.FlockAgents;
-        foreach (FlockAgent flock_agent in flock_agents)
+        foreach (FlockAgent flock_agent in ProtectingAgents)
         {
             flock_agent.ProtectPlayer.StopProtectingPlayer();
         }
+        ProtectingAgents.Clear();
+    }
+
+    public List<FlockAgent> GetProtectingAgents()
+    {
+        return ProtectingAgents;
+    }
+
+    public bool IsEmptyProtecting()
+    {
+        return ProtectingAgents.Count == 0;
     }
 }
