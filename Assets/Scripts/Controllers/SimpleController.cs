@@ -16,6 +16,12 @@ public class SimpleController : MonoBehaviour
     private Action<Vector3> OnMouseRightClicked;
 
     public Vector3 jump;
+    public float jumpForce = 5.0f;
+
+    public bool isGrounded;
+    Rigidbody rb;
+
+    void Start ()
     {
         Player = GetComponent<PlayerAgent>();
         Flock = FindAnyObjectByType<Flock>();
@@ -39,6 +45,8 @@ public class SimpleController : MonoBehaviour
     {
         isGrounded = true;
     }
+
+    void Update ()
     {
         int floorLayer = 1 << LayerMask.NameToLayer("Floor");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -62,6 +70,11 @@ public class SimpleController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             OnMouseRightClicked(targetPos);
+        }
+        if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
         }
     }
     
