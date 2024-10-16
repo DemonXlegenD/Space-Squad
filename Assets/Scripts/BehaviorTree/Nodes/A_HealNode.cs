@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class A_ReformationNode : ActionNode
+public class A_HealNode : ActionNode
 {
-    [SerializeField] Flock flock;
-    public bool shouldReset = false;
-
     #region Overrides of Node
     protected override void OnStart() 
     {
@@ -17,14 +14,9 @@ public class A_ReformationNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if (shouldReset) 
-        {
-            npc.GetComponent<FlockAgent>().ResetFlock();
-            return State.Success;
-        }
-
-        return State.Running;
+        return State.Success;
     }
 
     #endregion
 }
+
