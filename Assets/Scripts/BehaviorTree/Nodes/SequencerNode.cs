@@ -6,8 +6,9 @@ public class SequencerNode : CompositeNode
 {
     private int currentNodeID;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         foreach (Transform child in transform) 
         {
             children.Add(child.GetComponent<Node>());
