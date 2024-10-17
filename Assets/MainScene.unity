@@ -2237,6 +2237,11 @@ PrefabInstance:
       propertyPath: leader
       value: 
       objectReference: {fileID: 179046565}
+    - target: {fileID: 6019295468392039324, guid: 9398326d27a00574dbd34a8c721e1d11,
+        type: 3}
+      propertyPath: roleComponents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6719824424854429034, guid: 9398326d27a00574dbd34a8c721e1d11,
         type: 3}
       propertyPath: m_LocalPosition.x

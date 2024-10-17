@@ -8,9 +8,12 @@ public class Flock : MonoBehaviour
     public List<FlockAgent> FlockAgents { get { return flockAgents; } }
 
     [SerializeField] private FlockAgent flockAgentPrefab;
+    [SerializeField] private List<FlockAgent> roleAgentPrefab = new List<FlockAgent>();
     [SerializeField] private Formation formation;
 
-    [SerializeField, Range(3, 15)] private int startingCount = 3;
+    [SerializeField, Range(3, 15)] private int startingCount = 3;   
+
+
     [SerializeField] private Vector3 leaderPosition = Vector3.zero;
     [SerializeField] private PlayerAgent leader;
     private Vector3 oldForwardLeader = Vector3.zero;
@@ -47,11 +50,12 @@ public class Flock : MonoBehaviour
     {
 
         FlockAgent new_agent = Instantiate(
-            flockAgentPrefab,
+            roleAgentPrefab[_index % roleAgentPrefab.Count],
             _position,
             Quaternion.Euler(Vector3.forward),
             transform
             );
+
         new_agent.playerAgent = leader;
         new_agent.SetTarget(_position);
         new_agent.name = "Agent" + _index;
