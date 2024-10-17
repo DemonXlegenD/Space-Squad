@@ -4,6 +4,7 @@ using UnityEngine;
 public class CoverFireGroup : MonoBehaviour
 {
     [SerializeField, Range(0, 100)] private int percentOfGroup = 50;
+    [SerializeField] public BlackBoard Data;
     private Flock Flock;
 
     [SerializeField]
@@ -15,6 +16,9 @@ public class CoverFireGroup : MonoBehaviour
     void Start()
     {
         Flock = GetComponent<Flock>();
+        NPCTargetCursor = Instantiate(NPCTargetCursorPrefab);
+        NPCTargetCursor.SetActive(false);
+        Data.AddData(DataKey.TARGET, NPCTargetCursor);
     }
 
 
@@ -22,7 +26,8 @@ public class CoverFireGroup : MonoBehaviour
     {
         if (NPCTargetCursor == null)
         {
-            NPCTargetCursor = Instantiate(NPCTargetCursorPrefab);
+            //NPCTargetCursor = Instantiate(NPCTargetCursorPrefab);
+            NPCTargetCursor.SetActive(true);
         }
         return NPCTargetCursor;
     }
@@ -37,7 +42,8 @@ public class CoverFireGroup : MonoBehaviour
         }
         else
         {
-            Destroy(NPCTargetCursor);
+            //Destroy(NPCTargetCursor);
+            NPCTargetCursor.SetActive(false);
             ResetCoverFire();
         }
     }

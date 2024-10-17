@@ -11,7 +11,7 @@ public class A_CoverFireNode : ActionNode
 
     protected override State OnUpdate()
     {
-        //npc.GetComponent<FlockAgent>().Target
+        //npc.GetComponent<FlockAgent>().Target;
         return State.Success;
     }
 

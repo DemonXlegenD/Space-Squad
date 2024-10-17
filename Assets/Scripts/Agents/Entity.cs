@@ -4,7 +4,7 @@ using static UnityEditor.PlayerSettings;
 public class Entity : MonoBehaviour, IDamageable
 {
     [SerializeField] public BlackBoard Data;
-    protected Gun Gun;
+    public Gun Gun;
     protected CharacterHealth characterHealth;
 
     public CharacterHealth CharacterHealth { get { return characterHealth; } }
