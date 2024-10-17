@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RepeatNode : DecoratorNode
 {
+    /*
     private void Start()
     {
         foreach (Transform child_ in transform) 
@@ -12,6 +13,7 @@ public class RepeatNode : DecoratorNode
             break;
         }
     }
+    */
 
     #region Overrides of Node
 
@@ -21,7 +23,7 @@ public class RepeatNode : DecoratorNode
 
     protected override State OnUpdate()
     {
-        State currenChildState = child.UpdateNode();
+        //State currenChildState = child.UpdateNode();
 
         return State.Running;
     }

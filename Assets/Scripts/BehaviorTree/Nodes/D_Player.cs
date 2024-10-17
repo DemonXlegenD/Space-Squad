@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class A_CoverFireNode : ActionNode
+public class D_Player : DecoratorNode
 {
     #region Overrides of Node
     protected override void OnStart() {}
@@ -11,10 +11,8 @@ public class A_CoverFireNode : ActionNode
 
     protected override State OnUpdate()
     {
-        //npc.GetComponent<FlockAgent>().Target
         return State.Success;
     }
 
     #endregion
 }
-

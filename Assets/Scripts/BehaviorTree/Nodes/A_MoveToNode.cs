@@ -6,6 +6,7 @@ public class A_MoveToNode : ActionNode
 {
     public enum MoveToLocation{
         PLAYER,
+        TARGET,
     }
 
     [SerializeField] private MoveToLocation CurrentMoveToLocation = MoveToLocation.PLAYER;
@@ -29,6 +30,8 @@ public class A_MoveToNode : ActionNode
             case MoveToLocation.PLAYER:
                 Debug.Log("Move to player");
                 npc.GetComponent<FlockAgent>().MoveTo((Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<FlockAgent>().Offset);
+                return State.Running;
+            case MoveToLocation.TARGET:
                 return State.Running;
             default:
                 break;
