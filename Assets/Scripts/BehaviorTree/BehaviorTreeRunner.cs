@@ -11,6 +11,8 @@ public class BehaviorTreeRunner : MonoBehaviour
 
     [SerializeField] private float timerUpdate = 0.1f;
     private float currentTimer = 0f;
+
+    public float CurrentTimer { get { return timerUpdate; } }
     private void Start()
     {
         Node root = null;
@@ -40,8 +42,9 @@ public class BehaviorTreeRunner : MonoBehaviour
             {
                 if (currentTimer > timerUpdate)
                 {
-                    currentTimer = 0f;
+              
                     treeState = rootNode.UpdateNode();
+                    currentTimer = 0f;
                 }
                 currentTimer += Time.deltaTime;
             }

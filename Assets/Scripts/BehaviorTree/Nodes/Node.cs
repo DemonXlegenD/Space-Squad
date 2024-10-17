@@ -14,6 +14,13 @@ public abstract class Node : MonoBehaviour
     [SerializeField] private State state = State.Running;
     [SerializeField] private bool started;
 
+    public BehaviorTreeRunner Tree;
+
+    protected virtual void Start()
+    {
+        Tree = FindParentWithTag(transform, "Tree").GetComponent<BehaviorTreeRunner>();
+    }
+
     protected abstract void OnStart();
     protected abstract void OnStop();
     protected abstract State OnUpdate();
@@ -25,7 +32,7 @@ public abstract class Node : MonoBehaviour
             OnStart();
             started = true;
         }
-
+        Debug.Log(this.name);
         state = OnUpdate();
 
         if (state == State.Failure || state == State.Success)
@@ -35,5 +42,19 @@ public abstract class Node : MonoBehaviour
         }
 
         return state;
+    }
+
+    public Transform FindParentWithTag(Transform self_transform, string tag)
+    {
+        Transform t = self_transform;
+        while (t.parent != null)
+        {
+            if (t.parent.tag == tag)
+            {
+                return t.parent.transform;
+            }
+            t = t.parent.transform;
+        }
+        return null;
     }
 }
