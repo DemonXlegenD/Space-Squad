@@ -50,6 +50,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flockAgentPrefab: {fileID: 1518844078082326384, guid: 3104561ee243dc249b94a5db7fefcd98,
     type: 3}
+  roleAgentPrefab:
+  - {fileID: 1868461582120934412, guid: ba0554afd93f05443a2c67ea9ee03769, type: 3}
+  - {fileID: 5267578515252281038, guid: a5df9f089e7954047a25a6acf9cace6b, type: 3}
+  - {fileID: 1473595229355946253, guid: 148767d883139134a95f6649e43ec857, type: 3}
   formation: {fileID: 11400000, guid: fe81213bf268bc247a9bc794c3b7a283, type: 2}
   startingCount: 8
   leaderPosition: {x: 0, y: 0, z: 0}
