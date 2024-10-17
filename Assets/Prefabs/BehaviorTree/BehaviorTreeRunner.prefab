@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  npc: {fileID: 0}
+  Tree: {fileID: 0}
   message: N1
 --- !u!1 &2361813770556098602
 GameObject:
@@ -59,7 +61,7 @@ GameObject:
   - component: {fileID: 754589607785332797}
   m_Layer: 0
   m_Name: BehaviorTreeRunner
-  m_TagString: Untagged
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a3aa5ef89e7d44ebd6d610c388197d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Data: {fileID: 11400000, guid: cd404d97ce0e12446b9c20e6e843e57d, type: 2}
   rootNode: {fileID: 0}
   treeState: 0
 --- !u!1 &3688152921717518781
@@ -238,6 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  npc: {fileID: 0}
+  Tree: {fileID: 0}
   message: N2
 --- !u!1 &8597669024725189091
 GameObject:
@@ -285,4 +290,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  npc: {fileID: 0}
+  Tree: {fileID: 0}
   message: N0

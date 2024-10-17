@@ -7,6 +7,12 @@ public abstract class ActionNode : Node
     public Transform npc;
     public BehaviorTreeRunner Tree;
 
+    protected virtual void Start()
+    {
+        npc = FindParentWithTag(transform, "NPC");
+        Tree = FindParentWithTag(transform, "Tree").GetComponent<BehaviorTreeRunner>();
+    }
+
     public static Transform FindParentWithTag(Transform self_transform, string tag)
     {
         Transform t = self_transform;

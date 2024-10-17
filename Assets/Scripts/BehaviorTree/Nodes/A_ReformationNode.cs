@@ -9,7 +9,6 @@ public class A_ReformationNode : ActionNode
     #region Overrides of Node
     protected override void OnStart() 
     {
-        npc = FindParentWithTag(transform, "NPC");
     }
 
     protected override void OnStop() {}

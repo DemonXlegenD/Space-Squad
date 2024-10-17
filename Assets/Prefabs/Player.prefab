@@ -513,6 +513,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
+  jump: {x: 0, y: 0, z: 0}
+  jumpForce: 5
+  isGrounded: 0
 --- !u!114 &4717219440818462286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,6 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aabe4fab0c81e74e97c00ca4ec9725f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Data: {fileID: 11400000, guid: cd404d97ce0e12446b9c20e6e843e57d, type: 2}
   TargetCursorPrefab: {fileID: 1510336254582165163, guid: 7b6276c878e17d241921c647a7d9da0e,
     type: 3}
 --- !u!114 &2227746623033350647
@@ -539,6 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9ac49dc54bedc49a6a96a9a2a7c88a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lowHealth: 40
   maxHealth: 100
   currentHealth: 100
   healthBarController: {fileID: 6346268581372803509}

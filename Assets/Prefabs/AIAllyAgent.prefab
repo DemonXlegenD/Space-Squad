@@ -163,7 +163,8 @@ MonoBehaviour:
   state: 0
   started: 0
   npc: {fileID: 0}
-  shouldReset: 0
+  Tree: {fileID: 0}
+  shouldReset: 1
 --- !u!1 &2913905288634380514
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +273,55 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!1 &4741395069084585962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5451612265758669748}
+  - component: {fileID: 1102248415868054594}
+  m_Layer: 0
+  m_Name: A_MoveToPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5451612265758669748
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741395069084585962}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2221829687277848355}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1102248415868054594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741395069084585962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509c586c36bbdb54cb5dfb2019f35e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  npc: {fileID: 0}
+  Tree: {fileID: 0}
+  CurrentMoveToLocation: 0
 --- !u!1 &6068122264264544446
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae06b5f7096c2344b1cccfe7f9be7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  Data: {fileID: 0}
   Target: {fileID: 0}
 --- !u!195 &8525931039688671734
 NavMeshAgent:
@@ -840,6 +890,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 754589607785332797, guid: 4e893d5b7ab724545912e2e912d647d4,
         type: 3}
+      propertyPath: Data
+      value: 
+      objectReference: {fileID: 11400000, guid: cd404d97ce0e12446b9c20e6e843e57d,
+        type: 2}
+    - target: {fileID: 754589607785332797, guid: 4e893d5b7ab724545912e2e912d647d4,
+        type: 3}
       propertyPath: data
       value: 
       objectReference: {fileID: 11400000, guid: cd404d97ce0e12446b9c20e6e843e57d,
@@ -848,6 +904,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BehaviorTreeRunner
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361813770556098602, guid: 4e893d5b7ab724545912e2e912d647d4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tree
       objectReference: {fileID: 0}
     - target: {fileID: 3040281663539049449, guid: 4e893d5b7ab724545912e2e912d647d4,
         type: 3}
@@ -910,6 +971,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3966006431247656624}
+    - targetCorrespondingSourceObject: {fileID: 7261123263362857838, guid: 4e893d5b7ab724545912e2e912d647d4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5451612265758669748}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e893d5b7ab724545912e2e912d647d4, type: 3}
 --- !u!4 &2221829687277848355 stripped

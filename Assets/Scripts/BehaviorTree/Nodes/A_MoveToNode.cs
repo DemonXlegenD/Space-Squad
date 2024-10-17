@@ -8,13 +8,16 @@ public class A_MoveToNode : ActionNode
         PLAYER,
     }
 
-    private MoveToLocation CurrentMoveToLocation = MoveToLocation.PLAYER;
+    [SerializeField] private MoveToLocation CurrentMoveToLocation = MoveToLocation.PLAYER;
+
+    protected override void Start()
+    {
+        base.Start();
+    }
 
     #region Overrides of Node
     protected override void OnStart() 
     {
-        npc = FindParentWithTag(transform, "NPC");
-        Tree = FindParentWithTag(transform, "Tree").GetComponent<BehaviorTreeRunner>();
     }
 
     protected override void OnStop() {}
@@ -24,6 +27,7 @@ public class A_MoveToNode : ActionNode
         switch (CurrentMoveToLocation)
         {
             case MoveToLocation.PLAYER:
+                Debug.Log("Move to player");
                 npc.GetComponent<FlockAgent>().MoveTo((Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<FlockAgent>().Offset);
                 return State.Running;
             default:

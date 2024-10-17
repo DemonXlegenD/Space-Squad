@@ -8,6 +8,9 @@ public class BehaviorTreeRunner : MonoBehaviour
     public Node rootNode;
     private bool hasRootNode = false;
     public Node.State treeState = Node.State.Running;
+
+    [SerializeField] private float timerUpdate = 0.1f;
+    private float currentTimer = 0f;
     private void Start()
     {
         Node root = null;
@@ -35,7 +38,12 @@ public class BehaviorTreeRunner : MonoBehaviour
         {
             if (treeState == Node.State.Running) 
             {
-                treeState = rootNode.UpdateNode();
+                if (currentTimer > timerUpdate)
+                {
+                    currentTimer = 0f;
+                    treeState = rootNode.UpdateNode();
+                }
+                currentTimer += Time.deltaTime;
             }
         }
         else
