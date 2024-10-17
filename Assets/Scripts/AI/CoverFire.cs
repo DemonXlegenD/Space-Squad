@@ -34,7 +34,7 @@ public class CoverFire : MonoBehaviour
         agent.IsAvailable = false;
     }
 
-    private void Update()
+    public void ShootCoverFire()
     {
         if (targetToShoot != Vector3.zero)
         {

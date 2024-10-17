@@ -568,6 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 0}
+  Gun: {fileID: 0}
   Target: {fileID: 0}
 --- !u!195 &8525931039688671734
 NavMeshAgent:
@@ -790,6 +791,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 532126776145519707}
     m_Modifications:
+    - target: {fileID: 811981194214530791, guid: 4e893d5b7ab724545912e2e912d647d4,
+        type: 3}
+      propertyPath: CurrentMoveToLocation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2361813770556098602, guid: 4e893d5b7ab724545912e2e912d647d4,
         type: 3}
       propertyPath: m_Name

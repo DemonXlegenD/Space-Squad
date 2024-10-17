@@ -20,45 +20,45 @@ public class BlackBoard : ScriptableObject
 
     public object GetData(DataKey key) 
     {
-       // Vérifier si la clé existe dans Data
+       // Vï¿½rifier si la clï¿½ existe dans Data
         if (Data.TryGetValue(key, out object value))
         {
-            // Vérifier que le type attendu correspond à celui dans le typeMapping
+            // Vï¿½rifier que le type attendu correspond ï¿½ celui dans le typeMapping
             if (TypeMapping.typeMapping.TryGetValue(key, out Type expectedType))
             {
-                // Vérifier que la valeur correspond bien au type attendu
+                // Vï¿½rifier que la valeur correspond bien au type attendu
                 if (value.GetType() == expectedType)
                 {
                     return value;
                 }
                 else
                 {
-                    Debug.LogError($"La valeur pour la clé '{key}' est de type {value.GetType()}, mais {expectedType} était attendu.");
+                    Debug.LogError($"La valeur pour la clï¿½ '{key}' est de type {value.GetType()}, mais {expectedType} ï¿½tait attendu.");
                     return null;
                 }
             }
             else
             {
-                Debug.LogError($"Type non trouvé pour la clé '{key}' dans le mapping.");
+                Debug.LogError($"Type non trouvï¿½ pour la clï¿½ '{key}' dans le mapping.");
                 return null;
             }
         }
         else
         {
-            Debug.LogError($"Clé '{key}' non trouvée dans les données.");
+            Debug.LogError($"Clï¿½ '{key}' non trouvï¿½e dans les donnï¿½es.");
             return null;
         }
     }
 
     public T GetValue<T>(DataKey key)
     {
-        // Vérifier si le key existe dans Data
+        // Vï¿½rifier si le key existe dans Data
         if (Data.TryGetValue(key, out object value))
         {
-            // Vérifier que le type attendu correspond à celui dans le typeMapping
+            // Vï¿½rifier que le type attendu correspond ï¿½ celui dans le typeMapping
             if (TypeMapping.typeMapping.TryGetValue(key, out Type expectedType))
             {
-                // Vérifier que T correspond bien au type attendu
+                // Vï¿½rifier que T correspond bien au type attendu
                 if (typeof(T) == expectedType)
                 {
                     // Tenter de caster en T
@@ -68,38 +68,35 @@ public class BlackBoard : ScriptableObject
                     }
                     else
                     {
-                        Debug.LogError($"La valeur pour la clé '{key}' ne peut pas être castée en {typeof(T)}.");
+                        Debug.LogError($"La valeur pour la clï¿½ '{key}' ne peut pas ï¿½tre castï¿½e en {typeof(T)}.");
                         return default;
                     }
                 }
                 else
                 {
-                    Debug.LogError($"Le type attendu pour la clé '{key}' est {expectedType}, mais {typeof(T)} a été fourni.");
+                    Debug.LogError($"Le type attendu pour la clï¿½ '{key}' est {expectedType}, mais {typeof(T)} a ï¿½tï¿½ fourni.");
                     return default;
                 }
             }
             else
             {
-                Debug.LogError($"Type non trouvé pour la clé '{key}' dans le mapping.");
+                Debug.LogError($"Type non trouvï¿½ pour la clï¿½ '{key}' dans le mapping.");
                 return default;
             }
         }
         else
         {
-            Debug.LogError($"Clé '{key}' non trouvée dans les données.");
+            Debug.LogError($"Clï¿½ '{key}' non trouvï¿½e dans les donnï¿½es.");
             return default;
         }
     }
-
-
 
     public void SetData(DataKey x, object y) 
     {
         Data[x] = y;
     }
 }
-
 public enum DataKey{
     PLAYER,
-
+    TARGET,
 }
