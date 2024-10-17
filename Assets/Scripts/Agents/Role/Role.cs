@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Role : MonoBehaviour
 {
-    private Material bodyMaterial;
+    private Renderer bodyRenderer ;
     protected virtual void Start()
     {
-        bodyMaterial = GetComponentInChildren<Material>();
+        Transform bodyTransform = transform.Find("Body");
+        bodyRenderer = bodyTransform.GetComponent<Renderer>();
     }
 
     protected void SetColorToMaterial(Color color)
     {
-        bodyMaterial.color = color;
+        bodyRenderer.material.color = color;
     }
 }
