@@ -12,6 +12,7 @@ public class A_MoveToNode : ActionNode
     }
 
     [SerializeField] private MoveToLocation CurrentMoveToLocation = MoveToLocation.PLAYER;
+    [SerializeField] public bool TEST = false;
 
     protected override void Start()
     {
@@ -31,7 +32,6 @@ public class A_MoveToNode : ActionNode
         switch (CurrentMoveToLocation)
         {
             case MoveToLocation.PLAYER:
-                Debug.Log("Move to player");
                 target_ = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<FlockAgent>().Offset;
                 stopDist = 5.0f;
                 break;

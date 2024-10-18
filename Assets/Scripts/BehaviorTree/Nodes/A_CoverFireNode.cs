@@ -12,7 +12,7 @@ public class A_CoverFireNode : ActionNode
     protected override State OnUpdate()
     {
         npc.GetComponent<FlockAgent>().CoverFire.NPCShootToTarget((Tree.Data.GetValue<GameObject>(DataKey.TARGET_COVER)).transform.position);
-        return State.Running;
+        return State.Success;
     }
 
     #endregion
