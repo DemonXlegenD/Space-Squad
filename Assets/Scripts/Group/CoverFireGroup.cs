@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,12 +14,16 @@ public class CoverFireGroup : MonoBehaviour
 
     List<FlockAgent> CoveringAgents = new List<FlockAgent>();
 
+    private void Awake()
+    {
+      
+    }
+
     void Start()
     {
         Flock = GetComponent<Flock>();
-        NPCTargetCursor = Instantiate(NPCTargetCursorPrefab);
-        NPCTargetCursor.SetActive(false);
-        Data.AddData(DataKey.TARGET, NPCTargetCursor);
+        GetNPCTargetCursor().SetActive(false);
+Data.AddData(DataKey.TARGET, NPCTargetCursor);
     }
 
 
@@ -26,17 +31,22 @@ public class CoverFireGroup : MonoBehaviour
     {
         if (NPCTargetCursor == null)
         {
-            //NPCTargetCursor = Instantiate(NPCTargetCursorPrefab);
-            NPCTargetCursor.SetActive(true);
+            NPCTargetCursor = Instantiate(NPCTargetCursorPrefab);
+
         }
         return NPCTargetCursor;
     }
 
+    private  IEnumerator Test()
+    {
+        yield return null;
+    }
+
     public void NPCShootToPosition(Vector3 _pos)
     {
-        Debug.Log("call");
-        if (NPCTargetCursor == null)
+        if (!NPCTargetCursor.activeSelf)
         {
+            NPCTargetCursor.SetActive(true);
             GetNPCTargetCursor().transform.position = _pos;
             ApplyCoverFire(_pos);
         }

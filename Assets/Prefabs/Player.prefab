@@ -529,6 +529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: cd404d97ce0e12446b9c20e6e843e57d, type: 2}
+  Gun: {fileID: 0}
   TargetCursorPrefab: {fileID: 1510336254582165163, guid: 7b6276c878e17d241921c647a7d9da0e,
     type: 3}
 --- !u!114 &2227746623033350647

@@ -91,6 +91,11 @@ public class BlackBoard : ScriptableObject
         }
     }
 
+    public bool ContainsData(DataKey key)
+    {
+        return Data.ContainsKey(key);
+    }
+
     public void SetData(DataKey x, object y) 
     {
         Data[x] = y;

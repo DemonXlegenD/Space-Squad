@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   percentOfGroup: 50
+  Data: {fileID: 11400000, guid: cd404d97ce0e12446b9c20e6e843e57d, type: 2}
   NPCTargetCursorPrefab: {fileID: 7737544659063618026, guid: 0511cdf56d7924642937deb7c2bf69de,
     type: 3}
 --- !u!114 &830292644608740747
