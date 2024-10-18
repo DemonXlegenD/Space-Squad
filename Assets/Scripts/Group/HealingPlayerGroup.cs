@@ -24,7 +24,8 @@ public class HealingPlayerGroup : MonoBehaviour
                 HealingAgents = Flock.GetCloserAgents(_target, percentOfGroup);
                 foreach (FlockAgent flock_agent in HealingAgents)
                 {
-                    flock_agent.HealingPlayer.ApplyHealingPlayer();
+                    flock_agent.IsCurrentlyHealingPlayer = true;
+                    //flock_agent.HealingPlayer.ApplyHealingPlayer();
                 }
             }
             else
@@ -39,6 +40,7 @@ public class HealingPlayerGroup : MonoBehaviour
         }
     }
 
+    /*
     public void ResetHealingPlayer()
     {
         foreach (FlockAgent flock_agent in HealingAgents)
@@ -47,6 +49,7 @@ public class HealingPlayerGroup : MonoBehaviour
         }
         HealingAgents.Clear();
     }
+    */
 
     public List<FlockAgent> GetHealingAgents()
     {

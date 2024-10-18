@@ -23,6 +23,17 @@ public class HealingPlayer : MonoBehaviour
         playerAgent = FindAnyObjectByType<PlayerAgent>();
     }
 
+    public void NPCHealPlayer() 
+    {
+        playerAgent.CharacterHealth.Healing(10f);
+        
+        if (playerAgent.CharacterHealth.IsMaxHealth())
+        {
+            agent.IsCurrentlyHealingPlayer = false;
+        }
+    }
+
+    /*
     public void StopHealingPlayer()
     {
         agent.ResetFlock();
@@ -65,4 +76,5 @@ public class HealingPlayer : MonoBehaviour
             }
         }
     }
+    */
 }

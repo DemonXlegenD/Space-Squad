@@ -9,10 +9,10 @@ public class A_MoveToNode : ActionNode
         PLAYER,
         TARGET_PROTECT,
         TARGET_COVER,
+        TARGET_HEAL,
     }
 
     [SerializeField] private MoveToLocation CurrentMoveToLocation = MoveToLocation.PLAYER;
-    [SerializeField] public bool TEST = false;
 
     protected override void Start()
     {
@@ -35,6 +35,7 @@ public class A_MoveToNode : ActionNode
                 target_ = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<FlockAgent>().Offset;
                 stopDist = 0.01f;
                 break;
+
             case MoveToLocation.TARGET_COVER:
                 target_ = (Tree.Data.GetValue<GameObject>(DataKey.TARGET_COVER)).transform.position;
                 stopDist = npc.GetComponent<AIAgent>().Gun.MaxRange;
@@ -44,6 +45,12 @@ public class A_MoveToNode : ActionNode
                 target_ = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<Guardian>().OffsetCheck.offset * 2;
                 stopDist = 0.1f;
                 break;
+
+            case MoveToLocation.TARGET_HEAL:
+                target_ = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position;
+                stopDist = 3f;
+                break;
+
             default:
                 break;
         }

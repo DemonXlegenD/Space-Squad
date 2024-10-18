@@ -39,6 +39,8 @@ public class FlockAgent : MonoBehaviour
 
     private bool isCurrentlyCoverFiring = false;
     public bool IsCurrentlyCoverFiring { get { return isCurrentlyCoverFiring; } set { isCurrentlyCoverFiring = value; } }
+    private bool isCurrentlyHealingPlayer = false;
+    public bool IsCurrentlyHealingPlayer { get { return isCurrentlyHealingPlayer; } set { isCurrentlyHealingPlayer = value; } }
     private void Start()
     {
         aiAgent = GetComponent<AIAgent>();
@@ -48,9 +50,7 @@ public class FlockAgent : MonoBehaviour
         healingPlayer = GetComponent<HealingPlayer>();
     }
 
-    private void Update()
-    {
-    }
+    private void Update() {}
 
     public void RecalculatePosition()
     {
