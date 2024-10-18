@@ -43,7 +43,6 @@ public class Flock : MonoBehaviour
 
             SpawnNPC(position, i);
         }
-
     }
 
     private void SpawnNPC(Vector3 _position, int _index)
@@ -112,7 +111,7 @@ public class Flock : MonoBehaviour
 
         int countToRetrieve = Mathf.CeilToInt(distanceToNPCMap.Count * _percent / 100);
 
-        Debug.Log(distanceToNPCMap.Count);
+        //Debug.Log(distanceToNPCMap.Count);
         return distanceToNPCMap
             .OrderBy(kvp => kvp.Value)
             .Take(countToRetrieve)

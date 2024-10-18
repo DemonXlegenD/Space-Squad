@@ -8,38 +8,25 @@ public class CoverFireGroup : MonoBehaviour
     [SerializeField] public BlackBoard Data;
     private Flock Flock;
 
-    [SerializeField]
-    GameObject NPCTargetCursorPrefab = null;
+    [SerializeField] GameObject NPCTargetCursorPrefab = null;
     GameObject NPCTargetCursor = null;
 
     List<FlockAgent> CoveringAgents = new List<FlockAgent>();
-
-    private void Awake()
-    {
-      
-    }
 
     void Start()
     {
         Flock = GetComponent<Flock>();
         GetNPCTargetCursor().SetActive(false);
-Data.AddData(DataKey.TARGET, NPCTargetCursor);
+        Data.AddData(DataKey.TARGET_COVER, NPCTargetCursor);
     }
-
 
     private GameObject GetNPCTargetCursor()
     {
         if (NPCTargetCursor == null)
         {
             NPCTargetCursor = Instantiate(NPCTargetCursorPrefab);
-
         }
         return NPCTargetCursor;
-    }
-
-    private  IEnumerator Test()
-    {
-        yield return null;
     }
 
     public void NPCShootToPosition(Vector3 _pos)
@@ -63,10 +50,12 @@ Data.AddData(DataKey.TARGET, NPCTargetCursor);
         if (Flock != null)
         {
             CoveringAgents = Flock.GetCloserAgents(_target, percentOfGroup);
+            //Debug.Log(CoveringAgents.Count);
             foreach (FlockAgent flock_agent in CoveringAgents)
             {
-                flock_agent.StopFlocking();
-                flock_agent.CoverFire.ApplyCoverFire(_target);
+                //flock_agent.StopFlocking();
+                //flock_agent.CoverFire.ApplyCoverFire(_target);
+                flock_agent.IsCurrentlyCoverFiring = true;
             }
         }
         else
@@ -79,7 +68,8 @@ Data.AddData(DataKey.TARGET, NPCTargetCursor);
     {
         foreach (FlockAgent flock_agent in CoveringAgents)
         {
-            flock_agent.CoverFire.StopCoverFiring();
+            //flock_agent.CoverFire.StopCoverFiring();
+            flock_agent.IsCurrentlyCoverFiring = false;
         }
         CoveringAgents.Clear();
     }
@@ -93,4 +83,9 @@ Data.AddData(DataKey.TARGET, NPCTargetCursor);
     {
         return CoveringAgents.Count == 0;
     }
+
+    private  IEnumerator Test()
+    {
+        yield return null;
+    } 
 }
