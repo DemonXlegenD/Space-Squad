@@ -32,7 +32,6 @@ public abstract class Node : MonoBehaviour
             OnStart();
             started = true;
         }
-        Debug.Log(this.name);
         state = OnUpdate();
 
         if (state == State.Failure || state == State.Success)
