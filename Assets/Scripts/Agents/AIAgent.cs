@@ -56,6 +56,7 @@ namespace FSMMono
         }
         public void MoveTo(Vector3 _dest)
         {
+            if (GetComponent<Guardian>() != null) Debug.Log("MoveTO");
             NavMeshAgentInst.isStopped = false;
             NavMeshAgentInst.SetDestination(_dest);
         }

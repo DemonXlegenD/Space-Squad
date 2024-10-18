@@ -48,11 +48,6 @@ public class ProtectPlayer : MonoBehaviour
 
     private void Update()
     {
-        if(isProtecting){ 
-            agent.MoveTo(Offset * 3 + playerAgent.transform.position);
-            currentTimer += Time.deltaTime;
 
-            if (currentTimer > timerStopProtecting) StopProtectingPlayer();
-        }
     }
 }

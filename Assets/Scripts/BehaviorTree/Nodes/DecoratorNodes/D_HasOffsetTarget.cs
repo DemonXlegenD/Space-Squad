@@ -14,6 +14,7 @@ public class D_HasOffsetTarget : DecoratorNode
 
         if(npc.GetComponent<Guardian>().HasOffset())
         {
+            Debug.Log("HasOffset");
             return child.UpdateNode();
         }
 

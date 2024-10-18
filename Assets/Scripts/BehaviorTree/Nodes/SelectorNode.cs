@@ -27,12 +27,15 @@ public class SelectorNode : CompositeNode
             return State.Failure;
         }
 
+
+
         switch (children[currentNodeID].UpdateNode())
         {
             case State.Running:
                 return State.Running;
             case State.Success:
-                currentNodeID++;
+                currentNodeID = 0;
+                return State.Running;
                 break;
             case State.Failure:
                 currentNodeID++;
@@ -49,7 +52,7 @@ public class SelectorNode : CompositeNode
             }
             return State.Running;
         } else {
-            return currentNodeID == children.Count ? State.Success : State.Running;
+            return currentNodeID == children.Count ? State.Failure : State.Running;
         }
     }
 
