@@ -23,6 +23,7 @@ public class PlayerAgent : Entity
         base.AddDamage(_amount);
         if (CharacterHealth.IsLowHealth())
         {
+            Debug.Log("LowHealth");
             Flock.HealingGroup.ApplyHealingPlayer(transform.position);
         }
     }

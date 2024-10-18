@@ -3,6 +3,7 @@ using UnityEngine;
 public class D_Delay : DecoratorNode
 {
     [SerializeField] private float delay = 2f;
+    [SerializeField] public bool RESET = false;
     private float currentTimer = 0f;
 
     #region Overrides of Node
@@ -10,7 +11,6 @@ public class D_Delay : DecoratorNode
     protected override void Start()
     {
         base.Start();
-        Debug.Log(child.name);
     }
     protected override void OnStart()
     {
@@ -20,11 +20,15 @@ public class D_Delay : DecoratorNode
     protected override void OnStop()
     {
         currentTimer = 0f;
-        Debug.Log("Stop");
     }
 
     protected override State OnUpdate()
-    {
+    {        
+        if (RESET) 
+        {
+            currentTimer = 0f;
+            RESET = false;
+        }
         
         if (currentTimer > delay)
         {
@@ -33,7 +37,6 @@ public class D_Delay : DecoratorNode
         else
         {
             currentTimer += Tree.CurrentTimer;
-            Debug.Log(currentTimer);
         }
 
         return State.Running;

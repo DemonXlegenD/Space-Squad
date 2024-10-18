@@ -5,6 +5,7 @@ using UnityEngine;
 public class ParallelNode : CompositeNode
 {
     [SerializeField] private bool requireAllSuccess = false;
+    [SerializeField] public List<D_Delay> DelayNodeToReset = new List<D_Delay>();
 
     protected override void Start()
     {
@@ -32,6 +33,13 @@ public class ParallelNode : CompositeNode
 
             if (childState == State.Running)
             {
+                if (child is not D_Delay) 
+                {
+                    foreach (D_Delay delay in DelayNodeToReset) 
+                    {
+                        delay.RESET = true;
+                    }
+                }
                 anyChildRunning = true;
             }
             else if (childState == State.Failure && requireAllSuccess)

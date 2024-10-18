@@ -14,7 +14,7 @@ public class CharacterHealth : MonoBehaviour
         healthBarController.SetHealth(currentHealth, maxHealth);
     }
 
-    // Fonction pour infliger des dégâts
+    // Fonction pour infliger des dï¿½gï¿½ts
     public void TakeDamage(float _damage)
     {
         currentHealth -= _damage;
@@ -26,6 +26,7 @@ public class CharacterHealth : MonoBehaviour
 
     public void Healing(float _health)
     {
+        
         currentHealth += _health;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         healthBarController.SetHealth(currentHealth, maxHealth);

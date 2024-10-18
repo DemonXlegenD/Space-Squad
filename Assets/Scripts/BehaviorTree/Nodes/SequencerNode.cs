@@ -5,6 +5,7 @@ using UnityEngine;
 public class SequencerNode : CompositeNode
 {
     private int currentNodeID;
+    [SerializeField] public List<D_Delay> DelayNodeToReset = new List<D_Delay>();
 
     protected override void Start()
     {
@@ -35,6 +36,13 @@ public class SequencerNode : CompositeNode
         switch (children[currentNodeID].UpdateNode())
         {
             case State.Running:
+                if (children[currentNodeID] is not D_Delay) 
+                {
+                    foreach (D_Delay delay in DelayNodeToReset) 
+                    {
+                        delay.RESET = true;
+                    }
+                }
                 return State.Running;
             case State.Success:
                 currentNodeID++;
