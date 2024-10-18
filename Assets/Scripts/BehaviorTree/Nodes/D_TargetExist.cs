@@ -15,6 +15,7 @@ public class D_TargetExist : DecoratorNode
         {
             if(npc.GetComponent<FlockAgent>().IsCurrentlyCoverFiring) 
             {
+                Debug.Log("IsCurrentlyCoverFiring");
                 return child.UpdateNode();
             }
         }

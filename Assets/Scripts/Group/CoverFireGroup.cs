@@ -50,7 +50,6 @@ public class CoverFireGroup : MonoBehaviour
         if (Flock != null)
         {
             CoveringAgents = Flock.GetCloserAgents(_target, percentOfGroup);
-            //Debug.Log(CoveringAgents.Count);
             foreach (FlockAgent flock_agent in CoveringAgents)
             {
                 //flock_agent.StopFlocking();
