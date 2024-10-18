@@ -37,6 +37,8 @@ public class FlockAgent : MonoBehaviour
 
     public bool IsAvailable { get { return isAvailable; } set { isAvailable = value; } }
 
+    private bool isCurrentlyCoverFiring = false;
+    public bool IsCurrentlyCoverFiring { get { return isCurrentlyCoverFiring; } set { isCurrentlyCoverFiring = value; } }
     private void Start()
     {
         aiAgent = GetComponent<AIAgent>();

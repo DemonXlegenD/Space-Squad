@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelectorNode : CompositeNode
 {
     private int currentNodeID;
-
+    [SerializeField] bool ROOT = false;
     protected override void Start()
     {
         base.Start();
@@ -45,7 +45,16 @@ public class SelectorNode : CompositeNode
                 return State.Failure;
         }
 
-        return currentNodeID == children.Count ? State.Success : State.Running;
+        if (ROOT) 
+        {
+            if (currentNodeID >= children.Count) 
+            {
+                currentNodeID = 0;
+            }
+            return State.Running;
+        } else {
+            return currentNodeID == children.Count ? State.Success : State.Running;
+        }
     }
 
     #endregion

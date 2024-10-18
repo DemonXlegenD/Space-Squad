@@ -35,7 +35,6 @@ public class SequencerNode : CompositeNode
         switch (children[currentNodeID].UpdateNode())
         {
             case State.Running:
-                //Debug.Log(currentNodeID);
                 return State.Running;
             case State.Success:
                 currentNodeID++;

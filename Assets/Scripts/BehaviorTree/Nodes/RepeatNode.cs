@@ -23,7 +23,7 @@ public class RepeatNode : DecoratorNode
 
     protected override State OnUpdate()
     {
-        //State currenChildState = child.UpdateNode();
+        State currenChildState = child.UpdateNode();
 
         return State.Running;
     }

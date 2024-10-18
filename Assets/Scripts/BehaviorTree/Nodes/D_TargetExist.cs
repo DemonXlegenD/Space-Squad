@@ -11,9 +11,12 @@ public class D_TargetExist : DecoratorNode
 
     protected override State OnUpdate()
     {
-        if (npc.GetComponent<FlockAgent>().Target != Vector3.zero) 
+        if ((Tree.Data.GetValue<GameObject>(DataKey.TARGET_COVER)).activeSelf) 
         {
-            return State.Success;
+            if(npc.GetComponent<FlockAgent>().IsCurrentlyCoverFiring) 
+            {
+                return child.UpdateNode();
+            }
         }
 
         return State.Failure;

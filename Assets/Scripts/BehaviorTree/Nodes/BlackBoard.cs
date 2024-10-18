@@ -103,5 +103,5 @@ public class BlackBoard : ScriptableObject
 }
 public enum DataKey{
     PLAYER,
-    TARGET,
+    TARGET_COVER,
 }

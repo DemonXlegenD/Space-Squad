@@ -18,6 +18,7 @@ public class CoverFire : MonoBehaviour
         AIAgent = GetComponent<AIAgent>();
     }
 
+    /*
     public void StopCoverFiring()
     {
         agent.StartFlocking();
@@ -33,7 +34,7 @@ public class CoverFire : MonoBehaviour
         agent.MoveTo(_target);
         agent.IsAvailable = false;
     }
-
+    
     public void ShootCoverFire()
     {
         if (targetToShoot != Vector3.zero)
@@ -51,6 +52,13 @@ public class CoverFire : MonoBehaviour
                 AIAgent.ShootToPosition(targetToShoot);
             }
         }
+    }*/
 
+    public void NPCShootToTarget(Vector3 target_)
+    {
+        if (target_ != Vector3.zero)
+        {
+            AIAgent.ShootToPosition(target_);
+        }
     }
 }

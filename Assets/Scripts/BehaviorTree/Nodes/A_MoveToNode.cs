@@ -7,7 +7,7 @@ public class A_MoveToNode : ActionNode
 {
     public enum MoveToLocation{
         PLAYER,
-        TARGET,
+        TARGET_COVER,
     }
 
     [SerializeField] private MoveToLocation CurrentMoveToLocation = MoveToLocation.PLAYER;
@@ -34,8 +34,8 @@ public class A_MoveToNode : ActionNode
                 target_ = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<FlockAgent>().Offset;
                 stopDist = 5.0f;
                 break;
-            case MoveToLocation.TARGET:
-                target_ = (Tree.Data.GetValue<GameObject>(DataKey.TARGET)).transform.position;
+            case MoveToLocation.TARGET_COVER:
+                target_ = (Tree.Data.GetValue<GameObject>(DataKey.TARGET_COVER)).transform.position;
                 stopDist = npc.GetComponent<AIAgent>().Gun.MaxRange;
                 break;
             default:
