@@ -28,6 +28,8 @@ public class Flock : MonoBehaviour
 
     public HealingPlayerGroup HealingGroup { get { return healingGroup; } }
 
+    public BlackBoard BlackBoard;
+
 
     private void Start()
     {

@@ -32,7 +32,6 @@ public class SimpleController : MonoBehaviour
 
         // LEFT
         OnMouseLeftClicked += Player.ShootToPosition;
-        OnMouseLeftClicked += aidFireGroup.ApplyAidFire;
 
         // RIGHT
         OnMouseRightClicked += coverFireGroup.NPCShootToPosition;
@@ -63,7 +62,7 @@ public class SimpleController : MonoBehaviour
 
         velocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized * moveSpeed;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             OnMouseLeftClicked(targetPos);
         }
