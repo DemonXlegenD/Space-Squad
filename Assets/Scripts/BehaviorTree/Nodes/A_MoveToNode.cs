@@ -33,7 +33,7 @@ public class A_MoveToNode : ActionNode
         {
             case MoveToLocation.PLAYER:
                 target_ = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<FlockAgent>().Offset;
-                stopDist = 5.0f;
+                stopDist = 0.01f;
                 break;
 
             case MoveToLocation.TARGET_COVER:

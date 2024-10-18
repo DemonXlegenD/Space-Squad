@@ -8,14 +8,73 @@ public class PlayerAgent : Entity
 
     Rigidbody rb;
     GameObject TargetCursor = null;
+    GameObject AidFiringTargetCursor = null;
     Flock Flock = null;
-    
+
+    [SerializeField] private float HoldAidFiring = 0.5f;
+    private float currentTimer = 0f;
+
+    #region MonoBehaviour Methods
+    protected override void Start()
+    {
+        base.Start();
+        rb = GetComponent<Rigidbody>();
+        Flock = FindAnyObjectByType<Flock>();
+
+        Data.AddData(DataKey.PLAYER, this);
+        AidFiringTargetCursor = Instantiate(TargetCursorPrefab);
+        AidFiringTargetCursor.SetActive(false);
+        Data.AddData(DataKey.TARGET_FIRING, AidFiringTargetCursor);
+    }
+    void Update()
+    {
+        if (AidFiringTargetCursor != null)
+        {
+            if (AidFiringTargetCursor.activeSelf)
+            {
+                currentTimer += Time.deltaTime;
+                if (currentTimer > HoldAidFiring)
+                {
+                    AidFiringTargetCursor.SetActive(false);
+                    currentTimer = 0f;
+                }
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position, transform.forward * 3);
+    }
+
+    #endregion
+
 
     private GameObject GetTargetCursor()
     {
         if (TargetCursor == null)
             TargetCursor = Instantiate(TargetCursorPrefab);
         return TargetCursor;
+    }
+    public override void ShootToPosition(Vector3 _pos)
+    {
+        // fire
+        if (Gun)
+        {
+            AimAtPosition(_pos);
+            if (IsInRangeAndNotTooClose(_pos)) { 
+                Gun.Shoot();
+                AidFiring(_pos);
+            }
+        }
+    }
+
+    public void AidFiring(Vector3 _pos)
+    {
+        currentTimer = 0f;
+        AidFiringTargetCursor.transform.position = _pos;
+        AidFiringTargetCursor.SetActive(true);
     }
 
     public override void AddDamage(int _amount)
@@ -49,24 +108,4 @@ public class PlayerAgent : Entity
         rb.MovePosition(rb.position + _velocity * Time.deltaTime);
     }
 
-    #region MonoBehaviour Methods
-    protected override void Start()
-    {
-        base.Start();
-        rb = GetComponent<Rigidbody>();
-        Flock = FindAnyObjectByType<Flock>();
-
-        Data.AddData(DataKey.PLAYER, this);
-    }
-    void Update()
-    {
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position, transform.forward * 3);
-    }
-
-    #endregion
 }

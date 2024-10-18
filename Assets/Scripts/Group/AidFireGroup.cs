@@ -5,11 +5,13 @@ public class AidFireGroup : MonoBehaviour
 {
     [SerializeField, Range(0, 100)] private int percentOfGroup = 50;
     private Flock Flock;
+    private BlackBoard Data;
+
     void Start()
     {
         Flock = GetComponent<Flock>();
+        Data = Flock.BlackBoard;
     }
-
     public void ApplyAidFire(Vector3 _target)
     {
         if (Flock != null)

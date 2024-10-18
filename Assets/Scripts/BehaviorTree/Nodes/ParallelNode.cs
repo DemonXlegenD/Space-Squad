@@ -42,14 +42,14 @@ public class ParallelNode : CompositeNode
                 }
                 anyChildRunning = true;
             }
-            else if (childState == State.Failure && requireAllSuccess)
+            else if (childState == State.Failure)
             {
                 state = State.Failure;
                 return state;
             }
         }
 
-        if (requireAllSuccess && !anyChildRunning)
+        if (!anyChildRunning)
         {
             state = State.Success;
         }
