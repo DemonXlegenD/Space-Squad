@@ -8,6 +8,7 @@ public class A_MoveToNode : ActionNode
     public enum MoveToLocation{
         PLAYER,
         TARGET,
+        TARGET_PROTECT,
     }
 
     [SerializeField] private MoveToLocation CurrentMoveToLocation = MoveToLocation.PLAYER;
@@ -37,6 +38,10 @@ public class A_MoveToNode : ActionNode
             case MoveToLocation.TARGET:
                 target_ = (Tree.Data.GetValue<GameObject>(DataKey.TARGET)).transform.position;
                 stopDist = npc.GetComponent<AIAgent>().Gun.MaxRange;
+                break;
+
+            case MoveToLocation.TARGET_PROTECT:
+                target_ = npc.GetComponent<Guardian>().OffsetCheck.offset;
                 break;
             default:
                 break;

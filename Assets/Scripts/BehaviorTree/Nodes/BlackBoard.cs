@@ -104,4 +104,7 @@ public class BlackBoard : ScriptableObject
 public enum DataKey{
     PLAYER,
     TARGET,
+    DANGER_ZONE_OFFSETS,
+    TARGET_HEALER,
+    TARGET_PROTECT,
 }
