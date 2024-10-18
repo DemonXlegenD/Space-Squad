@@ -41,7 +41,8 @@ public class A_MoveToNode : ActionNode
                 break;
 
             case MoveToLocation.TARGET_PROTECT:
-                target_ = npc.GetComponent<Guardian>().OffsetCheck.offset;
+                target_ = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<Guardian>().OffsetCheck.offset * 2;
+                stopDist = 0.1f;
                 break;
             default:
                 break;

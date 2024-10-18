@@ -9,10 +9,6 @@ public class SelectorNode : CompositeNode
     protected override void Start()
     {
         base.Start();
-        foreach (Transform child in transform) 
-        {
-            children.Add(child.GetComponent<Node>());
-        }
     }
 
     #region Overrides of Node
