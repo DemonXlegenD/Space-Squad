@@ -14,7 +14,7 @@ public class A_HealNode : ActionNode
 
     protected override State OnUpdate()
     {
-        if (Vector3.Distance((Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position, npc.transform.position) <= 3f) // If character health is low
+        if (Vector3.Distance((Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position, npc.transform.position) <= 3f)
         {
             Debug.Log("HEALINGUUU");
             npc.GetComponent<FlockAgent>().HealingPlayer.NPCHealPlayer();

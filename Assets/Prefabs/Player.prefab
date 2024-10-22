@@ -532,6 +532,7 @@ MonoBehaviour:
   Gun: {fileID: 0}
   TargetCursorPrefab: {fileID: 1510336254582165163, guid: 7b6276c878e17d241921c647a7d9da0e,
     type: 3}
+  HoldAidFiring: 0.5
 --- !u!114 &2227746623033350647
 MonoBehaviour:
   m_ObjectHideFlags: 0

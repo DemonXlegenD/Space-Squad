@@ -26,7 +26,6 @@ public class CharacterHealth : MonoBehaviour
 
     public void Healing(float _health)
     {
-        
         currentHealth += _health;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         healthBarController.SetHealth(currentHealth, maxHealth);

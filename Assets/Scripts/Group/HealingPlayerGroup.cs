@@ -7,7 +7,6 @@ public class HealingPlayerGroup : MonoBehaviour
     [SerializeField, Range(0, 100)] private int percentOfGroup = 50;
     private Flock Flock;
 
-
     private List<FlockAgent> HealingAgents = new List<FlockAgent>();
 
     void Start()
@@ -58,6 +57,13 @@ public class HealingPlayerGroup : MonoBehaviour
 
     public bool IsEmptyHealing()
     {
+        foreach (FlockAgent flock_agent in HealingAgents)
+        {
+            if (!flock_agent.IsCurrentlyHealingPlayer) 
+            {
+                HealingAgents.Remove(flock_agent);
+            }
+        }
         return HealingAgents.Count == 0;
     }
 }

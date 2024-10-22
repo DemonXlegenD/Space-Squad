@@ -80,9 +80,8 @@ public class PlayerAgent : Entity
     public override void AddDamage(int _amount)
     {
         base.AddDamage(_amount);
-        if (CharacterHealth.IsLowHealth())
+        if (!CharacterHealth.IsMaxHealth())
         {
-            Debug.Log("LowHealth");
             Flock.HealingGroup.ApplyHealingPlayer(transform.position);
         }
     }

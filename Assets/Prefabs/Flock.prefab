@@ -59,6 +59,7 @@ MonoBehaviour:
   leaderPosition: {x: 0, y: 0, z: 0}
   leader: {fileID: 0}
   distanceBetweenAgent: 5
+  BlackBoard: {fileID: 0}
 --- !u!114 &5289270714105815238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,4 +114,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32325d99e3d2d1a4a92ce29da379ed70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  percentOfGroup: 25
+  percentOfGroup: 50

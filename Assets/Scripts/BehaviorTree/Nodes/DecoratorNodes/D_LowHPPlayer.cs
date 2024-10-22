@@ -12,7 +12,7 @@ public class D_LowHPPlayer : DecoratorNode
 
     protected override State OnUpdate()
     {
-        if ((Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).CharacterHealth.IsLowHealth()) // If character health is low
+        if ((Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).CharacterHealth.IsLowHealth() || npc.GetComponent<FlockAgent>().IsCurrentlyHealingPlayer) // If character health is low
         {
             //if(npc.GetComponent<FlockAgent>().IsCurrentlyHealingPlayer) // If npc is one of the closest to the target
             //{
