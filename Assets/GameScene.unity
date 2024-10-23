@@ -6540,6 +6540,24 @@ PrefabInstance:
       objectReference: {fileID: 1299458880}
     - target: {fileID: 6019295468392039324, guid: 9398326d27a00574dbd34a8c721e1d11,
         type: 3}
+      propertyPath: VFormation
+      value: 
+      objectReference: {fileID: 11400000, guid: c2088512ac76dea4d832477f0ec9e9e2,
+        type: 2}
+    - target: {fileID: 6019295468392039324, guid: 9398326d27a00574dbd34a8c721e1d11,
+        type: 3}
+      propertyPath: CircleFormation
+      value: 
+      objectReference: {fileID: 11400000, guid: 3f2775c0003f9fc4a8d3ad7a7d3153a8,
+        type: 2}
+    - target: {fileID: 6019295468392039324, guid: 9398326d27a00574dbd34a8c721e1d11,
+        type: 3}
+      propertyPath: SquareFormation
+      value: 
+      objectReference: {fileID: 11400000, guid: 538d60b4095475a41808776bd07ad899,
+        type: 2}
+    - target: {fileID: 6019295468392039324, guid: 9398326d27a00574dbd34a8c721e1d11,
+        type: 3}
       propertyPath: roleAgentPrefab.Array.data[0]
       value: 
       objectReference: {fileID: 1539861752950172165, guid: 1b3d910e315ceef439a7c95037e164e3,

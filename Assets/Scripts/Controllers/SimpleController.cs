@@ -75,6 +75,19 @@ public class SimpleController : MonoBehaviour
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Debug.Log("V");
+            Flock.ApplyVFormation();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Flock.ApplyCircleFormation();
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Flock.ApplySquareFormation();
+        }
     }
     
 	void FixedUpdate()

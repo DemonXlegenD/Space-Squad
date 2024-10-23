@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Flock : MonoBehaviour
 {
@@ -9,7 +10,11 @@ public class Flock : MonoBehaviour
 
     [SerializeField] private FlockAgent flockAgentPrefab;
     [SerializeField] private List<FlockAgent> roleAgentPrefab = new List<FlockAgent>();
-    [SerializeField] private Formation formation;
+    private Formation formation;
+    [SerializeField] private Formation VFormation;
+    [SerializeField] private Formation SquareFormation;
+    [SerializeField] private Formation CircleFormation;
+
 
     [SerializeField, Range(3, 15)] private int startingCount = 3;   
 
@@ -30,9 +35,28 @@ public class Flock : MonoBehaviour
 
     public BlackBoard BlackBoard;
 
+    public void ApplyVFormation()
+    {
+        formation = VFormation;
+        Recalculate();
+    }
+
+    public void ApplySquareFormation()
+    {
+        formation = SquareFormation;
+        Recalculate();
+    }
+
+    public void ApplyCircleFormation()
+    {
+        formation = CircleFormation;
+        Recalculate();
+    }
+
 
     private void Start()
     {
+        formation = SquareFormation;
         protectGroup = GetComponent<ProtectGroup>();
         healingGroup = GetComponent<HealingPlayerGroup>();
         List<Vector3> positions = formation.CalculatePositions(leader.transform, startingCount, distanceBetweenAgent);
@@ -86,6 +110,7 @@ public class Flock : MonoBehaviour
         for (int i = 0; i < startingCount; i++)
         {
             FlockAgent agent = flockAgents[i];
+            agent.Offset = positions[i] - leader.transform.position;
             agent.SetTarget(positions[i]);
             agent.Move();
         }
