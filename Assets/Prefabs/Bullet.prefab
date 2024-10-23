@@ -51,6 +51,9 @@ MonoBehaviour:
   Duration: 2
   M_Ally: {fileID: 2100000, guid: a53e2e5def4cbf94a9842ef8cab7f7f8, type: 2}
   M_Enemy: {fileID: 2100000, guid: d4028eb6e82ae0c43abb7a8e1dd2d069, type: 2}
+  layerToDealDamage:
+    serializedVersion: 2
+    m_Bits: 896
 --- !u!54 &260779506791774270
 Rigidbody:
   m_ObjectHideFlags: 0

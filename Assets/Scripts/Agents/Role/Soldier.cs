@@ -9,6 +9,5 @@ public class Soldier : Role
     protected override void Start()
     {
         base.Start();
-        SetColorToMaterial(color);
     }
 }

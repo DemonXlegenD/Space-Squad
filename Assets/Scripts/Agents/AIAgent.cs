@@ -28,8 +28,6 @@ namespace FSMMono
 
             NavMeshAgentInst = GetComponent<NavMeshAgent>();
 
-            Renderer rend = transform.Find("Body").GetComponent<Renderer>();
-            MaterialInst = rend.material;
 
             //NavMeshAgentInst.updatePosition = false;
         }

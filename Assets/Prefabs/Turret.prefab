@@ -144,10 +144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de98f4b0d21cbcf4b9fc062432752755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Data: {fileID: 0}
+  Gun: {fileID: 0}
+  isMachineGun: 1
   layers:
     serializedVersion: 2
     m_Bits: 640
-  MaxHP: 100
   ShootFrequency: 1
 --- !u!114 &1279897094017986582
 MonoBehaviour:

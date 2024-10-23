@@ -104,7 +104,7 @@ MonoBehaviour:
   layers:
     serializedVersion: 2
     m_Bits: 0
-  maxRange: 10
+  maxRange: 15
   minRange: 2.5
   maxBullets: 10
   timerFire: 0.2

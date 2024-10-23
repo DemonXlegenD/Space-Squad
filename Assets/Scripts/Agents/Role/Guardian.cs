@@ -9,7 +9,6 @@ public class Guardian : Role
     protected override void Start()
     {
         base.Start();
-        SetColorToMaterial(color);
     }
 
     public void AttributeOffset(OffsetCheck _offsetCheck)

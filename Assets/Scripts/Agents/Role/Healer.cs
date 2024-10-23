@@ -23,7 +23,6 @@ public class Healer : Role
     protected override void Start()
     {
         base.Start();
-        SetColorToMaterial(color);
         agent = GetComponent<FlockAgent>();
         AIAgent = GetComponent<AIAgent>();
         playerAgent = FindAnyObjectByType<PlayerAgent>();

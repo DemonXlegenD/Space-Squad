@@ -8,6 +8,7 @@ public class Gun : MonoBehaviour
     GameObject BulletPrefab;
     [SerializeField]
     GameObject DropAmmoPrefab;
+    [SerializeField] private int Damage = 10;
 
     public LayerMask layers;
     [SerializeField, Range(10f, 25f)] private float maxRange = 10f;
@@ -41,6 +42,7 @@ public class Gun : MonoBehaviour
                     GameObject bullet = Instantiate<GameObject>(BulletPrefab, transform.position + (transform.up * 0.5f), Quaternion.LookRotation(transform.forward, transform.up));
                     GameObject drop_ammo = Instantiate<GameObject>(DropAmmoPrefab, transform.position + (transform.up * 0.5f) + (transform.right * 0.2f), Quaternion.LookRotation(transform.forward, transform.up));
                     bullet.layer = bulletLayerMask; 
+                    bullet.GetComponent<Bullet>().Damage = Damage;
                     drop_ammo.layer = bulletLayerMask;
                     Rigidbody rb = bullet.GetComponent<Rigidbody>();
                     rb.AddForce(transform.up * BulletPower);
