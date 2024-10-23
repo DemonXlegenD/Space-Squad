@@ -17,7 +17,6 @@ public class A_ReformationNode : ActionNode
     {
         if (shouldReset) 
         {
-            Debug.Log("Node - OUI");
             npc.GetComponent<FlockAgent>().ResetFlock();
 
             return State.Success;

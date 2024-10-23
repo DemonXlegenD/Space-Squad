@@ -12,7 +12,6 @@ public class DropAmmo : MonoBehaviour
     void Start()
     {
         Renderer = GetComponent<Renderer>();
-        Debug.Log(tag);
         if (gameObject.layer == LayerMask.NameToLayer("AllyBullet")) Renderer.sharedMaterial = M_Ally;
         else Renderer.sharedMaterial = M_Enemy;
         Destroy(gameObject, Duration);

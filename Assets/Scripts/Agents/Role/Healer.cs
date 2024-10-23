@@ -57,7 +57,6 @@ public class Healer : Role
             {
                 agent.MoveTo(playerAgent.transform.position);
                 currentTimer = 0f;
-                Debug.Log("Not Good Distance");
             }
             else
             {

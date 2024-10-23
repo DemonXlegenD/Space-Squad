@@ -29,11 +29,6 @@ public class BehaviorTreeRunner : MonoBehaviour
         if (!hasRootNode)
         {
             hasRootNode = rootNode != null;
-
-            if (!hasRootNode)
-            {
-                Debug.LogWarning($"{name} needs a root node in order to properly run. Please add one.", this);
-            }
         }
         
         if (hasRootNode)

@@ -13,7 +13,6 @@ public class DebugLogNode : ActionNode
 
     protected override State OnUpdate()
     {
-        Debug.Log($"OnUpdate: {message}");
         return State.Success;
     }
 

@@ -15,7 +15,6 @@ public class BlackBoard : ScriptableObject
     {
         TypeMapping.AddValueType(key, typeof(T)); 
         Data.Add(key, y);
-        Debug.Log(Data.Count);
     }
 
     public object GetData(DataKey key) 

@@ -15,7 +15,7 @@ public class TypeMapping
         }
         else
         {
-            Debug.LogError($"Type non trouvé pour {valueType.ToString()}");
+            Debug.LogError($"Type non trouvï¿½ pour {valueType.ToString()}");
             return null;
         }
     }
@@ -25,11 +25,10 @@ public class TypeMapping
         if (!typeMapping.ContainsKey(valueType))
         {
             typeMapping.Add(valueType, type);
-            Debug.Log($"Ajout de {valueType} avec le type {type}");
         }
         else
         {
-            Debug.LogWarning($"Le ValueType {valueType} est déjà associé au type {typeMapping[valueType]} et ne sera pas ajouté à nouveau.");
+            Debug.LogWarning($"Le ValueType {valueType} est dï¿½jï¿½ associï¿½ au type {typeMapping[valueType]} et ne sera pas ajoutï¿½ ï¿½ nouveau.");
         }
     }
 }

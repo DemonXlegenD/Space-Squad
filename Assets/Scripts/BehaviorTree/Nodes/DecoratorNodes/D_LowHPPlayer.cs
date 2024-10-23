@@ -19,7 +19,6 @@ public class D_LowHPPlayer : DecoratorNode
                 return child.UpdateNode();
             }
         }
-
         return State.Failure;
     }
 

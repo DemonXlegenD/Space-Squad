@@ -65,7 +65,6 @@ public class HealingPlayer : MonoBehaviour
             {
                 agent.MoveTo(playerAgent.transform.position);
                 currentTimer = 0f;
-                Debug.Log("Not Good Distance");
             }
             else
             {

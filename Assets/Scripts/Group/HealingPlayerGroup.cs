@@ -26,15 +26,6 @@ public class HealingPlayerGroup : MonoBehaviour
                     flock_agent.IsCurrentlyHealingPlayer = true;
                 }
             }
-            else
-            {
-                Debug.Log(HealingAgents.Count);
-            }
-           
-        }
-        else
-        {
-            Debug.Log("Flock is necessary");
         }
     }
 

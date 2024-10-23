@@ -30,10 +30,6 @@ public class AidFireGroup : MonoBehaviour
 
             }
         }
-        else
-        {
-            Debug.Log("Flock is necessary");
-        }
     }
 
     public void ResetAidFire()

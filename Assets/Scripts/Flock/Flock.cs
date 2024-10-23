@@ -121,7 +121,6 @@ public class Flock : MonoBehaviour
 
         int countToRetrieve = Mathf.CeilToInt(distanceToNPCMap.Count * _percent / 100);
 
-        //Debug.Log(distanceToNPCMap.Count);
         return distanceToNPCMap
             .OrderBy(kvp => kvp.Value)
             .Take(countToRetrieve)

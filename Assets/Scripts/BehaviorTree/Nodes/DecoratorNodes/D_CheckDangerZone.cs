@@ -17,7 +17,6 @@ public class D_CheckDangerZone : DecoratorNode
         {
             if(Tree.Data.GetValue<OffsetsCheck>(DataKey.DANGER_ZONE_OFFSETS).IsOneOffsetFree())
             {
-                Debug.Log("OneIsFree");
                 return child.UpdateNode();
             }
         }

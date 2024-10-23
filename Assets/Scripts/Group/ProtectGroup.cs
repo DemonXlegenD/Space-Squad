@@ -29,13 +29,8 @@ public class ProtectGroup : MonoBehaviour
                 {
                     flock_agent.ProtectPlayer.ChangeOffset(_offset);
                 }
-                Debug.Log("Protege déjà");
             }
 
-        }
-        else
-        {
-            Debug.Log("Flock is necessary");
         }
     }
 

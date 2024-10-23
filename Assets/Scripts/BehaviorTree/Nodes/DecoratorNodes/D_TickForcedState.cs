@@ -31,7 +31,6 @@ public class D_TickForcedState : DecoratorNode
         currentTimer += Tree.CurrentTimer;
         if (currentTimer > TimerForced)
         {
-            Debug.Log("SUCCESS");
             currentTimer = 0f;
             switch (forcedState)
             {

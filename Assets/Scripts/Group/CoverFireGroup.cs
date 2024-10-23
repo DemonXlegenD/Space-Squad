@@ -57,10 +57,6 @@ public class CoverFireGroup : MonoBehaviour
                 flock_agent.IsCurrentlyCoverFiring = true;
             }
         }
-        else
-        {
-            Debug.Log("Flock is necessary");
-        }
     }
 
     public void ResetCoverFire()

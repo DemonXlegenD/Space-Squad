@@ -75,7 +75,6 @@ public class FlockAgent : MonoBehaviour
 
     public void ResetFlock()
     {
-        Debug.Log("RESET");
         StartFlocking();
         RecalculatePosition();
     }
