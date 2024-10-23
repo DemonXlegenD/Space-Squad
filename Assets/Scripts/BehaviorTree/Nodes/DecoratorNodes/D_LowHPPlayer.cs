@@ -14,10 +14,10 @@ public class D_LowHPPlayer : DecoratorNode
     {
         if ((Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).CharacterHealth.IsLowHealth() || npc.GetComponent<FlockAgent>().IsCurrentlyHealingPlayer) // If character health is low
         {
-            //if(npc.GetComponent<FlockAgent>().IsCurrentlyHealingPlayer) // If npc is one of the closest to the target
-            //{
-            return child.UpdateNode();
-            //}
+            if(npc.GetComponent<FlockAgent>().IsCurrentlyHealingPlayer) // If npc is one of the closest to the target
+            {
+                return child.UpdateNode();
+            }
         }
 
         return State.Failure;
