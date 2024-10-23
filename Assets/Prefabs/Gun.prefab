@@ -96,13 +96,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa3c63c48f3fe2468e8d02ef0651a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletPower: 10
+  BulletPower: 100
   BulletPrefab: {fileID: 2180669255350586930, guid: 1539376290df9a54e8404edc666e8d53,
+    type: 3}
+  DropAmmoPrefab: {fileID: 2180669255350586930, guid: b30948cecb3e91c4398d6c58218d7bd6,
     type: 3}
   layers:
     serializedVersion: 2
     m_Bits: 0
-  range: 10
+  maxRange: 10
+  minRange: 2.5
   maxBullets: 10
   timerFire: 0.2
   timerReloading: 2

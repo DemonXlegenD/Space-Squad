@@ -580,7 +580,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -695,7 +695,7 @@ PrefabInstance:
     - target: {fileID: -8867060703857745511, guid: 194f8a45260da9440bf91dc48bf4a4d3,
         type: 3}
       propertyPath: BulletPower
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8867060703857745511, guid: 194f8a45260da9440bf91dc48bf4a4d3,
         type: 3}
@@ -791,6 +791,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 532126776145519707}
     m_Modifications:
+    - target: {fileID: 754589607785332797, guid: 4e893d5b7ab724545912e2e912d647d4,
+        type: 3}
+      propertyPath: timerUpdate
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 2361813770556098602, guid: 4e893d5b7ab724545912e2e912d647d4,
         type: 3}
       propertyPath: m_Name

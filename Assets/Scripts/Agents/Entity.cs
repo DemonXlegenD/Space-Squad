@@ -44,6 +44,7 @@ public class Entity : MonoBehaviour, IDamageable
     public virtual void AddDamage(int _amount)
     {
         characterHealth.TakeDamage(_amount);
+        if(characterHealth.IsDead()) gameObject.SetActive(false);
     }
 
     public bool IsTooClose(Vector3 _position)

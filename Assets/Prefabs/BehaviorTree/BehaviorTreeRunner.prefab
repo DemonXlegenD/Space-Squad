@@ -48,7 +48,7 @@ MonoBehaviour:
   Data: {fileID: 11400000, guid: cd404d97ce0e12446b9c20e6e843e57d, type: 2}
   rootNode: {fileID: 0}
   treeState: 0
-  timerUpdate: 0.1
+  timerUpdate: 0.01
 --- !u!1 &3944769745159463166
 GameObject:
   m_ObjectHideFlags: 0

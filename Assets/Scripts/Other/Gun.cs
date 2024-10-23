@@ -6,6 +6,8 @@ public class Gun : MonoBehaviour
     float BulletPower = 1000f;
     [SerializeField]
     GameObject BulletPrefab;
+    [SerializeField]
+    GameObject DropAmmoPrefab;
 
     public LayerMask layers;
     [SerializeField, Range(10f, 25f)] private float maxRange = 10f;
@@ -34,10 +36,12 @@ public class Gun : MonoBehaviour
 
             if (!Physics.Raycast(ray, out hit, MaxRange, layers))
             {
-                if (BulletPrefab)
+                if (BulletPrefab && DropAmmoPrefab)
                 {
-                    GameObject bullet = Instantiate<GameObject>(BulletPrefab, transform.position + (transform.up * 0.5f), Quaternion.identity);
-                    bullet.layer = bulletLayerMask;
+                    GameObject bullet = Instantiate<GameObject>(BulletPrefab, transform.position + (transform.up * 0.5f), Quaternion.LookRotation(transform.forward, transform.up));
+                    GameObject drop_ammo = Instantiate<GameObject>(DropAmmoPrefab, transform.position + (transform.up * 0.5f) + (transform.right * 0.2f), Quaternion.LookRotation(transform.forward, transform.up));
+                    bullet.layer = bulletLayerMask; 
+                    drop_ammo.layer = bulletLayerMask;
                     Rigidbody rb = bullet.GetComponent<Rigidbody>();
                     rb.AddForce(transform.up * BulletPower);
                     currentBullets--;
@@ -49,7 +53,7 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
-        if ((1 << gameObject.layer) == LayerMask.GetMask("Allies"))
+        if ((1 << gameObject.layer) == LayerMask.GetMask("Allies") || (1 << gameObject.layer) == LayerMask.GetMask("Player"))
         {
             bulletLayerMask = LayerMask.NameToLayer("AllyBullet");
         }
