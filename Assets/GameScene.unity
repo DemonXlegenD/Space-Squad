@@ -6435,6 +6435,24 @@ PrefabInstance:
       propertyPath: leader
       value: 
       objectReference: {fileID: 1299458880}
+    - target: {fileID: 6019295468392039324, guid: 9398326d27a00574dbd34a8c721e1d11,
+        type: 3}
+      propertyPath: roleAgentPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 1539861752950172165, guid: 1b3d910e315ceef439a7c95037e164e3,
+        type: 3}
+    - target: {fileID: 6019295468392039324, guid: 9398326d27a00574dbd34a8c721e1d11,
+        type: 3}
+      propertyPath: roleAgentPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 1539861752950172165, guid: d235441de5e2cdc46b525343118939cf,
+        type: 3}
+    - target: {fileID: 6019295468392039324, guid: 9398326d27a00574dbd34a8c721e1d11,
+        type: 3}
+      propertyPath: roleAgentPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 1539861752950172165, guid: 845dd1c6b0e62f94e906cb967a1f7df2,
+        type: 3}
     - target: {fileID: 6719824424854429034, guid: 9398326d27a00574dbd34a8c721e1d11,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -35,9 +35,12 @@ public class Entity : MonoBehaviour, IDamageable
     {
         if (IsInRangeAndNotTooClose(_pos))
         {
-            Vector3 targetLookAt = _pos + Vector3.up * transform.position.y;
-            targetLookAt.y = transform.position.y;
-            transform.LookAt(targetLookAt);
+            Vector3 targetNpcLookAt = _pos + Vector3.up * transform.position.y;
+            targetNpcLookAt.y = transform.position.y;
+
+            Vector3 targetLookAt = _pos;
+            Gun.transform.rotation = Quaternion.LookRotation((targetLookAt - Gun.transform.position)) ;
+            transform.LookAt(targetNpcLookAt);
         }
     }
 

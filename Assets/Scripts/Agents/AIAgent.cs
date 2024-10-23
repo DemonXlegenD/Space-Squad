@@ -7,19 +7,24 @@ namespace FSMMono
     public class AIAgent : Entity
     {
         NavMeshAgent NavMeshAgentInst;
-        Material MaterialInst;
-
-
-        private void SetMaterial(Color _col)
-        {
-            MaterialInst.color = _col;
-        }
-        public void SetWhiteMaterial() { SetMaterial(Color.white); }
-        public void SetRedMaterial() { SetMaterial(Color.red); }
-        public void SetBlueMaterial() { SetMaterial(Color.blue); }
-        public void SetYellowMaterial() { SetMaterial(Color.yellow); }
 
         public Transform Target;
+
+        [SerializeField] private RotateManager RotateManager;
+
+        public override void AimAtPosition(Vector3 _pos)
+        {
+            if (IsInRangeAndNotTooClose(_pos))
+            {
+                Vector3 targetNpcLookAt = _pos + Vector3.up * transform.position.y;
+                targetNpcLookAt.y = transform.position.y;
+
+                Vector3 targetLookAt = _pos;
+                transform.LookAt(targetNpcLookAt);
+
+                RotateManager.Rotate(_pos);
+            }
+        }
 
         #region MonoBehaviour
 
@@ -27,9 +32,13 @@ namespace FSMMono
         {
 
             NavMeshAgentInst = GetComponent<NavMeshAgent>();
-
-
             //NavMeshAgentInst.updatePosition = false;
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+            RotateManager = GetComponent<RotateManager>();
         }
         private void OnTriggerEnter(Collider other)
         {

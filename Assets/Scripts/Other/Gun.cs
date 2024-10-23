@@ -53,6 +53,8 @@ public class Gun : MonoBehaviour
         }
     }
 
+
+
     private void Start()
     {
         if ((1 << gameObject.layer) == LayerMask.GetMask("Allies") || (1 << gameObject.layer) == LayerMask.GetMask("Player"))

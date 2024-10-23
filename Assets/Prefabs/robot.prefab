@@ -480,11 +480,34 @@ PrefabInstance:
       insertIndex: 0
       addedObject: {fileID: 8361862593630834807}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3295368420796540598, guid: e5e8714dbba039e488efe8b91e22ae69,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 60438341446624032}
     - targetCorrespondingSourceObject: {fileID: -8006371891082701711, guid: e5e8714dbba039e488efe8b91e22ae69,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6374452342991277470}
   m_SourcePrefab: {fileID: 100100000, guid: e5e8714dbba039e488efe8b91e22ae69, type: 3}
+--- !u!1 &5034750039004214765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3295368420796540598, guid: e5e8714dbba039e488efe8b91e22ae69,
+    type: 3}
+  m_PrefabInstance: {fileID: 7522285034324415323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &60438341446624032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034750039004214765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1296ca3591e6e4e4499d00c44cdf9881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endArmTransform: {fileID: 0}
 --- !u!4 &8065453385926161584 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e5e8714dbba039e488efe8b91e22ae69,
@@ -514,6 +537,7 @@ MonoBehaviour:
     type: 3}
   DropAmmoPrefab: {fileID: 2180669255350586930, guid: b30948cecb3e91c4398d6c58218d7bd6,
     type: 3}
+  Damage: 10
   layers:
     serializedVersion: 2
     m_Bits: 0
