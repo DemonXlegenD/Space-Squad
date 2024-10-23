@@ -1,3 +1,4 @@
+using FSMMono;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,44 +14,39 @@ public class TurretAgent : Entity
 
     float NextShootDate = 0f;
 
-
-    int CurrentHP;
-
     GameObject Target = null;
 
 
     void Update()
     {
+        DetectNearbyObjects();
+
         if (Target && Time.time >= NextShootDate && isMachineGun)
         {
+
             NextShootDate = Time.time + ShootFrequency;
             ShootToPosition(Target.transform.position);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void DetectNearbyObjects()
     {
-       
-        if (Target == null && other.gameObject.activeSelf && ((1 << other.gameObject.layer) & layers) != 0)
-        {
-            Target = other.gameObject;
-          
-        }
-    }
+        // Crée une sphère de détection autour de l'objet (transform.position) avec un rayon de 10 m
+        Collider[] colliders = Physics.OverlapSphere(transform.position, Gun.MaxRange, layers);
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (Target == null && other.gameObject.activeSelf && ((1 << other.gameObject.layer) & layers) != 0)
+        // Parcours tous les colliders détectés
+        foreach (Collider collider in colliders)
         {
-            Target = other.gameObject;
+            // Calcule la distance entre l'objet détecté et l'objet qui porte ce script
+            float distance = Vector3.Distance(transform.position, collider.transform.position);
 
+            // Vérifie si la distance est supérieure à la distance minimale
+            if (distance >= Gun.MinRange)
+            {
+                Target = collider.gameObject;
+                return;
+            }
         }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (Target != null && other.gameObject.activeSelf && other.gameObject == Target)
-        {
-            Target = null;
-        }
+        Target = null;
     }
 }

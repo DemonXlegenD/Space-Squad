@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Entity : MonoBehaviour, IDamageable
@@ -33,14 +34,17 @@ public class Entity : MonoBehaviour, IDamageable
 
     public virtual void AimAtPosition(Vector3 _pos)
     {
+  
         if (IsInRangeAndNotTooClose(_pos))
         {
-            Vector3 targetNpcLookAt = _pos + Vector3.up * transform.position.y;
+            Vector3 targetNpcLookAt = _pos;
             targetNpcLookAt.y = transform.position.y;
 
             Vector3 targetLookAt = _pos;
-            Gun.transform.rotation = Quaternion.LookRotation((targetLookAt - Gun.transform.position)) ;
             transform.LookAt(targetNpcLookAt);
+
+            Gun.transform.LookAt(targetLookAt);
+            Gun.transform.localRotation *= Quaternion.Euler(90, 0, 0);
         }
     }
 

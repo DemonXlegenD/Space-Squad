@@ -5342,6 +5342,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 617856009675576574, guid: fbbfa16ea4fee0f4c959cca386e7c165,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 617856009675576574, guid: fbbfa16ea4fee0f4c959cca386e7c165,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 617856009675576574, guid: fbbfa16ea4fee0f4c959cca386e7c165,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617856009675576574, guid: fbbfa16ea4fee0f4c959cca386e7c165,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617856009675576574, guid: fbbfa16ea4fee0f4c959cca386e7c165,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 617856009675576574, guid: fbbfa16ea4fee0f4c959cca386e7c165,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2297159666715390864, guid: fbbfa16ea4fee0f4c959cca386e7c165,
         type: 3}
       propertyPath: m_AnchorMax.y

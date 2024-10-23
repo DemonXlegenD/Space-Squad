@@ -54,7 +54,7 @@ public class Flock : MonoBehaviour
             roleAgentPrefab[_index % roleAgentPrefab.Count],
             _position,
             Quaternion.Euler(Vector3.forward),
-            transform
+            null
             );
 
         new_agent.playerAgent = leader;

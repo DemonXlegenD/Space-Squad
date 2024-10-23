@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.name);
         if (((1 << collision.gameObject.layer) & layerToDealDamage) != 0)
         {
             IDamageable damagedAgent = collision.gameObject.GetComponentInParent<IDamageable>();
