@@ -18,7 +18,9 @@ public class TurretAgent : Entity
     public override void AddDamage(int _amount)
     {
         characterHealth.TakeDamage(_amount);
-        if (characterHealth.IsDead()) { FindAnyObjectByType<Pool>().AttributeRandomLocation(this); }
+        if (characterHealth.IsDead()) { 
+            FindAnyObjectByType<Pool>().AttributeRandomLocation(this); 
+        }
     }
 
     void Update()
