@@ -33,6 +33,13 @@ public class HealingPlayer : MonoBehaviour
         }
     }
 
+    public void CheckIfNPCIsHealing() 
+    {
+        if (playerAgent.CharacterHealth.IsMaxHealth())
+        {
+            agent.IsCurrentlyHealingPlayer = false;
+        }
+    }
     /*
     public void StopHealingPlayer()
     {

@@ -83,7 +83,7 @@ public class PlayerAgent : Entity
         if (!CharacterHealth.IsMaxHealth())
         {
             Flock.HealingGroup.ApplyHealingPlayer(transform.position);
-        }
+        } 
     }
 
     public override void AimAtPosition(Vector3 _pos)

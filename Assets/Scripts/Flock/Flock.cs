@@ -102,13 +102,21 @@ public class Flock : MonoBehaviour
         }
     }
 
-    public List<FlockAgent> GetCloserAgents(Vector3 _target, int _percent = 50)
+    public List<FlockAgent> GetCloserAgents(Vector3 _target, int _percent = 50, bool healer = false)
     {
         Dictionary<FlockAgent, float> distanceToNPCMap = new Dictionary<FlockAgent, float>(FlockAgents.Count);
 
         foreach (FlockAgent flock_agent in FlockAgents)
         {
-           if(flock_agent.IsAvailable) distanceToNPCMap.Add(flock_agent, flock_agent.DistanceToTarget(_target));
+           if (flock_agent.IsAvailable) 
+           {
+                if (flock_agent.GetComponent<Healer>() != null && healer) 
+                {
+                    distanceToNPCMap.Add(flock_agent, flock_agent.DistanceToTarget(_target));
+                } else if (!healer) {
+                    distanceToNPCMap.Add(flock_agent, flock_agent.DistanceToTarget(_target));
+                }
+           } 
         }
 
         int countToRetrieve = Mathf.CeilToInt(distanceToNPCMap.Count * _percent / 100);

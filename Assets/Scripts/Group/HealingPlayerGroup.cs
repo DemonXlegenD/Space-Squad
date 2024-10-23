@@ -20,16 +20,15 @@ public class HealingPlayerGroup : MonoBehaviour
         {
             if (IsEmptyHealing())
             {
-                HealingAgents = Flock.GetCloserAgents(_target, percentOfGroup);
+                HealingAgents = Flock.GetCloserAgents(_target, percentOfGroup, true);
                 foreach (FlockAgent flock_agent in HealingAgents)
                 {
                     flock_agent.IsCurrentlyHealingPlayer = true;
-                    //flock_agent.HealingPlayer.ApplyHealingPlayer();
                 }
             }
             else
             {
-                Debug.Log("Soigne deja le joueur");
+                Debug.Log(HealingAgents.Count);
             }
            
         }
@@ -59,11 +58,11 @@ public class HealingPlayerGroup : MonoBehaviour
     {
         foreach (FlockAgent flock_agent in HealingAgents)
         {
-            if (!flock_agent.IsCurrentlyHealingPlayer) 
+            if (flock_agent.IsCurrentlyHealingPlayer) 
             {
-                HealingAgents.Remove(flock_agent);
+                return false;
             }
         }
-        return HealingAgents.Count == 0;
+        return true;
     }
 }

@@ -20,7 +20,7 @@ public class A_HealNode : ActionNode
             npc.GetComponent<FlockAgent>().HealingPlayer.NPCHealPlayer();
             return State.Success;
         } else {
-            Debug.Log("Fail hea l");
+            npc.GetComponent<FlockAgent>().HealingPlayer.CheckIfNPCIsHealing();
             return State.Failure;
         }
     }
