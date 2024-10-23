@@ -15,7 +15,11 @@ public class TurretAgent : Entity
     float NextShootDate = 0f;
 
     GameObject Target = null;
-
+    public override void AddDamage(int _amount)
+    {
+        characterHealth.TakeDamage(_amount);
+        if (characterHealth.IsDead()) { FindAnyObjectByType<Pool>().AttributeRandomLocation(this); }
+    }
 
     void Update()
     {
