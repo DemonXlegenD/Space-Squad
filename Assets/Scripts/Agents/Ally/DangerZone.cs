@@ -67,8 +67,6 @@ public class DangerZone : MonoBehaviour
     private BlackBoard blackBoard;
     private OffsetsCheck OffsetsCheck = new OffsetsCheck();
 
-
-
     [SerializeField] private LayerMask BulletMask;
     // Start is called before the first frame update
     void Start()

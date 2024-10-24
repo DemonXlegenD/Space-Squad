@@ -6,6 +6,7 @@ public class VFormation : Formation
 {
     public override List<Vector3> CalculatePositions(Transform _leaderTransform, int _agentNumber, float _distanceBetweenAgents)
     {
+        _distanceBetweenAgents /= 2;
         List<Vector3> positions = new List<Vector3>(_agentNumber);
 
         Vector3 leader_position = _leaderTransform.position;

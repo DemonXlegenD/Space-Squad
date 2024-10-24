@@ -38,19 +38,9 @@ namespace FSMMono
             base.Start();
             RotateManager = GetComponent<RotateManager>();
         }
-        private void OnTriggerEnter(Collider other)
-        {
-        }
-        private void OnTriggerExit(Collider other)
-        {
-        }
-        private void OnDrawGizmos()
-        {
-        }
-
-        #endregion
-
-        #region Perception methods
+        private void OnTriggerEnter(Collider other) {}
+        private void OnTriggerExit(Collider other) {}
+        private void OnDrawGizmos() {}
 
         #endregion
 
@@ -68,11 +58,6 @@ namespace FSMMono
         {
             return NavMeshAgentInst.remainingDistance - NavMeshAgentInst.stoppingDistance <= 0f;
         }
-
-        #endregion
-
-        #region ActionMethods
-
 
         #endregion
     }

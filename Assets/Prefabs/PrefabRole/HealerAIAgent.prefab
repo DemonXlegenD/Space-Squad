@@ -66,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 8739580843433032925, guid: 3104561ee243dc249b94a5db7fefcd98,
         type: 3}
       propertyPath: m_Name
-      value: AIAllyAgent Variant
+      value: HealerAIAgent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -95,6 +95,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f11ca161d4bb74caaedbc93c662369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 1, b: 1, a: 1}
-  timerHealing: 1
-  healingDistance: 2

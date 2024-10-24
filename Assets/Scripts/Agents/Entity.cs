@@ -5,16 +5,15 @@ using UnityEngine;
 public class Entity : MonoBehaviour, IDamageable
 {
     [SerializeField] private float respawnTime = 30f;
-    private float currentTimer = 0f;
-
     [SerializeField] public BlackBoard Data;
-    public Gun Gun;
-    protected CharacterHealth characterHealth;
 
+    private float currentTimer = 0f;
+    public Gun Gun;
+
+    protected CharacterHealth characterHealth;
     public CharacterHealth CharacterHealth { get { return characterHealth; } }
 
     protected bool isNeedingHealing = false;
-
     public bool IsNeedingHealing { get { return isNeedingHealing; } set { isNeedingHealing = value; } }
 
     public bool IsDead
@@ -38,7 +37,6 @@ public class Entity : MonoBehaviour, IDamageable
 
     public virtual void AimAtPosition(Vector3 _pos)
     {
-  
         if (IsInRangeAndNotTooClose(_pos))
         {
             Vector3 targetNpcLookAt = _pos;
@@ -85,7 +83,6 @@ public class Entity : MonoBehaviour, IDamageable
         characterHealth = GetComponent<CharacterHealth>();
         Gun = GetComponentInChildren<Gun>();
     }
-
 
     #endregion
 

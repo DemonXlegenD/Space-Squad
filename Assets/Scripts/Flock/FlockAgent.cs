@@ -30,8 +30,8 @@ public class FlockAgent : MonoBehaviour
     private ProtectPlayer protectPlayer;
     public ProtectPlayer ProtectPlayer { get { return protectPlayer; } }
 
-    private HealingPlayer healingPlayer;
-    public HealingPlayer HealingPlayer { get { return healingPlayer; } }
+    private Healer healingPlayer;
+    public Healer HealingPlayer { get { return healingPlayer; } }
 
     private bool isAvailable = true;   
 
@@ -47,7 +47,7 @@ public class FlockAgent : MonoBehaviour
         coverFire = GetComponent<CoverFire>();
         aidFire = GetComponent<AidFire>();
         protectPlayer = GetComponent<ProtectPlayer>();
-        healingPlayer = GetComponent<HealingPlayer>();
+        healingPlayer = GetComponent<Healer>();
     }
 
     private void Update() {}

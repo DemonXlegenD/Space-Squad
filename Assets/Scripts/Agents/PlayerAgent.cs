@@ -3,15 +3,14 @@ using UnityEngine;
 public class PlayerAgent : Entity
 {
 
-    [SerializeField]
-    GameObject TargetCursorPrefab = null;
+    [SerializeField] GameObject TargetCursorPrefab = null;
+    [SerializeField] private float HoldAidFiring = 0.5f;
 
     Rigidbody rb;
     GameObject TargetCursor = null;
     GameObject AidFiringTargetCursor = null;
     Flock Flock = null;
 
-    [SerializeField] private float HoldAidFiring = 0.5f;
     private float currentTimer_ = 0f;
 
     #region MonoBehaviour Methods

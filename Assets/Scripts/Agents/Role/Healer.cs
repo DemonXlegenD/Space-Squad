@@ -3,13 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Healer : Role
+public class Healer : Role 
 {
-    [SerializeField] private Color color = Color.cyan;
-
-    [SerializeField] private float timerHealing = 1f;
-    [SerializeField] private float healingDistance = 2f;
-    private float currentTimer = 0f;
     private FlockAgent agent;
     private AIAgent AIAgent;
     private PlayerAgent playerAgent;
@@ -28,50 +23,21 @@ public class Healer : Role
         playerAgent = FindAnyObjectByType<PlayerAgent>();
     }
 
-    public void StopHealingPlayer()
+    public void NPCHealPlayer() 
     {
-        currentTimer = 0f;
-        offset = Vector3.zero;
-        isHealing = false;
-    }
-
-    public void ApplyHealingPlayer()
-    {
-        isHealing = true;
-    }
-
-    public void HealPlayer()
-    {
-        if (isHealing)
+        playerAgent.CharacterHealth.Healing(10f);
+        
+        if (playerAgent.CharacterHealth.IsMaxHealth())
         {
-            playerAgent.CharacterHealth.Healing(10f);
+            agent.IsCurrentlyHealingPlayer = false;
         }
     }
 
-    private void Update()
+    public void CheckIfNPCIsHealing() 
     {
-        if (isHealing)
+        if (playerAgent.CharacterHealth.IsMaxHealth())
         {
-            if (Vector3.Distance(playerAgent.transform.position, agent.transform.position) > healingDistance)
-            {
-                agent.MoveTo(playerAgent.transform.position);
-                currentTimer = 0f;
-            }
-            else
-            {
-                AIAgent.StopMove();
-                currentTimer += Time.deltaTime;
-                if (currentTimer > timerHealing)
-                {
-                    playerAgent.CharacterHealth.Healing(10f);
-                    currentTimer = 0f;
-                }
-            }
-
-            if (playerAgent.CharacterHealth.IsMaxHealth())
-            {
-                StopHealingPlayer();
-            }
+            agent.IsCurrentlyHealingPlayer = false;
         }
     }
 }

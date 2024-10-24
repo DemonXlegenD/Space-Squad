@@ -190,9 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f11ca161d4bb74caaedbc93c662369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 1, b: 1, a: 1}
-  timerHealing: 1
-  healingDistance: 2
 --- !u!1001 &7127500658833730612
 PrefabInstance:
   m_ObjectHideFlags: 0

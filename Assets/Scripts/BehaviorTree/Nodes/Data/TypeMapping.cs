@@ -15,7 +15,7 @@ public class TypeMapping
         }
         else
         {
-            Debug.LogError($"Type non trouv� pour {valueType.ToString()}");
+            Debug.LogError($"Type non trouve pour {valueType.ToString()}");
             return null;
         }
     }
@@ -28,7 +28,7 @@ public class TypeMapping
         }
         else
         {
-            Debug.LogWarning($"Le ValueType {valueType} est d�j� associ� au type {typeMapping[valueType]} et ne sera pas ajout� � nouveau.");
+            Debug.LogWarning($"Le ValueType {valueType} est deja associe au type {typeMapping[valueType]} et ne sera pas ajoute à nouveau.");
         }
     }
 }

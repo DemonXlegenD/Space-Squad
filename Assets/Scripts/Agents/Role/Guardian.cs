@@ -6,10 +6,6 @@ public class Guardian : Role
 {
     public OffsetCheck OffsetCheck = null;
     [SerializeField] private Color color = Color.yellow;
-    protected override void Start()
-    {
-        base.Start();
-    }
 
     public void AttributeOffset(OffsetCheck _offsetCheck)
     {

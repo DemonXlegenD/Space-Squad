@@ -529,7 +529,6 @@ GameObject:
   - component: {fileID: 8534211896735346846}
   - component: {fileID: 6312568174189191575}
   - component: {fileID: 5993549203755797064}
-  - component: {fileID: 5481798969906088972}
   m_Layer: 7
   m_Name: AIAllyAgent
   m_TagString: NPC
@@ -567,9 +566,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae06b5f7096c2344b1cccfe7f9be7cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnTime: 30
   Data: {fileID: 0}
   Gun: {fileID: 0}
   Target: {fileID: 0}
+  RotateManager: {fileID: 0}
 --- !u!195 &8525931039688671734
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -670,20 +671,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerStopProtecting: 10
---- !u!114 &5481798969906088972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8739580843433032925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a041f976d13954942b662df3a0ef9ac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerHealing: 1
-  healingDistance: 3
 --- !u!1001 &215069395107237002
 PrefabInstance:
   m_ObjectHideFlags: 0
