@@ -109,6 +109,7 @@ public class Flock : MonoBehaviour
         for (int i = 0; i < startingCount; i++)
         {
             FlockAgent agent = flockAgents[i];
+            if (!agent.gameObject.activeSelf) continue;
             agent.Offset = positions[i] - leader.transform.position;
             agent.SetTarget(positions[i]);
             agent.Move();
