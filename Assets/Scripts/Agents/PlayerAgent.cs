@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAgent : Entity
 {
@@ -83,6 +84,10 @@ public class PlayerAgent : Entity
         {
             Flock.HealingGroup.ApplyHealingPlayer(transform.position);
         } 
+        if(characterHealth.IsDead()) 
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     public override void AimAtPosition(Vector3 _pos)

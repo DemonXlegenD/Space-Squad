@@ -42,6 +42,7 @@ public class Pool : MonoBehaviour
             }
             locations.Add(new Location(positions[i].position, null));
         }
+
         Data.AddData(DataKey.KDA, kill_counter);
     }
 
@@ -50,6 +51,7 @@ public class Pool : MonoBehaviour
     {
         List<Location> freeLocations = new List<Location>();
         kill_counter += 1;
+        Data.SetData(DataKey.KDA, kill_counter);
 
         _kda.text = "Kills : " + kill_counter;
 

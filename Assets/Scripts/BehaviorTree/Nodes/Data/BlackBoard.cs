@@ -41,7 +41,6 @@ public class BlackBoard : ScriptableObject
         }
         else
         {
-            Debug.LogError($"Cl� '{key}' non trouv�e dans les donn�es.");
             return null;
         }
     }
@@ -82,7 +81,6 @@ public class BlackBoard : ScriptableObject
         }
         else
         {
-            Debug.LogError($"Cl� '{key}' non trouv�e dans les donn�es.");
             return default;
         }
     }
