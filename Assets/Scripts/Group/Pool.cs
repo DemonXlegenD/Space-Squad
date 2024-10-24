@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +6,8 @@ public class Pool : MonoBehaviour
 {
     [SerializeField] public BlackBoard Data;
     [SerializeField] public Text _kda;
-    public class Location{
+    public class Location
+    {
         Vector3 position = Vector3.zero;
         public TurretAgent enemy;
 
@@ -36,9 +36,9 @@ public class Pool : MonoBehaviour
         positions = GetComponentsInChildren<Transform>();
         for (int i = 0; i < positions.Length; i++)
         {
-            if(i < numberEnemy)
+            if (i < numberEnemy)
             {
-                locations.Add(new Location(positions[i].position,  Instantiate(prefabTurrentAgent, positions[i].position, Quaternion.identity)));
+                locations.Add(new Location(positions[i].position, Instantiate(prefabTurrentAgent, positions[i].position, Quaternion.identity)));
             }
             locations.Add(new Location(positions[i].position, null));
         }
@@ -61,7 +61,7 @@ public class Pool : MonoBehaviour
             {
                 freeLocations.Add(location);
             }
-            if(location.enemy == _turretAgent)
+            if (location.enemy == _turretAgent)
             {
                 location.enemy = null;
             }

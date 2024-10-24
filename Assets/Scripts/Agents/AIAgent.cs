@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
 namespace FSMMono
 {
@@ -38,9 +37,6 @@ namespace FSMMono
             base.Start();
             RotateManager = GetComponent<RotateManager>();
         }
-        private void OnTriggerEnter(Collider other) {}
-        private void OnTriggerExit(Collider other) {}
-        private void OnDrawGizmos() {}
 
         #endregion
 

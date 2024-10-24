@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectorNode : CompositeNode
@@ -17,9 +15,9 @@ public class SelectorNode : CompositeNode
         currentNodeID = 0;
     }
 
-    protected override void OnStop() {}
+    protected override void OnStop() { }
 
-    protected override State OnUpdate() 
+    protected override State OnUpdate()
     {
         if (children == null && children.Count < 1)
         {
@@ -41,14 +39,16 @@ public class SelectorNode : CompositeNode
                 return State.Failure;
         }
 
-        if (ROOT) 
+        if (ROOT)
         {
-            if (currentNodeID >= children.Count) 
+            if (currentNodeID >= children.Count)
             {
                 currentNodeID = 0;
             }
             return State.Running;
-        } else {
+        }
+        else
+        {
             return currentNodeID == children.Count ? State.Failure : State.Running;
         }
     }

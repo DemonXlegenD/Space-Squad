@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ActionNode : Node 
+public abstract class ActionNode : Node
 {
     public Transform npc;
 
@@ -11,4 +9,4 @@ public abstract class ActionNode : Node
         base.Start();
         npc = FindParentWithTag(transform, "NPC");
     }
- }
+}

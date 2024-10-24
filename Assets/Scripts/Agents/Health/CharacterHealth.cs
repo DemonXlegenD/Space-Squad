@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CharacterHealth : MonoBehaviour
 {
-
     public float lowHealth = 50f;
     public float maxHealth = 100f;
     public float currentHealth;
@@ -14,7 +13,6 @@ public class CharacterHealth : MonoBehaviour
         healthBarController.SetHealth(currentHealth, maxHealth);
     }
 
-    // Fonction pour infliger des degats
     public void TakeDamage(float _damage)
     {
         currentHealth -= _damage;

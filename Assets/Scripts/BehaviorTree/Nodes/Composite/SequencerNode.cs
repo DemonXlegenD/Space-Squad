@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ public class SequencerNode : CompositeNode
     protected override void Start()
     {
         base.Start();
-        foreach (Transform child in transform) 
+        foreach (Transform child in transform)
         {
             children.Add(child.GetComponent<Node>());
         }
@@ -25,7 +24,7 @@ public class SequencerNode : CompositeNode
 
     protected override void OnStop() { }
 
-    protected override State OnUpdate() 
+    protected override State OnUpdate()
     {
         if (children == null && children.Count < 1)
         {
@@ -36,9 +35,9 @@ public class SequencerNode : CompositeNode
         switch (children[currentNodeID].UpdateNode())
         {
             case State.Running:
-                if (children[currentNodeID] is not D_Delay) 
+                if (children[currentNodeID] is not D_Delay)
                 {
-                    foreach (D_Delay delay in DelayNodeToReset) 
+                    foreach (D_Delay delay in DelayNodeToReset)
                     {
                         delay.RESET = true;
                     }

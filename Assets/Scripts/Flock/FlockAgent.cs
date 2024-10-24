@@ -1,5 +1,4 @@
 using FSMMono;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AIAgent))]
@@ -9,17 +8,17 @@ public class FlockAgent : MonoBehaviour
     public PlayerAgent playerAgent;
     private AIAgent aiAgent;
     public AIAgent AIAgent { get { return aiAgent; } }
-    private Vector3 Position = Vector3.zero; 
+    private Vector3 Position = Vector3.zero;
 
     private Vector3 offset = Vector3.zero;
 
-    public Vector3 Offset { get { return offset; } set{ offset = value; } }
+    public Vector3 Offset { get { return offset; } set { offset = value; } }
 
     private bool isFlocking = true;
     public bool IsFlocking { get { return isFlocking; } set { isFlocking = value; } }
 
     private Vector3 target = Vector3.zero;
-    public Vector3 Target {  get { return target; }}
+    public Vector3 Target { get { return target; } }
 
     private CoverFire coverFire;
     public CoverFire CoverFire { get { return coverFire; } }
@@ -33,7 +32,7 @@ public class FlockAgent : MonoBehaviour
     private Healer healingPlayer;
     public Healer HealingPlayer { get { return healingPlayer; } }
 
-    private bool isAvailable = true;   
+    private bool isAvailable = true;
 
     public bool IsAvailable { get { return isAvailable; } set { isAvailable = value; } }
 
@@ -50,7 +49,7 @@ public class FlockAgent : MonoBehaviour
         healingPlayer = GetComponent<Healer>();
     }
 
-    private void Update() {}
+    private void Update() { }
 
     public void RecalculatePosition()
     {

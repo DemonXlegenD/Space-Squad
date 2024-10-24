@@ -21,7 +21,7 @@ public class SimpleController : MonoBehaviour
     public bool isGrounded;
     Rigidbody rb;
 
-    void Start ()
+    void Start()
     {
         Player = GetComponent<PlayerAgent>();
         Flock = FindAnyObjectByType<Flock>();
@@ -45,7 +45,7 @@ public class SimpleController : MonoBehaviour
         isGrounded = true;
     }
 
-    void Update ()
+    void Update()
     {
         int floorLayer = 1 << LayerMask.NameToLayer("Floor");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -70,7 +70,7 @@ public class SimpleController : MonoBehaviour
         {
             OnMouseRightClicked(targetPos);
         }
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
@@ -89,8 +89,8 @@ public class SimpleController : MonoBehaviour
             Flock.ApplySquareFormation();
         }
     }
-    
-	void FixedUpdate()
+
+    void FixedUpdate()
     {
         Player.MoveToward(velocity);
     }

@@ -1,12 +1,8 @@
 using FSMMono;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProtectPlayer : MonoBehaviour
 {
-    [SerializeField] private float timerStopProtecting = 10f;
-    private float currentTimer = 0f;
     private FlockAgent agent;
     private AIAgent AIAgent;
     private PlayerAgent playerAgent;
@@ -21,13 +17,12 @@ public class ProtectPlayer : MonoBehaviour
     {
         agent = GetComponent<FlockAgent>();
         AIAgent = GetComponent<AIAgent>();
-        playerAgent= FindAnyObjectByType<PlayerAgent>();    
+        playerAgent = FindAnyObjectByType<PlayerAgent>();
     }
 
     public void StopProtectingPlayer()
     {
         agent.ResetFlock();
-        currentTimer = 0f;
         offset = Vector3.zero;
         isProtecting = false;
         agent.IsAvailable = true;

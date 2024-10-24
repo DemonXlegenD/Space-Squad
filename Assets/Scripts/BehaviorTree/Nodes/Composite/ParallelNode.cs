@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +5,9 @@ public class ParallelNode : CompositeNode
 {
     [SerializeField] public List<D_Delay> DelayNodeToReset = new List<D_Delay>();
 
-    protected override void OnStart() {}
+    protected override void OnStart() { }
 
-    protected override void OnStop() {}
+    protected override void OnStop() { }
 
     protected override State OnUpdate()
     {
@@ -21,9 +20,9 @@ public class ParallelNode : CompositeNode
 
             if (childState == State.Running)
             {
-                if (child is not D_Delay) 
+                if (child is not D_Delay)
                 {
-                    foreach (D_Delay delay in DelayNodeToReset) 
+                    foreach (D_Delay delay in DelayNodeToReset)
                     {
                         delay.RESET = true;
                     }
