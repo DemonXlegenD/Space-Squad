@@ -1,9 +1,6 @@
-# SQUAD AI
-# LAHALLE François et PIRIS Marius
-# GP3
+# SQUAD AI - LAHALLE François et PIRIS Marius - GP3
 
-
-# Tutoriel
+## Tutoriel
 
 ### Touches : 
 Déplacement : Z,Q,S et D
@@ -18,7 +15,7 @@ Détruire les tourelles augmente le score.
 
 Une vidéo de gameplay est disponible sur le git.
 
-# Documentation
+## Documentation
 
 **Lien du itch.io** (jouable sur navigateur) : https://rosago.itch.io/space-squad
 Scène à lancer : “Menu”
@@ -26,3 +23,6 @@ Scène de jeu principale : “GameScene”
 Dossier des scènes : Assets/Scenes
 Paramètres de physique du projet disponible sur le rapport pdf
 Rapport pdf à télécharger pour que les hyperliens fonctionnent
+
+## Vidéo gameplay
+https://www.youtube.com/watch?v=4000G_UjKd8
