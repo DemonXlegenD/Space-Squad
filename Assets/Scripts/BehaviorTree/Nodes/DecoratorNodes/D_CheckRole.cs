@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class D_CheckRole : DecoratorNode
 {
 
@@ -30,7 +26,7 @@ public class D_CheckRole : DecoratorNode
             case Role.NONE:
                 return child.UpdateNode();
             case Role.GUARDIAN:
-                if(npc.GetComponent<Guardian>() != null) return child.UpdateNode();
+                if (npc.GetComponent<Guardian>() != null) return child.UpdateNode();
                 break;
             case Role.HEALER:
                 if (npc.GetComponent<Healer>() != null) return child.UpdateNode();

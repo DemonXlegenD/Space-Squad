@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class D_HasOffsetTarget : DecoratorNode
 {
     #region Overrides of Node
@@ -12,7 +8,7 @@ public class D_HasOffsetTarget : DecoratorNode
     protected override State OnUpdate()
     {
 
-        if(npc.GetComponent<Guardian>().HasOffset())
+        if (npc.GetComponent<Guardian>().HasOffset())
         {
             return child.UpdateNode();
         }

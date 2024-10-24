@@ -15,12 +15,12 @@ public class VFormation : Formation
 
         for (int i = 0; i < _agentNumber; i++)
         {
-            float row = Mathf.Floor(i / 2) + 1; 
-            float sideMultiplier = (i % 2 == 0) ? 1 : -1; 
+            float row = Mathf.Floor(i / 2) + 1;
+            float sideMultiplier = (i % 2 == 0) ? 1 : -1;
 
             Vector3 new_position = leader_position
                                      + leader_forward * -row * _distanceBetweenAgents
-                                     + leader_right * sideMultiplier * row * _distanceBetweenAgents; 
+                                     + leader_right * sideMultiplier * row * _distanceBetweenAgents;
 
             positions.Add(new_position);
         }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ public class CoverFireGroup : MonoBehaviour
     [SerializeField, Range(0, 100)] private int percentOfGroup = 50;
     [SerializeField] public BlackBoard Data;
     [SerializeField] GameObject NPCTargetCursorPrefab = null;
-    
+
     private Flock Flock;
     GameObject NPCTargetCursor = null;
     List<FlockAgent> CoveringAgents = new List<FlockAgent>();

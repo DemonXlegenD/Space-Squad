@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +7,7 @@ public class CircleFormation : Formation
     public override List<Vector3> CalculatePositions(Transform _leaderTransform, int _agentNumber, float _distanceBetweenAgents)
     {
         List<Vector3> positions = new List<Vector3>(_agentNumber);
-   
+
         int degres = 90;
         float next = 360 / _agentNumber;
 
@@ -23,7 +22,7 @@ public class CircleFormation : Formation
             if (i == 0) new_pos = leader_position;
             else
             {
-                new_pos = center + new Vector3(Mathf.Cos(Mathf.Deg2Rad * (degres + next * i)),0,Mathf.Sin(Mathf.Deg2Rad * (degres + next * i))) * _distanceBetweenAgents;
+                new_pos = center + new Vector3(Mathf.Cos(Mathf.Deg2Rad * (degres + next * i)), 0, Mathf.Sin(Mathf.Deg2Rad * (degres + next * i))) * _distanceBetweenAgents;
 
                 new_pos = rotation * (new_pos - leader_position) + leader_position;
             }

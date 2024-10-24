@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BehaviorTreeRunner : MonoBehaviour
@@ -16,7 +14,7 @@ public class BehaviorTreeRunner : MonoBehaviour
     private void Start()
     {
         Node root = null;
-        foreach (Transform child in transform) 
+        foreach (Transform child in transform)
         {
             root = child.GetComponent<Node>();
             break;
@@ -30,14 +28,14 @@ public class BehaviorTreeRunner : MonoBehaviour
         {
             hasRootNode = rootNode != null;
         }
-        
+
         if (hasRootNode)
         {
-            if (treeState == Node.State.Running) 
+            if (treeState == Node.State.Running)
             {
                 if (currentTimer > timerUpdate)
                 {
-              
+
                     treeState = rootNode.UpdateNode();
                     currentTimer = 0f;
                 }

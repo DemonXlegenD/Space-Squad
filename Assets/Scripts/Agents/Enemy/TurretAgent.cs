@@ -1,7 +1,3 @@
-using FSMMono;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TurretAgent : Entity
@@ -18,8 +14,9 @@ public class TurretAgent : Entity
     public override void AddDamage(int _amount)
     {
         characterHealth.TakeDamage(_amount);
-        if (characterHealth.IsDead()) { 
-            FindAnyObjectByType<Pool>().AttributeRandomLocation(this); 
+        if (characterHealth.IsDead())
+        {
+            FindAnyObjectByType<Pool>().AttributeRandomLocation(this);
         }
     }
 

@@ -18,11 +18,11 @@ public class CoverFire : MonoBehaviour
         AIAgent = GetComponent<AIAgent>();
     }
 
-    public void NPCShootToTarget(Vector3 target_)
+    public void NPCShootToTarget(Vector3 _target)
     {
-        if (target_ != Vector3.zero)
+        if (_target != Vector3.zero)
         {
-            AIAgent.ShootToPosition(target_);
+            AIAgent.ShootToPosition(_target);
         }
     }
 }

@@ -1,13 +1,9 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class Entity : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float respawnTime = 30f;
     [SerializeField] public BlackBoard Data;
 
-    private float currentTimer = 0f;
     public Gun Gun;
 
     protected CharacterHealth characterHealth;
@@ -27,7 +23,6 @@ public class Entity : MonoBehaviour, IDamageable
 
     public virtual void ShootToPosition(Vector3 _pos)
     {
-        // fire
         if (Gun)
         {
             AimAtPosition(_pos);
@@ -53,8 +48,15 @@ public class Entity : MonoBehaviour, IDamageable
     public virtual void AddDamage(int _amount)
     {
         characterHealth.TakeDamage(_amount);
-        if(characterHealth.IsDead()) { gameObject.SetActive(false); }
+        if (characterHealth.IsDead()) { gameObject.SetActive(false); }
     }
+
+    public void Reset()
+    {
+        characterHealth.Healing(characterHealth.maxHealth);
+    }
+
+    #region Distance
 
     public bool IsTooClose(Vector3 _position)
     {
@@ -76,6 +78,8 @@ public class Entity : MonoBehaviour, IDamageable
         return Vector3.Distance(transform.position, _target);
     }
 
+    #endregion
+
 
     #region MonoBehaviour Methods
     protected virtual void Start()
@@ -86,8 +90,5 @@ public class Entity : MonoBehaviour, IDamageable
 
     #endregion
 
-    public void Reset()
-    {
-        characterHealth.Healing(characterHealth.maxHealth);        
-    }
+
 }

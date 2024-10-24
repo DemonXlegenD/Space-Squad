@@ -41,7 +41,7 @@ public class Gun : MonoBehaviour
                 {
                     GameObject bullet = Instantiate<GameObject>(BulletPrefab, transform.position + (transform.up * 0.5f), Quaternion.LookRotation(transform.forward, transform.up));
                     GameObject drop_ammo = Instantiate<GameObject>(DropAmmoPrefab, transform.position + (transform.up * 0.5f) + (transform.right * 0.2f), Quaternion.LookRotation(transform.forward, transform.up));
-                    bullet.layer = bulletLayerMask; 
+                    bullet.layer = bulletLayerMask;
                     bullet.GetComponent<Bullet>().Damage = Damage;
                     drop_ammo.layer = bulletLayerMask;
                     Rigidbody rb = bullet.GetComponent<Rigidbody>();
@@ -114,7 +114,7 @@ public class Gun : MonoBehaviour
         Vector3 position = transform.position;
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(position, position + transform.forward * 2.0f); // Ajuste la longueur selon ton besoin
+        Gizmos.DrawLine(position, position + transform.forward * 2.0f);
 
         Gizmos.color = Color.green;
         Gizmos.DrawLine(position, position + transform.up * 2.0f);

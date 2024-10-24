@@ -1,8 +1,3 @@
-using FSMMono;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class A_AttributeTarget : ActionNode
 {
     #region Overrides of Node

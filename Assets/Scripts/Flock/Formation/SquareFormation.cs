@@ -1,12 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Formations/SquareFormation")]
 public class SquareFormation : Formation
 {
-    public int rows = 3;              
-    public int columns = 3;             
+    public int rows = 3;
+    public int columns = 3;
 
     public override List<Vector3> CalculatePositions(Transform _leaderTransform, int _agentNumber, float _distanceBetweenAgents)
     {
@@ -23,13 +22,11 @@ public class SquareFormation : Formation
             Debug.LogWarning("Plus de NPCs que de positions disponibles dans la formation.");
         }
 
-        // Calculer le centre de la formation par rapport au joueur
         Vector3 formationCenterOffset = (columns - 1) * leader_right * _distanceBetweenAgents / 2 +
                                         (rows - 1) * leader_forward * _distanceBetweenAgents / 2;
 
         int npcIndex = 0;
 
-        // Positionner chaque NPC selon la grille de rang�es et colonnes
         for (int row = 0; row < rows; row++)
         {
             for (int col = 0; col < columns; col++)
@@ -38,7 +35,7 @@ public class SquareFormation : Formation
                 {
                     continue;
                 }
-                if (npcIndex >= _agentNumber) break; 
+                if (npcIndex >= _agentNumber) break;
 
                 Vector3 localPosition = (col * leader_right * _distanceBetweenAgents) + (row * leader_forward * _distanceBetweenAgents) - formationCenterOffset;
 

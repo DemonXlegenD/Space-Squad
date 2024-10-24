@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using FSMMono;
+using UnityEngine;
 
 public class A_MoveToNode : ActionNode
 {
-    public enum MoveToLocation{
+    public enum MoveToLocation
+    {
         PLAYER,
         TARGET_PROTECT,
         TARGET_COVER,
@@ -15,49 +14,50 @@ public class A_MoveToNode : ActionNode
     [SerializeField] private MoveToLocation CurrentMoveToLocation = MoveToLocation.PLAYER;
 
     #region Overrides of Node
-    protected override void OnStart() {}
+    protected override void OnStart() { }
 
-    protected override void OnStop() {}
+    protected override void OnStop() { }
 
     protected override State OnUpdate()
     {
-        Vector3 target_ = Vector3.zero;
-        float stopDist = -1.0f;
+        Vector3 target = Vector3.zero;
+        float stop_dist = -1.0f;
 
         switch (CurrentMoveToLocation)
         {
             case MoveToLocation.PLAYER:
-                target_ = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<FlockAgent>().Offset;
-                stopDist = 0.01f;
+                target = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<FlockAgent>().Offset;
+                stop_dist = 0.01f;
                 break;
 
             case MoveToLocation.TARGET_COVER:
-                target_ = (Tree.Data.GetValue<GameObject>(DataKey.TARGET_COVER)).transform.position;
-                stopDist = npc.GetComponent<AIAgent>().Gun.MaxRange;
+                target = (Tree.Data.GetValue<GameObject>(DataKey.TARGET_COVER)).transform.position;
+                stop_dist = npc.GetComponent<AIAgent>().Gun.MaxRange;
                 break;
 
             case MoveToLocation.TARGET_PROTECT:
-                target_ = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<Guardian>().OffsetCheck.offset * 2;
-                stopDist = 3f;
+                target = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<Guardian>().OffsetCheck.offset * 2;
+                stop_dist = 3f;
                 Vector3 objectif = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<Guardian>().OffsetCheck.offset * 2;
                 objectif.y = npc.transform.position.y;
                 npc.transform.LookAt(objectif);
                 break;
 
             case MoveToLocation.TARGET_HEAL:
-                target_ = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position;
-                stopDist = 3f;
+                target = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position;
+                stop_dist = 3f;
                 break;
 
             default:
                 break;
         }
 
-        if (target_ != Vector3.zero && npc.GetComponent<FlockAgent>().DistanceToTarget(target_) > stopDist && stopDist != -1.0f)
+        if (target != Vector3.zero && npc.GetComponent<FlockAgent>().DistanceToTarget(target) > stop_dist && stop_dist != -1.0f)
         {
-            npc.GetComponent<FlockAgent>().MoveTo(target_);
+            npc.GetComponent<FlockAgent>().MoveTo(target);
             return State.Running;
-        } else if (npc.GetComponent<FlockAgent>().DistanceToTarget(target_) <= stopDist && stopDist != -1.0f) 
+        }
+        else if (npc.GetComponent<FlockAgent>().DistanceToTarget(target) <= stop_dist && stop_dist != -1.0f)
         {
             npc.GetComponent<AIAgent>().StopMove();
             return State.Success;

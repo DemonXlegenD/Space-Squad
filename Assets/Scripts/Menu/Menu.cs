@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 
@@ -12,14 +9,14 @@ public class Menu : MonoBehaviour
     [SerializeField] public Scene GameScene;
     private int kda = 0;
 
-    public void OnPlay() 
+    public void OnPlay()
     {
         SceneManager.LoadScene(1);
     }
 
-    void Update() 
+    void Update()
     {
-        if (Data.GetValue<int>(DataKey.KDA) != 0) 
+        if (Data.GetValue<int>(DataKey.KDA) != 0)
         {
             if (kda != Data.GetValue<int>(DataKey.KDA))
             {

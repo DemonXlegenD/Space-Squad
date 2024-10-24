@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Guardian : Role
@@ -19,6 +17,6 @@ public class Guardian : Role
 
     public void DeleteOffset()
     {
-        OffsetCheck = null; 
+        OffsetCheck = null;
     }
 }

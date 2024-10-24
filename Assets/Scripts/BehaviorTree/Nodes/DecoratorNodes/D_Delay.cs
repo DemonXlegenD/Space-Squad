@@ -23,13 +23,13 @@ public class D_Delay : DecoratorNode
     }
 
     protected override State OnUpdate()
-    {        
-        if (RESET) 
+    {
+        if (RESET)
         {
             currentTimer = 0f;
             RESET = false;
         }
-        
+
         if (currentTimer > delay)
         {
             return child.UpdateNode();

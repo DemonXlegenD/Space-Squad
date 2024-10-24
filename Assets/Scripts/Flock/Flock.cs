@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Flock : MonoBehaviour
 {
@@ -16,7 +15,7 @@ public class Flock : MonoBehaviour
     [SerializeField] private Formation CircleFormation;
 
 
-    [SerializeField, Range(3, 15)] private int startingCount = 3;   
+    [SerializeField, Range(3, 15)] private int startingCount = 3;
 
 
     [SerializeField] private Vector3 leaderPosition = Vector3.zero;
@@ -133,15 +132,17 @@ public class Flock : MonoBehaviour
 
         foreach (FlockAgent flock_agent in FlockAgents)
         {
-           if (flock_agent.IsAvailable) 
-           {
-                if (flock_agent.GetComponent<Healer>() != null && healer) 
+            if (flock_agent.IsAvailable)
+            {
+                if (flock_agent.GetComponent<Healer>() != null && healer)
                 {
                     distanceToNPCMap.Add(flock_agent, flock_agent.DistanceToTarget(_target));
-                } else if (!healer) {
+                }
+                else if (!healer)
+                {
                     distanceToNPCMap.Add(flock_agent, flock_agent.DistanceToTarget(_target));
                 }
-           } 
+            }
         }
 
         int countToRetrieve = Mathf.CeilToInt(distanceToNPCMap.Count * _percent / 100);

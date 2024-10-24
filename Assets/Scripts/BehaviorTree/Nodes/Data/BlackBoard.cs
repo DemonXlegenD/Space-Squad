@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/BlackBoard", order = 1)]
@@ -11,13 +9,13 @@ public class BlackBoard : ScriptableObject
     public TypeMapping TypeMapping = new TypeMapping();
     public Dictionary<DataKey, object> Data = new Dictionary<DataKey, object>();
 
-    public void AddData<T>(DataKey key, T y) 
+    public void AddData<T>(DataKey key, T y)
     {
-        TypeMapping.AddValueType(key, typeof(T)); 
+        TypeMapping.AddValueType(key, typeof(T));
         Data.Add(key, y);
     }
 
-    public object GetData(DataKey key) 
+    public object GetData(DataKey key)
     {
         if (Data.TryGetValue(key, out object value))
         {
@@ -90,12 +88,13 @@ public class BlackBoard : ScriptableObject
         return Data.ContainsKey(key);
     }
 
-    public void SetData(DataKey x, object y) 
+    public void SetData(DataKey x, object y)
     {
         Data[x] = y;
     }
 }
-public enum DataKey{
+public enum DataKey
+{
     PLAYER,
     DANGER_ZONE_OFFSETS,
     TARGET_HEALER,

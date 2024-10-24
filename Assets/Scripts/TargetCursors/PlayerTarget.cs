@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerTarget : MonoBehaviour
@@ -19,5 +17,5 @@ public class PlayerTarget : MonoBehaviour
     public void SetFarTarget()
     {
         MaterialInst.color = Color.red;
-    } 
+    }
 }

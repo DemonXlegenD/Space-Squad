@@ -1,10 +1,9 @@
 using FSMMono;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Healer : Role 
+public class Healer : Role
 {
+    [SerializeField] private float healing = 10f;
     private FlockAgent agent;
     private AIAgent AIAgent;
     private PlayerAgent playerAgent;
@@ -23,17 +22,17 @@ public class Healer : Role
         playerAgent = FindAnyObjectByType<PlayerAgent>();
     }
 
-    public void NPCHealPlayer() 
+    public void NPCHealPlayer()
     {
-        playerAgent.CharacterHealth.Healing(10f);
-        
+        playerAgent.CharacterHealth.Healing(healing);
+
         if (playerAgent.CharacterHealth.IsMaxHealth())
         {
             agent.IsCurrentlyHealingPlayer = false;
         }
     }
 
-    public void CheckIfNPCIsHealing() 
+    public void CheckIfNPCIsHealing()
     {
         if (playerAgent.CharacterHealth.IsMaxHealth())
         {

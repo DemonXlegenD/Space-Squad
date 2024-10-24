@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAgent : Entity
 {
-
     [SerializeField] GameObject TargetCursorPrefab = null;
     [SerializeField] private float HoldAidFiring = 0.5f;
 
@@ -59,11 +58,11 @@ public class PlayerAgent : Entity
     }
     public override void ShootToPosition(Vector3 _pos)
     {
-        // fire
         if (Gun)
         {
             AimAtPosition(_pos);
-            if (IsInRangeAndNotTooClose(_pos)) { 
+            if (IsInRangeAndNotTooClose(_pos))
+            {
                 Gun.Shoot();
                 AidFiring(_pos);
             }
@@ -83,8 +82,8 @@ public class PlayerAgent : Entity
         if (!CharacterHealth.IsMaxHealth())
         {
             Flock.HealingGroup.ApplyHealingPlayer(transform.position);
-        } 
-        if(characterHealth.IsDead()) 
+        }
+        if (characterHealth.IsDead())
         {
             SceneManager.LoadScene(0);
         }
@@ -98,7 +97,7 @@ public class PlayerAgent : Entity
 
         if (IsInRangeAndNotTooClose(_pos))
         {
-            playerTarget.SetCloseTarget();  
+            playerTarget.SetCloseTarget();
             Vector3 targetLookAt = _pos + Vector3.up * transform.position.y;
             targetLookAt.y = transform.position.y;
             transform.LookAt(targetLookAt);

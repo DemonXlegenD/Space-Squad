@@ -1,5 +1,4 @@
 using FSMMono;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,9 +6,9 @@ public class OffsetsCheck
 {
     private List<OffsetCheck> offsets = new List<OffsetCheck>();
 
-    public void AddOffsetCheck(Vector3 offset)
+    public void AddOffsetCheck(Vector3 _offset)
     {
-        offsets.Add(new OffsetCheck(offset, false));
+        offsets.Add(new OffsetCheck(_offset, false));
     }
 
     public bool IsOneOffsetFree()
@@ -26,11 +25,12 @@ public class OffsetsCheck
 
     public OffsetCheck GetFreeOffset()
     {
-        foreach(OffsetCheck offset_check in offsets)
+        foreach (OffsetCheck offset_check in offsets)
         {
-            if(!offset_check.isCheck) { 
+            if (!offset_check.isCheck)
+            {
                 offset_check.isCheck = true;
-                return offset_check; 
+                return offset_check;
             }
         }
         return null;
@@ -68,7 +68,7 @@ public class DangerZone : MonoBehaviour
     private OffsetsCheck OffsetsCheck = new OffsetsCheck();
 
     [SerializeField] private LayerMask BulletMask;
-    // Start is called before the first frame update
+
     void Start()
     {
         DangerCollider = GetComponent<Collider>();

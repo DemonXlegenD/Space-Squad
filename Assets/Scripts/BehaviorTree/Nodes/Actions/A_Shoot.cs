@@ -1,6 +1,4 @@
 using FSMMono;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class A_Shoot : ActionNode
@@ -15,9 +13,9 @@ public class A_Shoot : ActionNode
 
     public ShootTarget Target = ShootTarget.NONE;
 
-    protected override void OnStart() {}
+    protected override void OnStart() { }
 
-    protected override void OnStop() {}
+    protected override void OnStop() { }
 
     protected override State OnUpdate()
     {
@@ -30,7 +28,7 @@ public class A_Shoot : ActionNode
                 target = Tree.Data.GetValue<GameObject>(DataKey.PLAYER).transform.position;
                 break;
             case ShootTarget.TARGET_COVER:
-                    target = Tree.Data.GetValue<GameObject>(DataKey.TARGET_COVER).transform.position;
+                target = Tree.Data.GetValue<GameObject>(DataKey.TARGET_COVER).transform.position;
                 break;
             case ShootTarget.TARGET_FIRING:
                 target = Tree.Data.GetValue<GameObject>(DataKey.TARGET_FIRING).transform.position;

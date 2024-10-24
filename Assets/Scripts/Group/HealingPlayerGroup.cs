@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HealingPlayerGroup : MonoBehaviour
 {
     [SerializeField, Range(0, 100)] private int percentOfGroup = 50;
-    
+
     private Flock Flock;
     private List<FlockAgent> HealingAgents = new List<FlockAgent>();
 
@@ -38,7 +37,7 @@ public class HealingPlayerGroup : MonoBehaviour
     {
         foreach (FlockAgent flock_agent in HealingAgents)
         {
-            if (flock_agent.IsCurrentlyHealingPlayer) 
+            if (flock_agent.IsCurrentlyHealingPlayer)
             {
                 return false;
             }

@@ -18,14 +18,14 @@ public class Bullet : MonoBehaviour
         else Renderer.sharedMaterial = M_Enemy;
         Destroy(gameObject, Duration);
     }
-    
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnCollisionEnter(Collision _collision)
     {
-        if (((1 << collision.gameObject.layer) & layerToDealDamage) != 0)
+        if (((1 << _collision.gameObject.layer) & layerToDealDamage) != 0)
         {
-            IDamageable damagedAgent = collision.gameObject.GetComponentInParent<IDamageable>();
+            IDamageable damagedAgent = _collision.gameObject.GetComponentInParent<IDamageable>();
             if (damagedAgent == null)
-                damagedAgent = collision.gameObject.GetComponent<IDamageable>();
+                damagedAgent = _collision.gameObject.GetComponent<IDamageable>();
             damagedAgent?.AddDamage(Damage);
         }
         Destroy(gameObject);
