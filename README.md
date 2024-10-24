@@ -1,26 +1,26 @@
-#SQUAD AI
-#LAHALLE François et PIRIS Marius
-#GP3
+# SQUAD AI
+# LAHALLE François et PIRIS Marius
+# GP3
 
 
-#Tutoriel
+# Tutoriel
 
-###Touches : 
+### Touches : 
 Déplacement : Z,Q,S et D
 Tir : clique gauche
 Tir de couverture : clique droit (Activer/Désactiver)
 Changer de formation : C (Circle Formation) ou V (V Formation) ou B (Square Formation)
 
-###Informations
+### Informations
 Le Guardian vient se mettre devant le joueur quand ce dernier se fait attaquer.
 Le Healer vient soigner le joueur quand sa vie est basse, il faut que le joueur reste immobile.
 Détruire les tourelles augmente le score.
 
 Une vidéo de gameplay est disponible sur le git.
 
-#Documentation
+# Documentation
 
-Lien du itch.io (jouable sur navigateur) : https://rosago.itch.io/space-squad
+**Lien du itch.io** (jouable sur navigateur) : https://rosago.itch.io/space-squad
 Scène à lancer : “Menu”
 Scène de jeu principale : “GameScene”
 Dossier des scènes : Assets/Scenes
