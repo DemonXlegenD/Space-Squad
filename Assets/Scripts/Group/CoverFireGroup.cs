@@ -6,11 +6,10 @@ public class CoverFireGroup : MonoBehaviour
 {
     [SerializeField, Range(0, 100)] private int percentOfGroup = 50;
     [SerializeField] public BlackBoard Data;
-    private Flock Flock;
-
     [SerializeField] GameObject NPCTargetCursorPrefab = null;
+    
+    private Flock Flock;
     GameObject NPCTargetCursor = null;
-
     List<FlockAgent> CoveringAgents = new List<FlockAgent>();
 
     void Start()
@@ -39,7 +38,6 @@ public class CoverFireGroup : MonoBehaviour
         }
         else
         {
-            //Destroy(NPCTargetCursor);
             NPCTargetCursor.SetActive(false);
             ResetCoverFire();
         }
@@ -52,8 +50,6 @@ public class CoverFireGroup : MonoBehaviour
             CoveringAgents = Flock.GetCloserAgents(_target, percentOfGroup);
             foreach (FlockAgent flock_agent in CoveringAgents)
             {
-                //flock_agent.StopFlocking();
-                //flock_agent.CoverFire.ApplyCoverFire(_target);
                 flock_agent.IsCurrentlyCoverFiring = true;
             }
         }
@@ -63,7 +59,6 @@ public class CoverFireGroup : MonoBehaviour
     {
         foreach (FlockAgent flock_agent in CoveringAgents)
         {
-            //flock_agent.CoverFire.StopCoverFiring();
             flock_agent.IsCurrentlyCoverFiring = false;
         }
         CoveringAgents.Clear();
@@ -78,9 +73,4 @@ public class CoverFireGroup : MonoBehaviour
     {
         return CoveringAgents.Count == 0;
     }
-
-    private  IEnumerator Test()
-    {
-        yield return null;
-    } 
 }

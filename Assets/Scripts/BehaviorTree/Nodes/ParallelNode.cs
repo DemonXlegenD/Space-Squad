@@ -6,11 +6,6 @@ public class ParallelNode : CompositeNode
 {
     [SerializeField] public List<D_Delay> DelayNodeToReset = new List<D_Delay>();
 
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     protected override void OnStart() {}
 
     protected override void OnStop() {}

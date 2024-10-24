@@ -14,11 +14,6 @@ public class A_MoveToNode : ActionNode
 
     [SerializeField] private MoveToLocation CurrentMoveToLocation = MoveToLocation.PLAYER;
 
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     #region Overrides of Node
     protected override void OnStart() {}
 

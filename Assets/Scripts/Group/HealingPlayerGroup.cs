@@ -5,8 +5,8 @@ using UnityEngine;
 public class HealingPlayerGroup : MonoBehaviour
 {
     [SerializeField, Range(0, 100)] private int percentOfGroup = 50;
+    
     private Flock Flock;
-
     private List<FlockAgent> HealingAgents = new List<FlockAgent>();
 
     void Start()
