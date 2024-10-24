@@ -12,7 +12,7 @@ public class PlayerAgent : Entity
     Flock Flock = null;
 
     [SerializeField] private float HoldAidFiring = 0.5f;
-    private float currentTimer = 0f;
+    private float currentTimer_ = 0f;
 
     #region MonoBehaviour Methods
     protected override void Start()
@@ -32,11 +32,11 @@ public class PlayerAgent : Entity
         {
             if (AidFiringTargetCursor.activeSelf)
             {
-                currentTimer += Time.deltaTime;
-                if (currentTimer > HoldAidFiring)
+                currentTimer_ += Time.deltaTime;
+                if (currentTimer_ > HoldAidFiring)
                 {
                     AidFiringTargetCursor.SetActive(false);
-                    currentTimer = 0f;
+                    currentTimer_ = 0f;
                 }
             }
         }
@@ -72,7 +72,7 @@ public class PlayerAgent : Entity
 
     public void AidFiring(Vector3 _pos)
     {
-        currentTimer = 0f;
+        currentTimer_ = 0f;
         AidFiringTargetCursor.transform.position = _pos;
         AidFiringTargetCursor.SetActive(true);
     }

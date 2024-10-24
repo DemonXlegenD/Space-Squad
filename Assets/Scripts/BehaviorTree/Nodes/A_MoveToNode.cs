@@ -43,7 +43,10 @@ public class A_MoveToNode : ActionNode
 
             case MoveToLocation.TARGET_PROTECT:
                 target_ = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<Guardian>().OffsetCheck.offset * 2;
-                stopDist = 1f;
+                stopDist = 3f;
+                Vector3 objectif = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<Guardian>().OffsetCheck.offset * 2;
+                objectif.y = npc.transform.position.y;
+                npc.transform.LookAt(objectif);
                 break;
 
             case MoveToLocation.TARGET_HEAL:

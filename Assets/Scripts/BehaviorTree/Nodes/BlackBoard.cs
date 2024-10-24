@@ -107,4 +107,5 @@ public enum DataKey{
     TARGET_PROTECT,
     TARGET_COVER,
     TARGET_FIRING,
+    KDA,
 }

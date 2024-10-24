@@ -16,7 +16,7 @@ public class SimpleController : MonoBehaviour
     private Action<Vector3> OnMouseRightClicked;
 
     public Vector3 jump;
-    public float jumpForce = 5.0f;
+    public float jumpForce = 140.0f;
 
     public bool isGrounded;
     Rigidbody rb;

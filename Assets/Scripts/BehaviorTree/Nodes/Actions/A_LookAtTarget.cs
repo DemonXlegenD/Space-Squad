@@ -11,7 +11,9 @@ public class A_LookAtTarget : ActionNode
 
     protected override State OnUpdate()
     {
-        npc.transform.LookAt((Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<Guardian>().OffsetCheck.offset * 2);
+        Vector3 objectif = (Tree.Data.GetValue<PlayerAgent>(DataKey.PLAYER)).transform.position + npc.GetComponent<Guardian>().OffsetCheck.offset * 2;
+        objectif.y = npc.transform.position.y;
+        npc.transform.LookAt(objectif);
 
         return State.Success;
     }
