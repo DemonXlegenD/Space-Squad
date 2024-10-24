@@ -7,9 +7,7 @@ public class A_ReformationNode : ActionNode
     public bool shouldReset = false;
 
     #region Overrides of Node
-    protected override void OnStart() 
-    {
-    }
+    protected override void OnStart() {}
 
     protected override void OnStop() {}
 

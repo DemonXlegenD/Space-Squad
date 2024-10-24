@@ -73,7 +73,6 @@ public class Flock : MonoBehaviour
 
     private void SpawnNPC(Vector3 _position, int _index)
     {
-
         FlockAgent new_agent = Instantiate(
             roleAgentPrefab[_index % roleAgentPrefab.Count],
             _position,
@@ -151,14 +150,5 @@ public class Flock : MonoBehaviour
             .Take(countToRetrieve)
             .Select(pair => pair.Key)
             .ToList();
-    }
-
-    private void Update()
-    {
-        /*if (oldForwardLeader != leader.transform.forward)
-        {
-            oldForwardLeader = leader.transform.forward;
-            Recalculate();
-        }*/
     }
 }

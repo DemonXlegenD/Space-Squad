@@ -8,7 +8,6 @@ public class PlayerTarget : MonoBehaviour
 
     private void Awake()
     {
-
         Renderer rend = GetComponent<Renderer>();
         MaterialInst = rend.material;
     }
@@ -20,5 +19,5 @@ public class PlayerTarget : MonoBehaviour
     public void SetFarTarget()
     {
         MaterialInst.color = Color.red;
-    }
+    } 
 }

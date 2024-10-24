@@ -27,8 +27,6 @@ public class SelectorNode : CompositeNode
             return State.Failure;
         }
 
-
-
         switch (children[currentNodeID].UpdateNode())
         {
             case State.Running:
@@ -36,7 +34,6 @@ public class SelectorNode : CompositeNode
             case State.Success:
                 currentNodeID = 0;
                 return State.Running;
-                break;
             case State.Failure:
                 currentNodeID++;
                 break;

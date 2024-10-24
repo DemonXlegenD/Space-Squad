@@ -19,13 +19,10 @@ public class BlackBoard : ScriptableObject
 
     public object GetData(DataKey key) 
     {
-       // V�rifier si la cl� existe dans Data
         if (Data.TryGetValue(key, out object value))
         {
-            // V�rifier que le type attendu correspond � celui dans le typeMapping
             if (TypeMapping.typeMapping.TryGetValue(key, out Type expectedType))
             {
-                // V�rifier que la valeur correspond bien au type attendu
                 if (value.GetType() == expectedType)
                 {
                     return value;

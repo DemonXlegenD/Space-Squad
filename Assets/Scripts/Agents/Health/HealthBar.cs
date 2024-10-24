@@ -6,7 +6,6 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        // Récupérer la caméra principale de la scène
         cameraTransform = Camera.main.transform;
     }
 

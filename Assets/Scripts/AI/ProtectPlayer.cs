@@ -45,9 +45,4 @@ public class ProtectPlayer : MonoBehaviour
     {
         offset = _offset;
     }
-
-    private void Update()
-    {
-
-    }
 }

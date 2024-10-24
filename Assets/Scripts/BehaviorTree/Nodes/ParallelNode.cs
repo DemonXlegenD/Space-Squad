@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ParallelNode : CompositeNode
 {
-    [SerializeField] private bool requireAllSuccess = false;
     [SerializeField] public List<D_Delay> DelayNodeToReset = new List<D_Delay>();
 
     protected override void Start()
@@ -12,15 +11,9 @@ public class ParallelNode : CompositeNode
         base.Start();
     }
 
-    protected override void OnStart()
-    {
+    protected override void OnStart() {}
 
-    }
-
-    protected override void OnStop()
-    {
-
-    }
+    protected override void OnStop() {}
 
     protected override State OnUpdate()
     {

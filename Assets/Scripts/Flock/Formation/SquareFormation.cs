@@ -5,10 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Formations/SquareFormation")]
 public class SquareFormation : Formation
 {
-
     public int rows = 3;              
     public int columns = 3;             
-
 
     public override List<Vector3> CalculatePositions(Transform _leaderTransform, int _agentNumber, float _distanceBetweenAgents)
     {
@@ -31,7 +29,7 @@ public class SquareFormation : Formation
 
         int npcIndex = 0;
 
-        // Positionner chaque NPC selon la grille de rangées et colonnes
+        // Positionner chaque NPC selon la grille de rangï¿½es et colonnes
         for (int row = 0; row < rows; row++)
         {
             for (int col = 0; col < columns; col++)

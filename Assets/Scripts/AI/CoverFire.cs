@@ -18,42 +18,6 @@ public class CoverFire : MonoBehaviour
         AIAgent = GetComponent<AIAgent>();
     }
 
-    /*
-    public void StopCoverFiring()
-    {
-        agent.StartFlocking();
-        targetToShoot = Vector3.zero;
-        isFiringTarget = false;
-        agent.IsAvailable = true;
-    }
-
-    public void ApplyCoverFire(Vector3 _target)
-    {
-        agent.StopFlocking();
-        TargetToShoot = _target;
-        agent.MoveTo(_target);
-        agent.IsAvailable = false;
-    }
-    
-    public void ShootCoverFire()
-    {
-        if (targetToShoot != Vector3.zero)
-        {
-            if (!isFiringTarget)
-            {
-                if (AIAgent.IsInRange(targetToShoot))
-                {
-                    isFiringTarget = true;
-                    AIAgent.StopMove();
-                }
-            }
-            else
-            {
-                AIAgent.ShootToPosition(targetToShoot);
-            }
-        }
-    }*/
-
     public void NPCShootToTarget(Vector3 target_)
     {
         if (target_ != Vector3.zero)

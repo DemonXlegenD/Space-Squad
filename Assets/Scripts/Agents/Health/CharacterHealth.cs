@@ -14,14 +14,12 @@ public class CharacterHealth : MonoBehaviour
         healthBarController.SetHealth(currentHealth, maxHealth);
     }
 
-    // Fonction pour infliger des d�g�ts
+    // Fonction pour infliger des degats
     public void TakeDamage(float _damage)
     {
         currentHealth -= _damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         healthBarController.SetHealth(currentHealth, maxHealth);
-
-        //if(IsDead()) gameObject.SetActive(false);
     }
 
     public void Healing(float _health)

@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour
         else Renderer.sharedMaterial = M_Enemy;
         Destroy(gameObject, Duration);
     }
+    
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.name);

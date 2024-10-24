@@ -30,9 +30,7 @@ namespace FSMMono
 
         private void Awake()
         {
-
             NavMeshAgentInst = GetComponent<NavMeshAgent>();
-            //NavMeshAgentInst.updatePosition = false;
         }
 
         protected override void Start()

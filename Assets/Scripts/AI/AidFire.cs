@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class AidFire : MonoBehaviour
 {
-
     private FlockAgent agent;
     private AIAgent AIAgent;
 

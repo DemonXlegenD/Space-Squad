@@ -29,17 +29,6 @@ public class HealingPlayerGroup : MonoBehaviour
         }
     }
 
-    /*
-    public void ResetHealingPlayer()
-    {
-        foreach (FlockAgent flock_agent in HealingAgents)
-        {
-            flock_agent.HealingPlayer.StopHealingPlayer();
-        }
-        HealingAgents.Clear();
-    }
-    */
-
     public List<FlockAgent> GetHealingAgents()
     {
         return HealingAgents;

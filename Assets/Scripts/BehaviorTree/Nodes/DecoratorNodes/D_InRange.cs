@@ -5,15 +5,9 @@ using UnityEngine;
 
 public class D_InRange : DecoratorNode
 {
-    protected override void OnStart()
-    {
+    protected override void OnStart() {}
 
-    }
-
-    protected override void OnStop()
-    {
-
-    }
+    protected override void OnStop() {}
 
     protected override State OnUpdate()
     {
